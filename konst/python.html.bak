@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <h3 style="text-align: center;">Pyth<span style="color: #666666;">on</span></h3>
+        </div>
+        <div class="row section topspace">&nbsp; # zobraz<br>
+          <pre><span style="color: #808080; "></span># zobraz
+x = '10'
+print (x)<span style="color: #800000; "></span></pre>
+          # zadani cisel&nbsp; <br>
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)</span> # zadani cisel
+          <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)<br></span></pre>
+          # porovnani<span style="color: #800000; "> </span>
+          <pre><span style="color: #800000; "># porovnani
+print (1&lt;2)
+print (1&gt;2)
+print (1==1)
+print ('hello'!='Hello')</span><span style="color: #800000; "><br></span></pre>
+          # podminka
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># podminka
+x = input ('vloz cislo: ')
+if int(x)&lt;5:
+    print('malo')
+elif int(x)==5:
+    print('akorat')
+else:
+    print('moc')
+
+
+# and / or
+x=1
+y=2
+print(x==y and x+y==3)
+print(x==y or x+y==3)</span><span style="color: #800000; "><br></span></pre>
+          # and / or
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># and / or
+x=1
+y=2
+print(x==y and x+y==3)
+print(x==y or x+y==3)</span><span style="color: #800000; ">)<br></span></pre>
+          # zadani cisel&nbsp; # zadani cisel
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># cyklus s poctem opakovani:
+for x in range(0, 11, 2):
+    print (x)</span><span style="color: #800000; "><br></span></pre>
+          # cyklus s poctem opakovani:
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)</span> # zadani cisel
+          <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)<br></span></pre>
+          # opakokavani dokud
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># opakokavani dokud
+loop  = True
+while loop == True:
+    cislo  = input ('vloz cislo- stop pro konec-: ' )
+    if cislo == 'stop':
+        loop = False
+        #break</span><span style="color: #800000; "><br></span></pre>
+          # zadani cisel&nbsp; # zadani cisel
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam
+seznam = ['nula', 'jedna', 2, 'tri']
+print(seznam)
+seznam.append('ctyri')
+seznam[2]= 'dva'
+print(seznam)
+print(seznam[0])</span><span style="color: #800000; "><br></span></pre>
+          # seznam
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)</span> # zadani cisel
+          <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input ('zadej cele cislo1:' )
+y = input ('zadej cele cislo2:' )
+SUM  = int(x)+ int(y)
+print (SUM)<br></span></pre>
+          # Tuple
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Tuple
+position  = (2, 3)
+color = (255, 255, 255)
+print(type(position))
+print(type(color))</span><span style="color: #800000; "><br></span></pre>
+          # seznam cteni polozek
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam cteni polozek
+seznam = ['nula', 'jedna', 2, 'tri']
+for polozka in seznam:
+    if polozka == 'jedna':
+        print('OK')
+    else:
+        print('spatne')
+print (len(seznam))
+for x in range(len(seznam)):
+    if seznam[x] == 'jedna':
+        print('OK')
+    else:
+        print('spatne')</span><span style="color: #800000; "><br><br></span>animals = ['cat', 'dog', 'rabbit', 'horse']
+test=input('zadej: ')
+# get the index of 'dog'-zadej dog
+index = animals.index(test)
+print(index)</pre>
+          # import and cteni&nbsp; csv
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "><span
+style="color: #800000; "><span style="color: #800000; "># zobrazi zadany radek</span></span>
+import csv
+file = open('C:\py3eg\source.csv', 'r')</span><span style="color: #800000; ">
+test=input('zadej cislo radku: ')
+lines = file.readlines()
+print (lines[int(test)-1]) 
+file.close()</span><span style="color: #800000; "><br><br></span><span style="color: #800000; "><span
+style="color: #800000; "><span style="color: #800000; ">#</span></span>najde radek dle textu ve specifikovanem sloupci<br><br>import csv
+with open('C:\py3eg\source.csv', 'r') as scoreFile:
+    scoreFileReader=csv.reader(scoreFile)
+    gender = input('napis barvu')
+    for row in scoreFileReader:
+        if row[0]==gender:
+            print(row)<br><br>#dle ral najde hodnotz RGB
+import csv
+with open('C:\py3eg\source.csv', 'r') as scoreFile:
+    scoreFileReader=csv.reader(scoreFile)
+    barva = input('napis barvu: ')
+    for row in scoreFileReader:
+        if row[0]== barva:
+            line=row
+            #print(line)
+            RAL=line[1]
+            R=line[3]
+            G=line[4]
+            B=line[5]
+            print(RAL)
+            print( R ,', ' , G ,', ',  B )<br><br></span></pre>
+          # Editace textu /-&nbsp;&nbsp; Toto jE TEST
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Editace textu /-   Toto jE TEST
+text = input ('napis text: ')
+print(text)
+#odstraneni mezer na zacatku a na konci
+print(text.strip())
+#pocet znaku
+print(len(text))
+#vsechny male
+print(text.lower())
+#vsechny velke
+print(text.upper())
+#rozdeleni
+textedit=text.strip()
+print(textedit.split(' '))
+
+#https://www.tutorialspoint.com/python/python_strings.htm</span><span style="color: #800000; "></span></pre>
+          # #slice operatory
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#slice operatory
+seznam = ['nula', 'jedna', 2, 'tri']
+text = 'Toto jE TEST'
+print(text[0:5])
+print(text[5:7])
+print(text[::2])
+print(seznam[::2])
+
+#pridani na zacatek
+seznam[0:0] = 'M'
+print(seznam)</span><span style="color: #800000; "><br></span></pre>
+          # volani podprogramu
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#volani podprogramu
+#podprogramy
+def secist(x):
+    return x+1
+def odecist(x, y):
+    return x-y
+def zobraz(string):
+    print(string)
+def neco():
+    print('neco')
+#vyvolani
+print(secist(2))
+print(odecist(2, 5))
+zobraz('test')
+neco()</span><span style="color: #800000; "><br></span></pre>
+          # #otevreni externiho souboru
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#otevreni externiho souboru
+file = open('text test.txt' , 'r')
+f=file.readlines()
+newList = []
+newList2 = []
+#odstraneni konce
+for line in f:
+    if line[-1]=='\n':
+        newList.append(line[:-1])
+    else:
+        newList.append(line)        
+print(newList)
+#odstraneni konce jednoduche
+for line in f:
+    newList2.append(line.strip())
+print(newList2)</span><span style="color: #800000; "><br></span></pre>
+          # zapis do externiho souboru
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#zapis do externiho souboru
+file = open('text test.txt' , 'w')
+file.write('Toto')
+file.write('\n')
+file.write('je\n')
+file.write('test')
+file.close()</span><span style="color: #800000; "><br></span></pre>
+          # najdi spocitej vyskyt
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#najdi spocitej vyskyt
+text = 'toto je test'
+print(text.find('t'))
+print(text.count('t'))
+print(text.find('z'))
+text = input('zadej text: ')
+if text.count('_')&gt;0:
+    print('spatne')
+else:
+    print('ok')</span><span style="color: #800000; "><br></span></pre>
+          # import knihoven
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#import knihoven
+import math
+import myModule
+print(math.pi)
+print(math.radians(60))
+print(myModule.funkce1(5))</span><span style="color: #800000; "><br></span></pre>
+          # testovani moznosti
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#testovani moznosti
+text = input('zadej cislo: ')
+try:
+    cislo= int(text)
+    print(text)
+except:
+    print('hondota neni cislo')</span><span style="color: #800000; "><br></span></pre>
+          # globalni a lokalni promenne
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#globalni a lokalni promenne
+var = 1
+loop = True
+
+def Funkce1():
+    var=2
+    print(var)
+def Funkce2():
+    global var
+    var=3
+    print(var)
+print(var)
+Funkce1()
+Funkce2()
+print(var)</span><span style="color: #800000; "><br></span></pre>
+          # objekty a tridy
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = 'text'
+y = 23
+z = True
+
+print (type(x))
+print (type(y))
+print (type(z))
+
+print(x.count('t'))</span><span style="color: #800000; "><br><br></span></pre>
+          <span></span> #Parametry funkce volitelne
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Parametry funkce volitelne
+
+def func(slovo, x=1, y=0):
+    return slovo*(x+y)
+
+call= func("test")
+print(call)
+
+call1=func("test ",1, 5)
+print(call1)</span><span style="color: #800000; "></span></pre>
+          # Staic and class metod
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># Staic and class metod
+
+class person(object):
+    population = 50
+    def __init__(self, name, age):
+        self.name = name
+        self.age=age
+    
+    @classmethod
+    def getPopulation(cls):
+        return cls.population
+    
+    @staticmethod
+    def isAdult(age):
+        return age &gt;= 18
+    
+    def display(self):
+        print(self.name, 'is', self.age, 'years old')
+
+newPerson = person('pavel', 18)
+
+print(person.getPopulation())
+print(person.isAdult(5))
+print(person.isAdult(21))</span></pre>
+          # map function
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># map function
+
+li=[1,2,3,4,5,6,7,8,9,10]
+
+def func(x):
+    return x**x
+
+novyList = []
+for x in li:
+    novyList.append(func(x))
+print(novyList)
+ 
+ #with map
+print(list(map(func, li)))</span></pre>
+          #&nbsp; filtr
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># filtr
+
+def add7(x):
+    return x+7
+
+def isOdd(x):
+    return x%2 !=0
+
+a =[1,2,3,4,5,6,7,8,9,10]
+
+b=list(filter(isOdd, a))
+
+c= list(map(add7, filter(isOdd, a)))
+
+print (a)
+print (b)
+print (c)</span></pre>
+          # funkce&nbsp; lambda <br>
+          <pre><span style="color: #808080; "></span><span style="color: #800000; "># lambda tutorial
+#Kklasicky
+from tkinter import Y
+
+
+def func(x):
+    return x+5
+#pomoci fce lambda
+func2 = lambda x:x+5
+
+print(func(2))
+print(func2(2))
+
+#sdruzeny zapis dnou fci
+def funkce(x=2):
+    funkce2 = lambda x:x+5
+    return funkce2(x)+5
+
+print(funkce())
+
+#pomoci fce lambda dve promene
+func3 = lambda x,y=10:x+y
+print(func3(2))
+
+#lambda+map
+a=[1,2,3,4,5,6,7,8,9,10]
+newList =list(map(lambda x:x+5, a))
+print (newList)</span></pre>
+          #colections counter<br>
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#colections
+    #counter
+import collections
+from collections import Counter
+
+
+c = Counter ('test')
+print(c)
+
+c = Counter (['a', 'a', 'b', 'c', 'c', 'c'])
+print(c)
+
+e = Counter ({'a': 1, 'b':2})
+print(c)
+
+print(c.most_common(1))
+
+d= Counter(cats=4, dogs=7)
+print (d)
+print(list(d.elements()))
+
+ca = Counter(a=4, b=2, c=0, d=-2)
+da=['a', 'b', 'b', 'c']
+ca.subtract(da)
+print(ca)
+ca.clear()
+print(ca)
+
+cb = Counter(a=4, b=2, c=0, d=-2)
+db=Counter(['a', 'b', 'b', 'c'])
+print(cb+db)
+print(cb-db)
+print(cb&amp;db)
+print(cb|db)</span></pre>
+          # objekty a tridy
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = 'text'
+y = 23
+z = True
+
+print (type(x))
+print (type(y))
+print (type(z))
+
+print(x.count('t'))</span></pre>
+          # objekty a tridy
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = 'text'
+y = 23
+z = True
+
+print (type(x))
+print (type(y))
+print (type(z))
+
+print(x.count('t'))</span></pre>
+          # objekty a tridy
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = 'text'
+y = 23
+z = True
+
+print (type(x))
+print (type(y))
+print (type(z))
+
+print(x.count('t'))</span></pre>
+          # objekty a tridy
+          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = 'text'
+y = 23
+z = True
+
+print (type(x))
+print (type(y))
+print (type(z))
+
+print(x.count('t'))</span></pre>
+          <br>
+          <span></span>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

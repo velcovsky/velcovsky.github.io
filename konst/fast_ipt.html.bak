@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">Součásti pro rychlou editaci</p>
+            <br>
+            <b>Prostředí</b>: součást<br>
+            &nbsp;&nbsp; </div>
+          <ul>
+            <li>pomocí jednoho parametru lze měnit více rozměrů součásti</li>
+            <li>příklad: dle velikosti I profilu změní všechny jeho rozměry</li>
+            <li>vzorová součást ke stažení <a href="assets/images/I-profil.ipt">zde.</a></li>
+          </ul>
+          <div class="col-md-12">
+            <pre><span style="color: #808080; "></span><span style="color: #FF0000; "></span><br><span
+style="color: #FF0000; ">Sub</span> <span style="color: #800000; ">Main</span> 
+<span style="color: #808080; ">'				Typ			profil	b		hv		t1		t2		r		r1		uhel</span>
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|80"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	42.0 ,	80.0 ,	3.9 ,	5.9 ,	3.9 ,	2.3 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|100"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	50.0 ,	100.0 ,	4.5 ,	6.8 ,	4.5 ,	2.7 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|120"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	58.0 ,	120.0 ,	5.1 ,	7.7 ,	5.1 ,	3.1 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|140"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	66.0 ,	140.0 ,	5.7 ,	8.6 ,	5.7 ,	3.4 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|160"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	74.0 ,	160.0 ,	6.3 ,	9.5 ,	6.3 ,	3.8 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|180"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	82.0 ,	180.0 ,	6.9 ,	10.4 ,	6.9 ,	4.1 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|200"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	90.0 ,	200.0 ,	7.5 ,	11.3 ,	7.5 ,	4.5 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|220"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	98.0 ,	220.0 ,	8.1 ,	12.2 ,	8.1 ,	4.9 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|240"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	106.0 ,	240.0 ,	8.7 ,	13.1 ,	8.7 ,	4.9 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|260"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	113.0 ,	260.0 ,	9.4 ,	14.1 ,	9.4 ,	5.6 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|280"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	119.0 ,	280.0 ,	10.1 ,	15.2 ,	10.1 ,	6.1 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|300"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	125.0 ,	300.0 ,	10.8 ,	16.2 ,	10.8 ,	6.5 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|320"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	131.0 ,	320.0 ,	11.5 ,	17.3 ,	11.5 ,	6.9 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|340"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	137.0 ,	340.0 ,	12.2 ,	18.3 ,	12.2 ,	7.3 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|360"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	143.0 ,	360.0 ,	13.0 ,	19.5 ,	13.0 ,	7.8 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|380"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	149.0 ,	380.0 ,	13.7 ,	20.5 ,	13.7 ,	8.2 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|400"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	155.0 ,	400.0 ,	14.4 ,	21.6 ,	14.4 ,	8.6 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|450"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	170.0 ,	450.0 ,	16.2 ,	24.3 ,	16.2 ,	9.7 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"I|500"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">I</span>	,	185.0 ,	500.0 ,	18.0 ,	27.0 ,	18.0 ,	10.8 ,	7.97	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|80"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	46.0 ,	80.0 ,	3.8 ,	5.2 ,	5.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|100"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	55.0 ,	100.0 ,	4.1 ,	5.7 ,	7.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|120"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	64.0 ,	120.0 ,	4.4 ,	6.3 ,	7.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|140"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	73.0 ,	140.0 ,	4.7 ,	6.9 ,	7.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|160"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	82.0 ,	160.0 ,	5.0 ,	7.4 ,	9.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|180"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	91.0 ,	180.0 ,	5.3 ,	8.0 ,	9.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|200"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	100.0 ,	200.0 ,	5.6 ,	8.5 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|220"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	110.0 ,	220.0 ,	5.9 ,	9.2 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|240"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	120.0 ,	240.0 ,	6.2 ,	9.8 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|270"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	135.0 ,	270.0 ,	6.6 ,	10.2 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|300"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	150.0 ,	300.0 ,	7.1 ,	10.7 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|330"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	160.0 ,	330.0 ,	7.5 ,	11.5 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|360"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	170.0 ,	360.0 ,	8.0 ,	12.7 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"IPE|400"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">IPE</span>	,	180.0 ,	400.0 ,	8.6 ,	13.5 ,	21.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|100"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	100.0 ,	96.0 ,	5.0 ,	8.0 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|120"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	120.0 ,	114.0 ,	5.0 ,	8.0 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|140"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	140.0 ,	133.0 ,	5.5 ,	8.5 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|160"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	160.0 ,	152.0 ,	6.0 ,	9.0 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|180"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	180.0 ,	171.0 ,	6.0 ,	9.5 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|200"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	200.0 ,	190.0 ,	6.5 ,	10.0 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|220"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	220.0 ,	210.0 ,	7.0 ,	11.0 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|240"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	240.0 ,	230.0 ,	7.5 ,	12.0 ,	21.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|260"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	260.0 ,	250.0 ,	7.5 ,	12.5 ,	24.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|280"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	280.0 ,	270.0 ,	8.0 ,	13.0 ,	24.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|300"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	290.0 ,	8.5 ,	14.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|320"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	310.0 ,	9.0 ,	15.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|340"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	330.0 ,	9.5 ,	16.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|360"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	350.0 ,	10.0 ,	17.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|400"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	390.0 ,	11.0 ,	19.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|450"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	440.0 ,	11.5 ,	21.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|500"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	490.0 ,	12.0 ,	23.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|550"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	540.0 ,	12.5 ,	24.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|600"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	590.0 ,	13.0 ,	25.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|650"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	640.0 ,	13.5 ,	26.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|700"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	690.0 ,	14.5 ,	27.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|800"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	790.0 ,	15.0 ,	28.0 ,	30.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|900"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	890.0 ,	16.0 ,	30.0 ,	30.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEA|1000"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEA</span>	,	300.0 ,	990.0 ,	16.5 ,	31.0 ,	30.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|100"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	100.0 ,	100.0 ,	6.0 ,	10.0 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|120"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	120.0 ,	120.0 ,	6.5 ,	11.0 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|140"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	140.0 ,	140.0 ,	7.0 ,	12.0 ,	12.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|160"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	160.0 ,	160.0 ,	8.0 ,	13.0 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|180"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	180.0 ,	180.0 ,	8.5 ,	14.0 ,	15.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|200"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	200.0 ,	200.0 ,	9.0 ,	15.0 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|220"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	220.0 ,	220.0 ,	9.5 ,	16.0 ,	18.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|240"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	240.0 ,	240.0 ,	10.0 ,	17.0 ,	21.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|260"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	260.0 ,	260.0 ,	10.5 ,	17.5 ,	24.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|280"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	280.0 ,	280.0 ,	11.0 ,	18.0 ,	24.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|300"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	300.0 ,	11.5 ,	19.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|320"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	320.0 ,	12.0 ,	20.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|340"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	340.0 ,	12.5 ,	21.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|360"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	360.0 ,	12.5 ,	22.5 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|400"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	400.0 ,	13.5 ,	24.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|450"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	450.0 ,	14.0 ,	26.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|500"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	500.0 ,	14.5 ,	28.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|550"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	550.0 ,	15.0 ,	29.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|600"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	600.0 ,	15.5 ,	30.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|650"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	650.0 ,	16.0 ,	31.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|700"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	700.0 ,	17.0 ,	32.0 ,	27.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|800"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	800.0 ,	17.5 ,	33.0 ,	30.0 ,	0.0001 ,	0.0001	)
+<span style="color: #800000; ">myTable</span>(<span style="color: #008080; ">"HEB|900"</span>)  = <span
+style="color: #FF0000; ">New</span> <span style="color: #800000; ">TabRow</span>(	<span
+style="color: #800000; ">HEB</span>	,	300.0 ,	900.0 ,	18.5 ,	35.0 ,	30.0 ,	0.0001 ,	0.0001	)
+
+
+
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">Row</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">TabRow</span> 
+    <span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">found</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Boolean</span> = <span
+style="color: #800000; ">myTable</span>.<span style="color: #800000; ">TryGetValue</span>(<span
+style="color: #0000FF; ">Choice</span>, <span style="color: #800000; ">Row</span>)
+	
+	<span style="color: #0000FF; ">b</span> 	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">b_t</span>
+	<span style="color: #0000FF; ">b</span> 	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">b_t</span>
+	<span style="color: #0000FF; ">hv</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">hv_t</span>
+	<span style="color: #0000FF; ">t1</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">t1_t</span>
+	<span style="color: #0000FF; ">t2</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">t2_t</span>
+	<span style="color: #0000FF; ">r</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">r_t</span>
+	<span style="color: #0000FF; ">r1</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">r1_t</span>
+	<span style="color: #0000FF; ">uhel</span>	= <span style="color: #800000; ">row</span>.<span
+style="color: #800000; ">uhel_t</span>
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Sub</span>
+ 
+<span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">myTable</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">New</span> <span
+style="color: #800000; ">Dictionary</span>(<span style="color: #FF0000; ">Of</span> <span
+style="color: #FF0000; ">String</span>, <span style="color: #800000; ">TabRow</span>) 
+<span style="color: #FF0000; ">Class</span> <span style="color: #800000; ">TabRow</span> 
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">profil_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">String</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">b_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">hv_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">t1_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">t2_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">r_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">r1_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #800000; ">uhel_t</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #FF0000; ">Double</span>
+    <span style="color: #FF0000; ">Public</span> <span style="color: #FF0000; ">Sub</span> <span
+style="color: #FF0000; ">New</span>( _
+		<span style="color: #800000; ">profil_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">String</span>, _
+		<span style="color: #800000; ">b_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">hv_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">t1_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">t2_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">r_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">r1_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>, _
+		<span style="color: #800000; ">uhel_t</span> <span style="color: #FF0000; ">As</span> <span
+style="color: #FF0000; ">Double</span>)
+		<span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">profil_t</span> = <span
+style="color: #800000; ">profil_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">b_t</span> = <span
+style="color: #800000; ">b_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">hv_t</span> = <span
+style="color: #800000; ">hv_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">t1_t</span> = <span
+style="color: #800000; ">t1_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">t2_t</span> = <span
+style="color: #800000; ">t2_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">r_t</span> = <span
+style="color: #800000; ">r_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">r1_t</span> = <span
+style="color: #800000; ">r1_t</span>
+        <span style="color: #FF0000; ">Me</span>.<span style="color: #800000; ">uhel_t</span> = <span
+style="color: #800000; ">uhel_t</span>
+    <span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Sub</span>
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Class</span> </pre>
+            <p class="lead text-center text-muted"> </p>
+          </div>
+        </div>
+        <div class="row section topspace">
+          <pre><span style="color: #0000FF; ">Choice</span> = <span style="color: #0000FF; ">profil</span> &amp; <span
+style="color: #008080; ">"|"</span> &amp; <span style="color: #FF0000; ">CStr</span>(<span
+style="color: #0000FF; ">velikost</span>)
+<span style="color: #800000; ">MsgBox</span>(<span style="color: #0000FF; ">Choice</span>)
+</pre>
+          <h2 class="section-title"><br>
+          </h2>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

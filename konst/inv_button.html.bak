@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center" style="text-align: center;"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace"><br>
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <h2 class="section-title"><span>TLAčítka VBA</span></h2>
+            </div>
+            <div class="col-md-12">Pomocí VBA lze rovněž vytvořit vlastní
+              tlačítka v panelu nástrojů, pro snadné zpouštění pravidel.</div>
+            <div class="col-md-12">Postup pro vytváření tlačítek lze najít na
+              stránkách <a href="https://www.inventor3dblog.cz/inventor-tlacitko-ribbonu-spousteni-ilogicu/"
+                title="inventor-tlacitko-ribbonu-spousteni-ilogicu"><span style="color: #666666;"></span>
+                inventor3dblog.</a></div>
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-12">V tabulce můžete najít obrázky pro ikony
+              vpásu karet. Je potřeba mít název obrázku ve správném formátu a ve
+              správné složce.</div>
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-12">Např.: <i>C:\Users\Public\Documents\Autodesk\Inventor
+                2022\Macros</i></div>
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-12">Podrobnější návod <a href="https://www.inventor3dblog.cz/inventor-ilogic-spusteni-libovolneho-pravidla-pomoci-vlastni-ikony-v-pasu-karet/"
+                title="inventor-ilogic-spusteni-libovolneho-pravidla-pomoci-vlastni-ikony-v-pasu-karet">zde</a>.</div>
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-12" style="text-align: center;"><br>
+            </div>
+            <div class="col-md-12">
+              <table style="width: 318px; height: 399px; text-align: left; margin-left: auto; margin-right: auto;"
+                cellspacing="0" cellpadding="0" border="4">
+                <colgroup><col style="mso-width-source:userset;mso-width-alt:5412;width:111pt"
+                    width="148"> <col style="width:48pt" width="64" span="2"> </colgroup>
+                <tbody>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; width: 111pt; text-align: center; vertical-align: middle; background-color: silver;"
+                      height="20" width="148">ikona</td>
+                    <td class="xl65" style="border-left: medium none; width: 48pt; text-align: center; background-color: #cccccc;"
+                      width="64">32x32</td>
+                    <td class="xl65" style="border-left: medium none; width: 48pt; text-align: center; background-color: #cccccc;"
+                      width="64">16x16</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center; margin-left: -80px;"
+                      height="20"><a href="assets/images/podklady/module1.txt" title="module1">Create_pdf_dwg</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center; margin-left: 30px;">&nbsp;<img
+                        src="assets/images/podklady/Module1.Create_pdf_dwg.large.bmp"
+                        alt="pdf" title="pdf" longdesc="assets/images/podklady/Module1.Create_pdf_dwg.large.bmp"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module1.Create_pdf_dwg.small.bmp"
+                        alt="pdf" title="pdf" longdesc="assets/images/podklady/Module1.Create_pdf_dwg.small.bmp"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module2.txt" title="A4">A4_print</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module2.A4_print.large.bmp"
+                        alt="A4" title="A4">&nbsp;</td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module2.A4_print.small.bmp"
+                        alt="A4" title="A4">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module3.txt" title="A3">A3_print</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module3.A3_print.large.bmp"
+                        alt="A3" title="A3"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module3.A3_print.small.bmp"
+                        alt="A3" title="A3">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module4.txt" title="Rozvin">Rozvin</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module4.Rozvin.large.bmp" alt="Rozvin"
+                        title="Rozvin"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module4.Rozvin.small.bmp" alt="Rozvin"
+                        title="Rozvin">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module5.txt" title="Hmotnost">Hmotnost</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module5.Hmotnost.large.bmp"
+                        alt="Hmotnost" title="Hmotnost"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module5.Hmotnost.small.bmp"
+                        alt="Hmotnost" title="Hmotnost"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module6.txt" title="Format">Format</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module6.Format.large.bmp" alt="Format"
+                        title="Format">&nbsp;</td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module6.Format.small.bmp" alt="Format"
+                        title="Format"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module7.txt" title="jpg">Create_jpg</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module7.Create_jpg.large.bmp"
+                        alt="jpg" title="jpg"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module7.Create_jpg.small.bmp"
+                        alt="jpg" title="jpg">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module8.txt" title="Razitko">Razitko</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module8.Razitko.large.bmp" alt="Razitko"
+                        title="Razitko">&nbsp;</td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module8.Razitko.small.bmp" alt="Razitko"
+                        title="Razitko"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module9.txt" title="Slozka">Slozka</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module9.Slozka.large.bmp" alt="Slozka"
+                        title="Slozka"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module9.Slozka.small.bmp" alt="Slozka"
+                        title="Slozka">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="file:///C:/Users/pavel/Desktop/konstrukter/assets/images/podklady/module10.txt">Render</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module10.Render.large.bmp" alt="Render"
+                        title="Render"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module10.Render.small.bmp" alt="Render"
+                        title="Render">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module11.txt"
+                        title="Form">Form</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module11.Form.large.bmp" alt="Form"
+                        title="Form">&nbsp;</td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module11.Form.small.bmp" alt="Form"
+                        title="Form"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module12.txt"
+                        title="Helios">Helios</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module12.Helios.large.bmp" alt="Helios"
+                        title="Helios"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module12.Helios.small.bmp" alt="Helios"
+                        title="Helios"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module13.txt"
+                        title="export">Kusovnik_export</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module13.Kusovnik_export.large.bmp"
+                        alt="xls" title="xls"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module13.Kusovnik_export.small.bmp"
+                        alt="xls" title="xls"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module15.txt"
+                        title="iproperties">ipropetries</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module15.ipropetries.large.bmp"
+                        alt="i-properties" title="i-properties"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module15.ipropetries.small.bmp"
+                        alt="i-properties" title="i-properties">&nbsp;</td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module14.txt"
+                        title="SAP">SAP</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module14.SAP.large.bmp" alt="i-properties"
+                        title="i-properties"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module14.SAP.small.bmp" alt="i-properties"
+                        title="i-properties"></td>
+                  </tr>
+                  <tr style="height:15.0pt" height="20">
+                    <td class="xl65" style="height: 15pt; border-top: medium none; text-align: center;"
+                      height="20"><a href="assets/images/podklady/module16.txt"
+                        title="Dxf">Create_DXF</a></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;">&nbsp;<img
+                        src="assets/images/podklady/Module16.Create_DXF_dwg_pdf.large.bmp"
+                        alt="Dxf" title="Dxf"></td>
+                    <td class="xl65" style="border-top: medium none; border-left: medium none; text-align: center;"><img
+                        src="assets/images/podklady/Module16.Create_DXF_dwg_pdf.small.bmp"
+                        alt="Dxf" title="Dxf">&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-12"><br>
+            </div>
+            <br>
+            <div class="col-md-12"><br>
+            </div>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm" title="TK"> <span class="img"
+                  style="height: 241px;"> <img src="assets/images/TK.png" alt="">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

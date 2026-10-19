@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">Uložit výkres jako PDF a DWG</p>
+            <br>
+            <b>Prostředí</b>: výkres<br>
+            &nbsp;&nbsp; </div>
+          <ul>
+            <li>uložit pdf s možností nastavení </li>
+            <li>dwg dle nastavení prohlížeče</li>
+            <li>uloží s názvem jako číslo součásti z i-vlastností</li>
+          </ul>
+          <div class="col-md-12">
+            <pre><span style="color: #808080; ">'pravidlo ukladani vykresu do pdf a dwg</span>
+
+<span style="color: #808080; ">'Spustit externí pravidlo</span>
+<span style="color: #808080; ">'iLogicVb.RunExternalRule("notes")</span>
+
+<span style="color: #808080; ">'Slozka ulozeni</span>
+<span style="color: #808080; ">'folderName = "C:\trans"</span>
+ <span style="color: #800000; ">folderName</span> = <span style="color: #800080; ">ThisDoc</span>.<span
+style="color: #800080; ">Path</span>
+
+<span style="color: #808080; ">'nazev ukladani</span>
+<span style="color: #800000; ">nazev</span>=<span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Project"</span>, <span
+style="color: #008080; ">"Part Number"</span>)
+<span style="color: #808080; ">'nazev=iProperties.Value("Custom", "003_cislo_vykresu") &amp; "_" &amp; iProperties.Value("Project", "Part Number")</span>
+<span style="color: #808080; ">'nazev=iProperties.Value("Custom", "001_Zeichnungsnummer")&amp;iProperties.Value("Custom", "009_Index")&amp; "(" &amp; iProperties.Value("Custom", "002_Benennung_de" ) &amp;")"</span>
+
+<span style="color: #808080; ">'nazev ukladanych xls - uprava lomitek atd.</span>
+<span style="color: #800000; ">txt1</span> = <span style="color: #800000; ">nazev</span>
+<span style="color: #800000; ">txt2</span> = <span style="color: #800000; ">Replace</span>(<span
+style="color: #800000; ">txt1</span>,<span style="color: #008080; ">"/"</span>,<span
+style="color: #008080; ">"_"</span>)
+<span style="color: #800000; ">txt3</span> = <span style="color: #800000; ">Replace</span>(<span
+style="color: #800000; ">txt2</span>,<span style="color: #008080; ">"*"</span>,<span
+style="color: #008080; ">"_"</span>)
+<span style="color: #800000; ">edit_nazev</span> = <span style="color: #800000; ">txt3</span>
+
+
+<span style="color: #800000; ">oPath</span> = <span style="color: #800080; ">ThisDoc</span>.<span
+style="color: #800080; ">Path</span>
+<span style="color: #800000; ">oFileName</span> = <span style="color: #800080; ">ThisDoc</span>.<span
+style="color: #800000; ">FileName</span>(<span style="color: #FF0000; ">False</span>) <span
+style="color: #808080; ">'without extension</span>
+<span style="color: #800000; ">oRevNum</span> = <span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Project"</span>, <span
+style="color: #008080; ">"Revision Number"</span>)
+<span style="color: #800000; ">oPDFAddIn</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">ApplicationAddIns</span>.<span style="color: #800000; ">ItemById</span> _
+(<span style="color: #008080; ">"{0AC6FD96-2F4D-42CE-8BE0-8AEA580399E4}"</span>)
+<span style="color: #800000; ">oDocument</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">ActiveDocument</span>
+<span style="color: #800000; ">oContext</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">TransientObjects</span>.<span style="color: #800000; ">CreateTranslationContext</span>
+<span style="color: #800000; ">oContext</span>.<span style="color: #800000; ">Type</span> = <span
+style="color: #800000; ">IOMechanismEnum</span>.<span style="color: #800000; ">kFileBrowseIOMechanism</span>
+<span style="color: #800000; ">oOptions</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">TransientObjects</span>.<span style="color: #800000; ">CreateNameValueMap</span>
+<span style="color: #800000; ">oDataMedium</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">TransientObjects</span>.<span style="color: #800000; ">CreateDataMedium</span>
+<span style="color: #808080; ">'If oPDFAddIn.HasSaveCopyAsOptions(oDataMedium, oContext, oOptions) Then</span>
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"All_Color_AS_Black"</span>) = 0<span style="color: #808080; ">' 1-vsechny barvy cerne</span>
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"Remove_Line_Weights"</span>) = 0
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"Vector_Resolution"</span>) = 400
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"Sheet_Range"</span>) = <span style="color: #800000; ">Inventor</span>.<span
+style="color: #800000; ">PrintRangeEnum</span>.<span style="color: #800000; ">kPrintAllSheets</span>
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"Custom_Begin_Sheet"</span>) = 2
+<span style="color: #800000; ">oOptions</span>.<span style="color: #800000; ">Value</span>(<span
+style="color: #008080; ">"Custom_End_Sheet"</span>) = 4
+
+<span style="color: #808080; ">'get PDF target folder path</span>
+<span style="color: #800000; ">oFolder</span> = <span style="color: #800000; ">folderName</span>
+
+
+<span style="color: #808080; ">'Check for the PDF folder and create it if it does not exist</span>
+<span style="color: #FF0000; ">If</span> <span style="color: #FF0000; ">Not</span> <span
+style="color: #800000; ">System</span>.<span style="color: #800000; ">IO</span>.<span
+style="color: #800000; ">Directory</span>.<span style="color: #800000; ">Exists</span>(<span
+style="color: #800000; ">oFolder</span>) <span style="color: #FF0000; ">Then</span>
+<span style="color: #800000; ">System</span>.<span style="color: #800000; ">IO</span>.<span
+style="color: #800000; ">Directory</span>.<span style="color: #800000; ">CreateDirectory</span>(<span
+style="color: #800000; ">oFolder</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span>
+
+<span style="color: #808080; ">'Ulozit PDF</span>
+<span style="color: #808080; ">'Set the PDF target file name</span>
+<span style="color: #800000; ">oDataMedium</span>.<span style="color: #800000; ">FileName</span> = <span
+style="color: #800000; ">oFolder</span> &amp; <span style="color: #008080; ">"\"</span> &amp; <span
+style="color: #800000; ">edit_nazev</span> &amp; <span style="color: #008080; ">".pdf"</span>
+<span style="color: #808080; ">'Publish document</span>
+<span style="color: #800000; ">oPDFAddIn</span>.<span style="color: #800000; ">SaveCopyAs</span>(<span
+style="color: #800000; ">oDocument</span>, <span style="color: #800000; ">oContext</span>, <span
+style="color: #800000; ">oOptions</span>, <span style="color: #800000; ">oDataMedium</span>)
+
+<span style="color: #808080; ">'Ulozit Dwg - podle nastaveni inventoru</span>
+<span style="color: #808080; ">'Set the DWG target file name</span>
+<span style="color: #800080; ">ThisDoc</span>.<span style="color: #800080; ">Document</span>.<span
+style="color: #800000; ">SaveAs</span>(<span style="color: #800000; ">folderName</span> &amp; <span
+style="color: #008080; ">"\"</span> &amp; <span style="color: #800000; ">edit_nazev</span> &amp; <span
+style="color: #008080; ">".dwg"</span>, <span style="color: #FF0000; ">True</span>)</pre>
+            <p class="lead text-center text-muted"> </p>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

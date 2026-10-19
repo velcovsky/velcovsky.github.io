@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">Export do xls</p>
+            <b>Prostředí</b>: výkres<br>
+            &nbsp;&nbsp;
+            <ul>
+              <li>expotruje kusovník do předem zvolené složky</li>
+            </ul>
+            <pre> <span style="color: #808080; ">' ___Start of ilogic___</span>
+
+<span style="color: #808080; ">'work only in drawing files</span>
+<span style="color: #808080; ">'ukladani xls - save XLS </span>
+<span style="color: #808080; ">'musi mit prirazeno cislo vykresu a na prvnim listu kusovnik</span>
+<span style="color: #808080; ">'value 001_Zeichnungsnummer do not be empty and on Blatt:1 has to be BOM</span>
+
+
+<span style="color: #808080; ">'check if iproperties 001_Zeichnungsnummer exist</span>
+<span style="color: #FF0000; ">On</span> <span style="color: #FF0000; ">Error</span> <span
+style="color: #FF0000; ">Resume</span> <span style="color: #FF0000; ">Next</span>
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">pSuggestedVendor</span> 
+<span style="color: #800000; ">pSuggestedVendor</span> = <span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"001_Zeichnungsnummer"</span>)
+
+<span style="color: #FF0000; ">If</span> <span style="color: #800000; ">Err</span>.<span
+style="color: #800000; ">Number</span> &lt;&gt; 0 <span style="color: #FF0000; ">Then</span>
+    <span style="color: #800000; ">pSuggestedVendor</span> = <span style="color: #800000; ">Isempty</span>
+    <span style="color: #800000; ">Err</span>.<span style="color: #800000; ">Clear</span>
+    <span style="color: #808080; ">'if not delete value ZEICHNUNGSNUMMER</span>
+    <span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"ZEICHNUNGSNUMMER"</span>)=<span
+style="color: #008080; ">""</span>
+    
+<span style="color: #FF0000; ">Else</span>
+<span style="color: #808080; ">'else revrite value ZEICHNUNGSNUMMER same as 001_Zeichnungsnummer</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"ZEICHNUNGSNUMMER"</span>)=<span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"001_Zeichnungsnummer"</span>)
+
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oDrawDoc</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">DrawingDocument</span>
+<span style="color: #800000; ">oDrawDoc</span> = <span style="color: #800080; ">ThisApplication</span>.<span
+style="color: #800000; ">ActiveDocument</span>
+
+<span style="color: #808080; ">'  kontrola cisla vykresu </span>
+<span style="color: #808080; ">' check if 001_Zeichnungsnummer is not emty</span>
+<span style="color: #FF0000; ">If</span> (<span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"001_Zeichnungsnummer"</span>) <span style="color: #FF0000; ">IsNot</span> <span
+style="color: #008080; ">""</span> ) <span style="color: #FF0000; ">Then</span>
+
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oSheet1</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">Sheet</span>
+<span style="color: #800000; ">oSheet1</span> = <span style="color: #800000; ">oDrawDoc</span>.<span
+style="color: #800000; ">Sheets</span>.<span style="color: #800000; ">Item</span>(1)
+
+<span style="color: #808080; ">'  kontrola jestli je na prvnim listu  kusovnik </span>
+<span style="color: #808080; ">' check if  Blatt:1 has BOM</span>
+<span style="color: #FF0000; ">If</span> <span style="color: #800000; ">oSheet1</span>.<span
+style="color: #800000; ">PartsLists</span>.<span style="color: #800000; ">Count</span> = 1 <span
+style="color: #FF0000; ">Then</span> 
+
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oDoc</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">Inventor</span>.<span
+style="color: #800000; ">DrawingDocument</span>
+<span style="color: #800000; ">oDoc</span> = <span style="color: #800080; ">ThisDoc</span>.<span
+style="color: #800080; ">Document</span>
+ 
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oSheet</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">Inventor</span>.<span
+style="color: #800000; ">Sheet</span>
+<span style="color: #808080; ">'oSheet = oDoc.Sheets(1) ' first sheet</span>
+<span style="color: #800000; ">oSheet</span> = <span style="color: #800000; ">oDoc</span>.<span
+style="color: #800000; ">Sheets</span>(<span style="color: #008080; ">"blatt:1"</span>) <span
+style="color: #808080; ">' sheet by name</span>
+ 
+<span style="color: #808080; ">' say there is a Partslist on the sheet.</span>
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oPartslist</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">PartsList</span>
+<span style="color: #800000; ">oPartslist</span> = <span style="color: #800000; ">oSheet</span>.<span
+style="color: #800000; ">PartsLists</span>(1)
+
+<span style="color: #808080; ">'Slozka ulozeni</span>
+<span style="color: #808080; ">'folder location</span>
+<span style="color: #800000; ">folderName</span> = <span style="color: #008080; ">"S:\vel\xls"</span>
+<span style="color: #808080; ">' folderName = ThisDoc.Path</span>
+
+<span style="color: #808080; ">'nazev ukladani</span>
+<span style="color: #808080; ">'file name</span>
+<span style="color: #800000; ">nazev</span>=<span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"001_Zeichnungsnummer"</span>)&amp; <span style="color: #008080; ">"("</span> &amp; <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"002_Benennung_de"</span> ) &amp;<span
+style="color: #008080; ">")_Copyright Vel"</span>
+
+<span style="color: #808080; ">'nazev ukladanych xls - uprava lomitek atd.</span>
+<span style="color: #808080; ">'editing  name</span>
+<span style="color: #800000; ">txt1</span> = <span style="color: #800000; ">nazev</span>
+<span style="color: #800000; ">txt2</span> = <span style="color: #800000; ">Replace</span>(<span
+style="color: #800000; ">txt1</span>,<span style="color: #008080; ">"/"</span>,<span
+style="color: #008080; ">"_"</span>)
+<span style="color: #800000; ">txt3</span> = <span style="color: #800000; ">Replace</span>(<span
+style="color: #800000; ">txt2</span>,<span style="color: #008080; ">"*"</span>,<span
+style="color: #008080; ">"_"</span>)
+<span style="color: #800000; ">edit_nazev</span> = <span style="color: #800000; ">txt3</span>
+
+<span style="color: #808080; ">'uloz xls</span>
+<span style="color: #808080; ">' export the Partslist to Excel.</span>
+<span style="color: #800000; ">oPartslist</span>.<span style="color: #800000; ">Export</span>(<span
+style="color: #800000; ">folderName</span> &amp; <span style="color: #008080; ">"\"</span> &amp; <span
+style="color: #800000; ">edit_nazev</span> &amp; <span style="color: #008080; ">".xls"</span>, <span
+style="color: #800000; ">PartsListFileFormatEnum</span>.<span style="color: #800000; ">kMicrosoftExcel</span>)
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span>
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span> 
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span>
+
+<span style="color: #FF0000; ">On</span> <span style="color: #FF0000; ">Error</span> <span
+style="color: #FF0000; ">GoTo</span> 0
+
+<span style="color: #808080; ">' ___End of ilogic___</span></pre>
+            <b></b></div>
+          <div class="col-md-12"><b>Prostředí</b>: výkres<br>
+            &nbsp;&nbsp; </div>
+          <ul>
+            <li>v definovaném xls souboru najde první volný řádek</li>
+            <li>zapíše do něj příslušné hodnoty ze souboru (číslo výkresu...)</li>
+            <li>vytvoří tak přehlednou tabulku výkresu...</li>
+          </ul>
+          <div class="col-md-12">
+            <pre><span style="color: #808080; "></span><span style="color: #808080; ">'GoExcel.Open("C:\trans\vykresy.xlsx", "List1")</span>
+<span style="color: #808080; ">'FindProjectNumber = GoExcel.FindRow("C:\trans\vykresy.xlsx", "List1")</span>
+
+<span style="color: #808080; ">'GoExcel.CellValue("A" &amp; i) = iProperties.Value("Custom", "003_cislo_vykresu")</span>
+<span style="color: #808080; ">'GoExcel.CellValue("B" &amp; i) = iProperties.Value("Custom", "001_nazev_vykresu")</span>
+<span style="color: #808080; ">'GoExcel.CellValue("C" &amp; i) = iProperties.Value("Summary", "Author")</span>
+<span style="color: #808080; ">'GoExcel.CellValue("D3") = iProperties.Value("Project", "Creation Date")</span>
+<span style="color: #808080; ">'GoExcel.CellValue("D" &amp; i) = DateString</span>
+
+<span style="color: #808080; ">'GoExcel.Save</span>
+
+<span style="color: #808080; ">'MessageBox.Show("iProperties successfully copied!")</span>
+
+<span style="color: #FF0000; ">If</span> -1 = <span style="color: #800080; ">GoExcel</span>.<span
+style="color: #800080; ">FindRow</span>(<span style="color: #008080; ">"C:\trans\vykresy.xlsx"</span>, <span
+style="color: #008080; ">"List1"</span>, <span style="color: #008080; ">"Číslo výkresu"</span>, <span
+style="color: #008080; ">"="</span>, <span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"003_cislo_vykresu"</span>))
+
+
+<span style="color: #800000; ">Worksheet</span> = (<span style="color: #008080; ">"C:\trans\vykresy.xlsx"</span>)
+<span style="color: #800000; ">Sheetno</span> = (<span style="color: #008080; ">"List1"</span>)
+<span style="color: #808080; ">' Open excel </span>
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">Open</span>(<span
+style="color: #800000; ">Worksheet</span>, <span style="color: #800000; ">Sheetno</span>)
+<span style="color: #808080; ">' Define Range</span>
+<span style="color: #800000; ">RowStart</span> = 2
+<span style="color: #800000; ">RowEnd</span> = 10000
+<span style="color: #FF0000; ">For</span> <span style="color: #800000; ">count</span> = <span
+style="color: #800000; ">RowStart</span> <span style="color: #FF0000; ">To</span> <span
+style="color: #800000; ">RowEnd</span>
+	<span style="color: #808080; ">' If it's blank count it</span>
+	<span style="color: #FF0000; ">If</span> <span style="color: #FF0000; ">String</span>.<span
+style="color: #800000; ">IsNullOrEmpty</span>(<span style="color: #800080; ">GoExcel</span>.<span
+style="color: #800080; ">CellValue</span>(<span style="color: #008080; ">"A"</span> &amp; <span
+style="color: #800000; ">count</span>)) <span style="color: #FF0000; ">Then</span> 
+		<span style="color: #800000; ">i</span> = <span style="color: #800000; ">i</span> + 1
+	<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span>
+<span style="color: #FF0000; ">Next</span>
+<span style="color: #808080; ">' Next empty row is max rows minus blank rows plus one</span>
+<span style="color: #800000; ">row</span> = <span style="color: #800000; ">RowEnd</span> - <span
+style="color: #800000; ">i</span> + 1
+<span style="color: #808080; ">' MsgBox("Inserting Data on Row " &amp; row)</span>
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
+style="color: #008080; ">"A"</span> &amp; <span style="color: #800000; ">row</span>) = <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"003_cislo_vykresu"</span>)
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
+style="color: #008080; ">"B"</span> &amp; <span style="color: #800000; ">row</span>) = <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"001_nazev_vykresu"</span>)
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
+style="color: #008080; ">"C"</span> &amp; <span style="color: #800000; ">row</span>) = <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Summary"</span>, <span style="color: #008080; ">"Author"</span>)
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
+style="color: #008080; ">"D"</span> &amp; <span style="color: #800000; ">row</span>) = <span
+style="color: #800000; ">DateString</span>
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
+style="color: #008080; ">"E"</span> &amp; <span style="color: #800000; ">row</span>) = <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Project"</span>, <span style="color: #008080; ">"Stock Number"</span>)
+<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">Save</span>
+
+<span style="color: #FF0000; ">Else</span>
+<span style="color: #808080; ">' MsgBox("Value already exist")	</span>
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span><span
+style="color: #800000; "></span></pre>
+            <p class="lead text-center text-muted"> </p>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

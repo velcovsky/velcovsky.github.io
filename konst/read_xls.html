@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">ČTENÍ DAT Z EXCELU</p>
+            <br>
+            <b>Prostředí</b>: součást, sestava<br>
+            &nbsp;&nbsp; </div>
+          <ul>
+            <li>Na základě vstupních dat (SK a Registrační číslo) najde
+              příslušný řádek v tabulce excelu</li>
+            <li>z nalezeného řádku zapíše do i-vlastností další potřebné hodnoty
+              ( Název a doplňkový kód)</li>
+            <li>vhodné pro ověření správnosti zapsaných čísel</li>
+            <li>vhodné číst a zapisovat hodnoty pomocí formuláře</li>
+          </ul>
+          <div class="col-md-12">
+            <pre><span style="color: #808080; "></span><span style="color: #FF0000; "></span><br><span
+style="color: #800080; ">InventorVb</span>.<span style="color: #800080; ">DocumentUpdate</span>()
+
+<span style="color: #808080; ">'Zkountroluje jestli existují parametry SK, reg_cislo, nazev_1, doplnkovy_kod.</span>
+
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oDoc</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">Document</span> = <span
+style="color: #800080; ">ThisApplication</span>.<span style="color: #800000; ">ActiveEditDocument</span>
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oParas</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">UserParameters</span> = <span
+style="color: #800000; ">oDoc</span>.<span style="color: #800000; ">ComponentDefinition</span>.<span
+style="color: #800000; ">Parameters</span>.<span style="color: #800000; ">UserParameters</span>
+<span style="color: #FF0000; ">Dim</span> <span style="color: #800000; ">oPara</span> <span
+style="color: #FF0000; ">As</span> <span style="color: #800000; ">UserParameter</span>
+<span style="color: #808080; ">'SK</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"SK"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">AddByValue</span>(<span style="color: #008080; ">"SK"</span>, <span
+style="color: #008080; ">""</span>, <span style="color: #800000; ">UnitsTypeEnum</span>.<span
+style="color: #800000; ">kTextUnits</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+<span style="color: #808080; ">'reg_cislo</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"reg_cislo"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">AddByValue</span>(<span style="color: #008080; ">"reg_cislo"</span>, <span
+style="color: #008080; ">""</span>, <span style="color: #800000; ">UnitsTypeEnum</span>.<span
+style="color: #800000; ">kTextUnits</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+<span style="color: #808080; ">'nazev_1</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"nazev_1"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">AddByValue</span>(<span style="color: #008080; ">"nazev_1"</span>, <span
+style="color: #008080; ">""</span>, <span style="color: #800000; ">UnitsTypeEnum</span>.<span
+style="color: #800000; ">kTextUnits</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+<span style="color: #808080; ">'doplnkovy_kod</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"doplnkovy_kod"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">oPara</span> = <span style="color: #800000; ">oParas</span>.<span
+style="color: #800000; ">AddByValue</span>(<span style="color: #008080; ">"doplnkovy_kod"</span>, <span
+style="color: #008080; ">""</span>, <span style="color: #800000; ">UnitsTypeEnum</span>.<span
+style="color: #800000; ">kTextUnits</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+
+<span style="color: #808080; ">'otevre formular </span>
+<span style="color: #800080; ">iLogicForm</span>.<span style="color: #800080; ">ShowGlobal</span>(<span
+style="color: #008080; ">"Helios"</span>)
+
+<span style="color: #808080; ">'najde radek s hodnotama parametru SK a reg_cislo</span>
+<span style="color: #800000; ">i</span> = <span style="color: #800080; ">GoExcel</span>.<span
+style="color: #800080; ">FindRow</span>(<span style="color: #008080; ">"C:\trans\Průměrná cena a PRODEJNÍ cena.xls"</span>,<span
+style="color: #008080; ">"Průměrná cena a PRODEJNÍ cena"</span>, <span style="color: #008080; ">"SK"</span>, <span
+style="color: #008080; ">"="</span>, <span style="color: #800080; ">Parameter</span>(<span
+style="color: #008080; ">"SK"</span>), <span style="color: #008080; ">"Reg. číslo"</span>, <span
+style="color: #008080; ">"="</span>, <span style="color: #800080; ">Parameter</span>(<span
+style="color: #008080; ">"reg_cislo"</span>))
+
+<span style="color: #808080; ">'ukaze okno scislem radku</span>
+<span style="color: #808080; ">'MessageBox.Show(i.ToString(), "Title")</span>
+
+<span style="color: #808080; ">'Parameter("SK") = GoExcel.CurrentRowValue("SK")</span>
+<span style="color: #808080; ">'Parameter("reg_cislo") = GoExcel.CurrentRowValue("Reg. číslo")</span>
+
+<span style="color: #808080; ">'najde hodnoty nazev 1 a doplnovy kod a zapis je do tabulky parametru</span>
+<span style="color: #800080; ">Parameter</span>(<span style="color: #008080; ">"nazev_1"</span>) = <span
+style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CurrentRowValue</span>(<span
+style="color: #008080; ">"Název 1"</span>)
+<span style="color: #800080; ">Parameter</span>(<span style="color: #008080; ">"doplnkovy_kod"</span>) = <span
+style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CurrentRowValue</span>(<span
+style="color: #008080; ">"Doplňkový kód"</span>)
+
+<span style="color: #808080; ">' zapise hodnoty parametru SK, reg. cislo nazev 1 a doplnkovy kod do ivlastnosti</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"SK"</span>) = <span
+style="color: #800080; ">Parameter</span>(<span style="color: #008080; ">"SK"</span>)
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"Reg. číslo"</span>)=<span
+style="color: #800080; ">Parameter</span> (<span style="color: #008080; ">"reg_cislo"</span>)
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"Název 1"</span>)=<span
+style="color: #800080; ">Parameter</span> (<span style="color: #008080; ">"nazev_1"</span>)
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"Doplňkový kód"</span>) = <span
+style="color: #800080; ">Parameter</span>(<span style="color: #008080; ">"doplnkovy_kod"</span>)
+
+<span style="color: #808080; ">'vytvori skladove cislo  - SK a reg_cislo</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Project"</span>, <span style="color: #008080; ">"Stock Number"</span>)= <span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"SK"</span>)&amp;<span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"Reg. číslo"</span>)
+
+<span style="color: #808080; ">'zkontroluje jestli existuji pripadne vytvori ivlastnosti 001_nazev_vykresu, 002_nazev_produktu, 003_cislo_vykresu, 004_projekt.</span>
+<span style="color: #800000; ">customPropertySet</span> = <span style="color: #800000; ">odoc</span>.<span
+style="color: #800000; ">PropertySets</span>.<span style="color: #800000; ">Item</span>(<span
+style="color: #008080; ">"Inventor User Defined Properties"</span>)
+
+<span style="color: #808080; ">'001_nazev_vykresu---------------- find or create custom properties -------------</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oTest</span> = <span style="color: #800000; ">customPropertySet</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"001_nazev_vykresu"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">customPropertySet</span>.<span style="color: #800000; ">Add</span>(<span
+style="color: #008080; ">""</span>, <span style="color: #008080; ">"001_nazev_vykresu"</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+
+<span style="color: #FF0000; ">If</span> <span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"001_nazev_vykresu"</span>) = <span style="color: #008080; ">""</span> <span
+style="color: #FF0000; ">Then</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"001_nazev_vykresu"</span>)=<span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Project"</span>, <span style="color: #008080; ">"Part Number"</span>)
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span> 
+
+<span style="color: #808080; ">'002_nazev_produktu---------------- find or create custom properties -------------</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oTest</span> = <span style="color: #800000; ">customPropertySet</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"002_nazev_produktu"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">customPropertySet</span>.<span style="color: #800000; ">Add</span>(<span
+style="color: #008080; ">""</span>, <span style="color: #008080; ">"002_nazev_produktu"</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+
+<span style="color: #FF0000; ">If</span> <span style="color: #800080; ">iProperties</span>.<span
+style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
+style="color: #008080; ">"002_nazev_produktu"</span>) = <span style="color: #008080; ">""</span> <span
+style="color: #FF0000; ">Then</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"002_nazev_produktu"</span>)=<span
+style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Project"</span>, <span style="color: #008080; ">"Description"</span>)
+
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span> 
+
+<span style="color: #808080; ">'003_cislo_vykresu ---------------- find or create custom properties -------------</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oTest</span> = <span style="color: #800000; ">customPropertySet</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"003_cislo_vykresu"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">customPropertySet</span>.<span style="color: #800000; ">Add</span>(<span
+style="color: #008080; ">""</span>, <span style="color: #008080; ">"003_cislo_vykresu"</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+
+<span style="color: #808080; ">'004_projekt ---------------- find or create custom properties -------------</span>
+<span style="color: #FF0000; ">Try</span>
+    <span style="color: #800000; ">oTest</span> = <span style="color: #800000; ">customPropertySet</span>.<span
+style="color: #800000; ">Item</span>(<span style="color: #008080; ">"004_projekt"</span>)
+<span style="color: #FF0000; ">Catch</span>
+    <span style="color: #800000; ">customPropertySet</span>.<span style="color: #800000; ">Add</span>(<span
+style="color: #008080; ">""</span>, <span style="color: #008080; ">"004_projekt"</span>)
+<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">Try</span>
+
+<span style="color: #808080; ">'cislo projektu automaticky (funguje pri zprávne strukture slozek)</span>
+<span style="color: #800000; ">oPath</span> = <span style="color: #800080; ">ThisDoc</span>.<span
+style="color: #800080; ">Path</span>
+<span style="color: #808080; ">'Odstranění cesty</span>
+<span style="color: #800000; ">FNamePos</span> = <span style="color: #800000; ">InStrRev</span>(<span
+style="color: #800000; ">oPath</span>, <span style="color: #008080; ">"OP-"</span>, -1) <span
+style="color: #808080; ">'počet znaků</span>
+<span style="color: #800000; ">Name</span> = <span style="color: #800000; ">Right</span>(<span
+style="color: #800000; ">oPath</span>, <span style="color: #800000; ">Len</span>(<span
+style="color: #800000; ">oPath</span>) -<span style="color: #800000; ">FNamePos</span>)
+<span style="color: #800000; ">ShortName</span> = <span style="color: #800000; ">Right</span>(<span
+style="color: #800000; ">Name</span>, <span style="color: #800000; ">Len</span>(<span
+style="color: #800000; ">Name</span>) -2)
+
+<span style="color: #808080; ">'Odstranění 7 znaku zleva</span>
+<span style="color: #800000; ">ShortName1</span> = <span style="color: #800000; ">Right</span>(<span
+style="color: #800000; ">ShortName</span>, <span style="color: #800000; ">Len</span>(<span
+style="color: #800000; ">ShortName</span>) -7)
+<span style="color: #808080; ">'Odstranění 7 znaku zleva</span>
+<span style="color: #800000; ">Project</span> = <span style="color: #800000; ">Left</span>(<span
+style="color: #800000; ">ShortName</span>, <span style="color: #800000; ">Len</span>(<span
+style="color: #800000; ">ShortName</span>) - <span style="color: #800000; ">Len</span>(<span
+style="color: #800000; ">ShortName1</span>))
+<span style="color: #808080; ">'MessageBox.Show(Project, "slozka")</span>
+
+
+<span style="color: #808080; ">'zapise hodnotu projekt do ivlastnosti</span>
+<span style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
+style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"projekt"</span>) = <span
+style="color: #800000; ">Project</span>
+<span style="color: #808080; ">'iProperties.Value("Custom", "004_projekt")= Project</span>
+
+<span style="color: #808080; ">'iLogicForm.ShowGlobal("Helios")</span></pre>
+            <p class="lead text-center text-muted"> </p>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

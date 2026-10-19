@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">Export do xls (VBA)</p>
+            <b>Prostředí</b>: Autocad model <br>
+            &nbsp;&nbsp;
+            <ul>
+              <li>v definovaném xls souboru najde první volný řádek</li>
+              <li>zapíše do něj příslušné hodnoty ze souboru (číslo výkresu...)</li>
+              <li>vytvoří tak přehlednou tabulku výkresu...</li>
+            </ul>
+            <pre><span style="color: #808080; "><span style="color: #333333;">
+Public Sub Vykresy_excel_test()
+
+'nastaveni excel- zapnout tools_references_microsoft excel
+'setup excel- chech if tools_references_microsoft excel is enable
+Dim ExL As Excel.Application
+Dim XlWorkBook As Excel.Workbook
+Dim excelSheet As Excel.Worksheet
+
+'kontrola musi byt nainstalovany excel
+'chech if excel is instaled
+On Error Resume Next
+Set ExL = GetObject("", "Excel.Application")
+ExL.Visible = True
+If (Err.Number &lt;&gt; 0) Then
+Err.Clear
+MsgBox "You must have Excel loaded on your computer!"
+Exit Sub
+End If
+
+'cesta k excel souboru a listu sesitu
+'path, name and sheet of workbook
+Set XlWorkBook = Workbooks.Open("C:\trans\TestFile.xlsx")
+Sheets("List1").Select
+Set excelSheet = ExL.ActiveWorkbook.Sheets("List1")
+
+'najdi prvni prazdny radek - nefunguje
+'find first empty row - not work
+'Dim i As Long
+'i = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Select
+
+'najdi prvni prazdny radek
+'find first empty row
+Dim Fnd As Excel.Range
+Set Fnd = excelSheet.Range("A1:A1000").Find("")
+R$ = Fnd.Address
+Rw = Val(Mid$(R$, 4))
+'Resulting_Value = excelSheet.Cells(Rw, 2).Value
+
+'zapis do bunek
+'edit cells
+'excelSheet.Cells(Rw, 1).Value = "test29"
+
+
+' najde blok - Rohové razítko Aquarex - zapise hodnoty do bunek
+' SEARCH BLOCK ON DRAWING.
+For Each ENTITY In ThisDrawing.ModelSpace                                                   '  For eache entity inside modele space
+    If ENTITY.ObjectName = "AcDbBlockReference" Then                                        '
+        If ENTITY.EffectiveName = "Rohová razítka Aquarex" Or ENTITY.EffectiveName = "block name 2" Then  ' check block name inside the dwg
+            If ENTITY.HasAttributes = True Then                                             ' Se il blocco ha attributi
+                ATTRIB_LIST = ENTITY.GetAttributes                                          ' GET THE ARRAY "ATTRIB_LIST"
+                INS_POINT = ENTITY.InsertionPoint                                           ' BLOCK INSERTION POINT
+            'excelSheet.Cells(Rw, 1) = ENTITY.Name                                  ' BLOCK NAME
+                    'excelSheet.Cells(Rw, 2) = ENTITY.Layer                         ' BLOCK LAYER
+                    'excelSheet.Cells(Rw, 3) = ENTITY.EffectiveName                  ' BLOCK EFFECTIVE NAME
+                    'excelSheet.Cells(Rw, 4) = INS_POINT(0)                  ' BLOCK INSERTION POINT X
+                    'excelSheet.Cells(Rw, 5) = INS_POINT(1)                      ' BLOCK INSERTION POINT Y
+                    'excelSheet.Cells(Rw, 6) = INS_POINT(2)                  ' BLOCK INSERTION POINT Z
+                    excelSheet.Cells(Rw, 1) = ATTRIB_LIST(9).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Název_výkresu&gt;
+                    excelSheet.Cells(Rw, 2) = ATTRIB_LIST(0).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Císlo_výkresu&gt;
+                    excelSheet.Cells(Rw, 3) = ATTRIB_LIST(11).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Datum vytvorení&gt;
+                    excelSheet.Cells(Rw, 4) = ATTRIB_LIST(1).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Autor&gt;
+                    'ExRow = ExRow + 1
+                    'i = i + 1
+                End If
+            End If
+        End If
+        
+'Najde a nahradi(vymaze) prebytecne casti textu (atributu)
+'Find and replace unnecessary part of attributs
+Dim MyRange As Range
+Sheets("List1").UsedRange.Replace What:="\W0.7500;", Replacement:=""
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+XlWorkBook.Save
+XlWorkBook.Close
+Next
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+'ExL.ScreenUpdating = True
+'XlWorkBook.Save
+'XlWorkBook.Close
+ExL.Application.Quit
+'Set ExL = Nothing
+'Set XlWorkBook = Nothing
+'Set excelSheet = Nothing
+
+'show message  - first empty row
+'MsgBox Rw
+
+End Sub</span><br></span></pre>
+            <b></b></div>
+          <div class="col-md-12"><b><br>
+            </b></div>
+          <span style="color: #FF0000; "></span><span style="color: #800000; "></span>
+          <div class="col-md-12">
+            <p class="lead text-center text-muted"> </p>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

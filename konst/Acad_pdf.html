@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Líný konstruktér Ilogic VBA</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+  </head>
+  <body class="home">
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="2">
+        <h1 class="text-center"><br>
+        </h1>
+        <p><br>
+        </p>
+        <h1 class="text-center">&nbsp; </h1>
+        <p><br>
+        </p>
+      </div>
+      <nav class="navbar navbar-default navbar-sticky">
+        <div class="container-fluid">
+          <div class="navbar-header"> <button type="button" class="navbar-toggle"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" title="domů">Domů</a></li>
+              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
+              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
+                  VBA</a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
+                  kreslení</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="container">
+        <div class="row section topspace">
+          <div class="col-md-12">
+            <p class="lead text-center text-muted">Export do pdf (VBA)</p>
+            <b>Prostředí</b>: Autocad model <br>
+            &nbsp;&nbsp;
+            <ul>
+              <li>v modelovém prostoru vybrat pomocí dvou bodů velikost
+                exportované oblasti</li>
+              <li>uloží pdf do stejné složky jako výkres dwg</li>
+            </ul>
+            <pre><span style="color: #808080; "><span style="color: #333333;"></span>Sub Black_SetWindowToPlot()
+
+    'testovaci verze !!!!
+    'vytiskne cernobile, dle vzoru monochrome
+
+    ' This example allows the user to define an area in the current layout
+    ' and displays a plot preview of the defined area.
+    '
+    ' * Note: You have to exit the
+    ' plot preview before the VBA example will stop and control will be returned
+
+    AppActivate ThisDrawing.Application.Caption
+
+    Dim point1 As Variant, point2 As Variant
+    
+    ' Get first point in window
+    point1 = ThisDrawing.Utility.GetPoint(, "Click the lower-left of the window to plot.")
+    ReDim Preserve point1(0 To 1)   ' Change this to a 2D array by removing the Z position
+    
+    ' Get second point in window
+    point2 = ThisDrawing.Utility.GetPoint(, "Click the upper-right of the window to plot.")
+    ReDim Preserve point2(0 To 1)   ' Change this to a 2D array by removing the Z position
+    
+    ' Send information about window to current layout
+    ThisDrawing.ActiveLayout.SetWindowToPlot point1, point2
+    
+    ' Read back window information
+    ThisDrawing.ActiveLayout.GetWindowToPlot point1, point2
+    
+    'MsgBox "Press any key to plot the following window:" &amp; vbCrLf &amp; vbCrLf &amp; _
+          ' "Lower Left: " &amp; point1(0) &amp; ", " &amp; point1(1) &amp; vbCrLf &amp; _
+          ' "Upper Right: " &amp; point2(0) &amp; ", " &amp; point2(1)
+          
+    '----------------------------------------
+    ' added by RICVBA
+    Dim point1w(0 To 2) As Double
+    Dim point2w(0 To 2) As Double
+    point1w(0) = point1(0): point1w(1) = point1(1): point1w(2) = 0
+    point2w(0) = point2(0): point2w(1) = point2(1): point2w(2) = 0
+    ZoomWindow point1w, point2w ' make the current display fit the "window to plot"
+    '----------------------------------------
+    
+    ' Plot the current display
+    'ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    'ThisDrawing.ActiveLayout.PlotType = acDisplay ' &lt;--- revised by RICVBA
+    'ThisDrawing.ActiveLayout.PlotType = acWindow ' &lt;--- revised by RICVBA
+    'ThisDrawing.ActiveLayout.CenterPlot = True ' &lt;--- added by RICVBA
+    'ThisDrawing.ActiveLayout.StandardScale = acScaleToFit ' &lt;--- added by RICVBA
+    'ThisDrawing.Plot.DisplayPlotPreview acFullPreview
+    
+    ThisDrawing.ActiveLayout.GetWindowToPlot point1, point2
+    ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    ThisDrawing.ActiveLayout.StyleSheet = "monochrome.ctb"
+    ThisDrawing.ActiveLayout.PlotRotation = ac90degrees
+    ThisDrawing.ActiveLayout.CenterPlot = True
+    ThisDrawing.ActiveLayout.StandardScale = acScaleToFit
+    ThisDrawing.ActiveLayout.PlotType = acWindow
+    ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    ThisDrawing.ActiveLayout.CanonicalMediaName = "ISO_full_bleed_A3_(297.00_x_420.00_MM)"
+    
+    ThisDrawing.Plot.PlotToDevice
+    
+    ZoomPrevious ' restore the previous zoom (optional) ' &lt;--- added by RICVBA
+    
+End Sub
+
+<br></span></pre> <b></b></div>
+          <div class="col-md-12"><br>
+            <ul>
+              <li>export barevného pdf</li>
+            </ul>
+          </div>
+          <div class="col-md-12">
+            <pre><span style="color: #808080; ">Sub Colour_SetWindowToPlot()
+
+    'testovaci verze !!!!
+
+
+    ' This example allows the user to define an area in the current layout
+    ' and displays a plot preview of the defined area.
+    '
+    ' * Note: You have to exit the
+    ' plot preview before the VBA example will stop and control will be returned
+
+    AppActivate ThisDrawing.Application.Caption
+
+    Dim point1 As Variant, point2 As Variant
+    
+    ' Get first point in window
+    point1 = ThisDrawing.Utility.GetPoint(, "Click the lower-left of the window to plot.")
+    ReDim Preserve point1(0 To 1)   ' Change this to a 2D array by removing the Z position
+    
+    ' Get second point in window
+    point2 = ThisDrawing.Utility.GetPoint(, "Click the upper-right of the window to plot.")
+    ReDim Preserve point2(0 To 1)   ' Change this to a 2D array by removing the Z position
+    
+    ' Send information about window to current layout
+    ThisDrawing.ActiveLayout.SetWindowToPlot point1, point2
+    
+    ' Read back window information
+    ThisDrawing.ActiveLayout.GetWindowToPlot point1, point2
+    
+    'MsgBox "Press any key to plot the following window:" &amp; vbCrLf &amp; vbCrLf &amp; _
+          ' "Lower Left: " &amp; point1(0) &amp; ", " &amp; point1(1) &amp; vbCrLf &amp; _
+          ' "Upper Right: " &amp; point2(0) &amp; ", " &amp; point2(1)
+          
+    '----------------------------------------
+    ' added by RICVBA
+    Dim point1w(0 To 2) As Double
+    Dim point2w(0 To 2) As Double
+    point1w(0) = point1(0): point1w(1) = point1(1): point1w(2) = 0
+    point2w(0) = point2(0): point2w(1) = point2(1): point2w(2) = 0
+    ZoomWindow point1w, point2w ' make the current display fit the "window to plot"
+    '----------------------------------------
+    
+    ' Plot the current display
+    'ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    'ThisDrawing.ActiveLayout.PlotType = acDisplay ' &lt;--- revised by RICVBA
+    'ThisDrawing.ActiveLayout.PlotType = acWindow ' &lt;--- revised by RICVBA
+    'ThisDrawing.ActiveLayout.CenterPlot = True ' &lt;--- added by RICVBA
+    'ThisDrawing.ActiveLayout.StandardScale = acScaleToFit ' &lt;--- added by RICVBA
+    'ThisDrawing.Plot.DisplayPlotPreview acFullPreview
+    
+    ThisDrawing.ActiveLayout.GetWindowToPlot point1, point2
+    ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    ThisDrawing.ActiveLayout.StyleSheet = "fill patterns.ctb"
+    ThisDrawing.ActiveLayout.PlotRotation = ac90degrees
+    ThisDrawing.ActiveLayout.CenterPlot = True
+    ThisDrawing.ActiveLayout.StandardScale = acScaleToFit
+    ThisDrawing.ActiveLayout.PlotType = acWindow
+    ThisDrawing.ActiveLayout.ConfigName = "DWG to PDF.pc3"
+    ThisDrawing.ActiveLayout.CanonicalMediaName = "ISO_full_bleed_A3_(297.00_x_420.00_MM)"
+    
+    ThisDrawing.Plot.PlotToDevice
+    
+    ZoomPrevious ' restore the previous zoom (optional) ' &lt;--- added by RICVBA
+    
+End Sub
+
+</span></pre></div>
+          <span style="color: #FF0000; "></span><span style="color: #800000; "></span>
+          <div class="col-md-12">
+            <p class="lead text-center text-muted"> </p>
+          </div>
+          <h2 class="section-title"><span>náhledy</span></h2>
+          <div class="thumbnails recentworks row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
+                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="vba.html"> <span class="img" style="height: 241px;"> <img
+                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
+                      class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span> </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
+                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
+                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
+                      class="more">See details →</span></span>&nbsp;</span><span
+                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
+                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
+                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row section clients topspace">
+            <h2 class="section-title"><span>Odkazy</span></h2>
+            <div class="col-lg-12">
+              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
+                  (EN)</a></p>
+            </div>
+          </div>
+          <!-- /section --> </div>
+        <!-- /container --> </div>
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body"><br>
+              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 widget">
+            <div class="widget-body">
+              <p class="follow-me-icons"> &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-md-3 widget"><br>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p><br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right"> Copyright © 2014<br>
+                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
+                  by GetTemplate</a> </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets --> </div>
+    </footer>
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>
