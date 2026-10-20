@@ -1,46 +1,26 @@
 (() => {
   'use strict';
-  const OWNER='velcovsky', REPO='velcovsky.github.io', FOLDER='kriz/krizovky';
+  const FOLDER='krizovky';
   const $=s=>document.querySelector(s), state={files:[],puzzle:null,slug:'',values:{},selected:null,direction:'R',clues:[],checks:{}};
   const norm=s=>(s||'').normalize('NFC').toLocaleUpperCase('cs-CZ');
   const key=(r,c)=>`${r}-${c}`; const isLetter=c=>c&&c.t==='L';
-  async function fetchJson(url){const r=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw new Error(`HTTP ${r.status} při načítání ${url}`);return r.json();}
+  async function fetchJson(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status} při načítání ${url}`);return r.json();}
   async function loadFiles(){
     const select=$('#puzzle-select'), status=$('#catalog-status');
     select.replaceChildren(new Option('Načítám seznam…',''));
-    status.textContent='Načítám seznam JSON souborů z GitHubu…';
+    status.textContent='Načítám seznam křížovek…';
     try{
-      // Jediný požadavek na GitHub API; metadata repozitáře nejsou potřeba.
-      const endpoint=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=main`;
-      const response=await fetch(endpoint,{headers:{Accept:'application/vnd.github+json'}});
-      if(!response.ok){
-        const remaining=response.headers.get('x-ratelimit-remaining');
-        if(response.status===403 && remaining==='0'){
-          throw new Error('GitHub API má vyčerpaný limit anonymních požadavků. Počkej přibližně hodinu a obnov stránku.');
-        }
-        if(response.status===404){
-          throw new Error(`GitHub API nenašlo složku ${FOLDER}/ na větvi main. Zkontroluj přesný název složky a veřejnou dostupnost repozitáře.`);
-        }
-        throw new Error(`GitHub API vrátilo HTTP ${response.status}${remaining!==null?` (zbývající požadavky: ${remaining})`:''}.`);
-      }
-      const items=await response.json();
-      if(!Array.isArray(items)) throw new Error('GitHub API nevrátilo seznam souborů.');
-      state.files=items.filter(x=>x.type==='file'&&typeof x.name==='string'&&x.name.toLowerCase().endsWith('.json')).sort((a,b)=>a.name.localeCompare(b.name,'cs'));
+      // Čte statický manifest vytvořený GitHub Actions; žádné GitHub API ani token.
+      const items=await fetchJson('krizovky/index.json');
+      if(!Array.isArray(items))throw new Error('Soubor krizovky/index.json nemá očekávaný formát seznamu.');
+      state.files=items.filter(x=>typeof x==='string'&&x.toLowerCase().endsWith('.json')&&x!=='index.json').map(name=>({name,download_url:`krizovky/${encodeURIComponent(name)}`})).sort((a,b)=>a.name.localeCompare(b.name,'cs'));
       select.replaceChildren();
-      if(!state.files.length){
-        select.add(new Option('Ve složce nejsou JSON soubory',''));
-        status.textContent=`Ve složce ${FOLDER}/ na větvi main nebyly nalezeny žádné soubory .json.`;
-        return;
-      }
+      if(!state.files.length){select.add(new Option('Ve složce nejsou JSON soubory',''));status.textContent='Seznam je prázdný. Přidej JSON do složky krizovky/; GitHub Actions následně aktualizuje index.json.';return;}
       select.add(new Option('— Vyberte křížovku —',''));
       state.files.forEach(f=>select.add(new Option(f.name.replace(/\.json$/i,'').replace(/[-_]/g,' '),f.name)));
-      status.textContent=`Načteno křížovek: ${state.files.length}. Seznam se načítá automaticky ze složky ${FOLDER}/.`;
+      status.textContent=`Načteno křížovek: ${state.files.length}. Seznam je načítán ze statického indexu.`;
       const params=new URLSearchParams(location.search);const initial=params.get('puzzle');if(initial&&state.files.some(f=>f.name===initial)){select.value=initial;await openSelected();}
-    }catch(e){
-      select.replaceChildren(new Option('Seznam se nepodařilo načíst',''));
-      status.textContent=`${e.message} Ověř také přístup k GitHub API. Endpoint: https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=main`;
-      console.error('Načtení seznamu křížovek selhalo:',e);
-    }
+    }catch(e){select.replaceChildren(new Option('Seznam se nepodařilo načíst',''));status.textContent=`${e.message} Zkontroluj, že existuje soubor krizovky/index.json a GitHub Actions doběhly úspěšně.`;console.error('Načtení seznamu křížovek selhalo:',e);}
   }
   function allClues(p){const out=[];p.cells.forEach((row,r)=>row.forEach((cell,c)=>{if(cell.t!=='C')return;if(cell.clue)out.push({r,c,d:cell.arrow==='D'?'D':'R',text:cell.clue,start:next(r,c,cell.arrow==='D'?'D':'R')});if(cell.clue2)out.push({r,c,d:cell.arrow2==='R'?'R':'D',text:cell.clue2,start:next(r,c,cell.arrow2==='R'?'R':'D')});}));return out.map(x=>({...x,cells:wordCells(p,x.start,x.d)})).filter(x=>x.cells.length);}
   function next(r,c,d){return d==='R'?[r,c+1]:[r+1,c];}
