@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const OWNER='velcovsky', REPO='kriz', FOLDER='krizovky';
+  const OWNER='velcovsky', REPO='velcovsky.github.io', FOLDER='kriz/krizovky';
   const $=s=>document.querySelector(s), state={files:[],puzzle:null,slug:'',values:{},selected:null,direction:'R',clues:[],checks:{}};
   const norm=s=>(s||'').normalize('NFC').toLocaleUpperCase('cs-CZ');
   const key=(r,c)=>`${r}-${c}`; const isLetter=c=>c&&c.t==='L';
