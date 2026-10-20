@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Online křížovky k luštění zdarma.">
+  <title>Online křížovky</title><link rel="stylesheet" href="css/style.css">
+  <style>
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .selector-row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0 1.5rem}
+    .selector-row select{min-width:240px;max-width:100%;padding:.7rem;border:1px solid var(--line,#ccc);border-radius:.6rem;background:var(--surface,#fff);color:inherit}
+    .solver-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:1.25rem;align-items:start}
+    #crossword{display:grid;grid-template-columns:repeat(var(--cols,10),minmax(0,1fr));gap:2px;max-width:680px;margin:auto;background:#aab1ba;padding:3px;border-radius:5px}
+    .cell{aspect-ratio:1;min-width:0;position:relative;background:#fff;color:#111;display:flex;align-items:center;justify-content:center}
+    .cell.block{background:#202735}.cell.clue-cell{background:#e7edf5;cursor:pointer;font-size:clamp(10px,1.7vw,16px)}
+    .cell.letter-cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font:600 clamp(12px,2.2vw,23px)/1 sans-serif;text-transform:uppercase;padding:0;outline:none;color:#111;min-width:0}
+    .cell .arrow-mark{position:absolute;left:3px;top:1px;font-size:clamp(8px,1.2vw,12px);color:#334155}
+    .cell .clue-number{position:absolute;right:3px;bottom:1px;font-size:clamp(8px,1.2vw,12px);color:#334155}
+    .cell.in-word{background:#dceafe}.cell.selected{outline:3px solid #2563eb;outline-offset:-3px;z-index:1}.cell.correct{background:#d7f7e2}.cell.wrong{background:#ffe0e0}
+    .cell.letter-cell input:focus{background:#fff3bd}
+    .clue-tabs{display:flex;gap:.5rem;margin-bottom:.75rem}.clue-tabs button.active{background:#234e87;color:white}
+    #clues-list{display:grid;gap:.45rem;max-height:540px;overflow:auto}.clue-item{display:flex;align-items:flex-start;gap:.65rem;text-align:left;padding:.7rem;border:1px solid var(--line,#ddd);border-radius:.6rem;background:var(--surface,#fff);color:inherit;cursor:pointer}.clue-item.active{border-color:#2563eb;background:#eaf2ff}.clue-index{font-weight:700;min-width:1.4rem}.clue-length{display:block;font-size:.8rem;opacity:.7;margin-top:.2rem}
+    .secret{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0}.secret span{display:inline-flex;align-items:center;justify-content:center;min-width:1.8rem;height:2rem;border-bottom:2px solid #334155;font-weight:700}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.toolbar button,.toolbar a{cursor:pointer}
+    .hidden{display:none!important}.notice{padding:.75rem 1rem;border-radius:.6rem;background:#eef4ff;margin:.75rem 0}.muted{opacity:.75}
+    @media(max-width:850px){.solver-layout{grid-template-columns:1fr}#clues-list{max-height:300px}.cell{aspect-ratio:1}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="container topbar"><a href="kriz.html" class="brand">Křížovky</a><nav><a href="kriz.html">Úvod</a></nav></div></header>
+  <main class="container">
+    <section id="catalog" class="section">
+      <div class="eyebrow">Pro chvíle klidu</div><h1>Online křížovky</h1><p class="muted">Vyberte si křížovku a luštěte přímo v prohlížeči. Rozepsaná písmena se ukládají v tomto zařízení.</p>
+      <div class="selector-row"><label for="puzzle-select"><strong>Vybrat křížovku:</strong></label><select id="puzzle-select"><option value="">Načítám seznam…</option></select><button id="load-puzzle" class="btn btn-primary">Otevřít křížovku</button></div>
+      <p id="catalog-status" class="notice" role="status">Načítám seznam JSON souborů…</p>
+    </section>
+    <section id="solver" class="section solver hidden">
+      <div class="topbar"><div><button id="back-btn" class="btn">← Výběr křížovky</button><h1 id="puzzle-title">Křížovka</h1><p id="puzzle-description" class="muted"></p></div><div id="progress-label" class="notice">0 % vyplněno</div></div>
+      <div class="solver-layout"><div>
+        <div id="crossword" aria-label="Mřížka křížovky"></div>
+        <h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div>
+        <div class="toolbar"><button id="check-btn" class="btn btn-primary">Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Odhalit vybrané písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><p id="status-message" class="notice" role="status"></p>
+      </div><aside class="card"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
+    </section>
+  </main>
+  <script src="js/crossword.js"></script>
+</body></html>
