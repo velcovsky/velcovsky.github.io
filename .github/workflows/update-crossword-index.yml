@@ -1,1 +1,46 @@
+name: Aktualizace seznamu křížovek
 
+on:
+  push:
+    paths:
+      - "kriz/krizovky/*.json"
+      - ".github/workflows/update-crossword-index.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repozitáře
+        uses: actions/checkout@v4
+      - name: Vygenerovat seznam JSON souborů
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path("kriz/krizovky")
+          files = sorted(
+              p.name for p in folder.glob("*.json")
+              if p.name.lower() != "index.json"
+          )
+          (folder / "index.json").write_text(
+              json.dumps(files, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"Index obsahuje {len(files)} křížovek.")
+          PY
+      - name: Uložit aktualizovaný index
+        run: |
+          if git diff --quiet -- kriz/krizovky/index.json; then
+            echo "Seznam křížovek se nezměnil."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add kriz/krizovky/index.json
+            git commit -m "Automaticky aktualizovat seznam křížovek"
+            git push
+          fi
