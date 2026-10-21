@@ -1,0 +1,56 @@
+name: Update printable crossword PDF index
+
+on:
+  push:
+    paths:
+      - 'kriz/pdf/*.pdf'
+      - 'kriz/pdf/**/*.pdf'
+      - '.github/workflows/update-pdf-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate PDF index
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path('kriz/pdf')
+          files = sorted(
+              (p for p in folder.rglob('*') if p.is_file() and p.suffix.lower() == '.pdf'),
+              key=lambda p: p.name.casefold()
+          )
+          entries = []
+          for path in files:
+              relative = path.relative_to(folder).as_posix()
+              entries.append({
+                  'name': path.name,
+                  'url': 'pdf/' + relative
+              })
+          (folder / 'index.json').write_text(
+              json.dumps(entries, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          print(f'Generated index for {len(entries)} PDF file(s).')
+          PY
+
+      - name: Commit updated index
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kriz/pdf/index.json
+          if git diff --cached --quiet; then
+            echo 'PDF index is already up to date.'
+          else
+            git commit -m 'Update printable crossword PDF index'
+            git push
+          fi
