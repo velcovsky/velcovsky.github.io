@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+    <link rel="stylesheet" href="../nicepage.css" media="screen">
+    <link rel="stylesheet" href="sez_test.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+
+<title>Online test – obsluha parních kotlů</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#172033;background:#f3f5f8}
+*{box-sizing:border-box} body{margin:0;line-height:1.5}
+main{max-width:900px;margin:0 auto;padding:clamp(14px,3vw,28px)}
+.quiz-header,.panel,.question{background:#fff;border:1px solid #dfe4ec;border-radius:14px;padding:clamp(16px,3vw,24px);box-shadow:0 3px 14px #1720330a}
+.quiz-header{margin-bottom:16px} h1{font-size:clamp(1.35rem,4vw,2rem);margin:0 0 8px} h2{font-size:1.15rem;margin:0 0 12px}
+.muted{color:#5d687b}.rules{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.pill{background:#edf2f8;border-radius:999px;padding:6px 11px;font-size:.92rem}
+.levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 18px}
+button{font:inherit;font-weight:650;border:0;border-radius:9px;padding:12px 16px;cursor:pointer}
+.level{background:#edf1f7;color:#1c2a40;border:2px solid transparent}
+.level[aria-pressed="true"]{background:#e4efff;border-color:#2c69c7;color:#174b95}
+.primary{background:#245fbd;color:white}.secondary{background:#e9edf3;color:#24334a}
+button:focus-visible,input:focus-visible{outline:3px solid #74a9ff;outline-offset:2px}
+button:disabled{opacity:.55;cursor:not-allowed}
+.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.progress{height:8px;background:#e7ebf1;border-radius:99px;overflow:hidden;margin:10px 0 18px}
+.progress span{display:block;height:100%;background:#2c69c7;width:0}
+.question{margin:12px 0}.qmeta{font-size:.86rem;color:#68758a;margin-bottom:8px}.qtext{font-size:1.07rem;font-weight:650;margin:0 0 14px}
+.answers{display:grid;gap:9px}.answer{display:flex;gap:11px;align-items:flex-start;padding:12px;border:1px solid #dce2eb;border-radius:10px;cursor:pointer}
+.answer:has(input:checked){background:#eef5ff;border-color:#5b8fd9}.answer input{margin-top:5px;flex-shrink:0}
+.actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
+.timer{font-variant-numeric:tabular-nums;font-weight:750;background:#fff4df;color:#754b00;padding:7px 12px;border-radius:9px}
+.result-score{font-size:1.5rem;font-weight:800;margin:4px 0}
+.good{color:#17683b}.bad{color:#a42d2d}
+.review-item{padding:14px 0;border-top:1px solid #e3e7ee}.review-item p{margin:5px 0}
+.correct-text{color:#17683b;font-weight:650}.wrong-text{color:#a42d2d;font-weight:650}
+.hidden{display:none!important}
+footer{font-size:.85rem;color:#68758a;margin:18px 2px}
+.sez-hero{width:100%;overflow:hidden;background:#202020;line-height:0}
+.sez-hero img{display:block;width:100%;height:clamp(190px,36vw,390px);object-fit:cover;object-position:center 50%}
+.load-status{margin:12px 0 0;padding:10px 12px;border-radius:8px;background:#edf2f8;color:#334155}
+.load-status.error{background:#fff0f0;color:#9f2020}
+@media(max-width:520px){.levels{grid-template-columns:repeat(2,minmax(0,1fr))}.actions button{flex:1}.answer{padding:11px}}
+</style>
+</head>
+<body data-path-to-root="../" data-include-products="false" class="u-body u-clearfix u-xl-mode" data-lang="en">
+<header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" tabindex="-1" aria-label="Open menu" aria-controls="c512">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1" role="menubar"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../">Rozdělovník</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="sez.html">SEZ -topič</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="konst/web TK/uvod do TK I.htm">Technické kreslení</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="konst/index.html">Autodesk</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../kriz/kriz.html">Křižovky</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse" id="c512" role="region" aria-label="Menu panel">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2" role="menubar"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="../">Rozdělovník</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="sez.html">SEZ -topič</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="konst/web TK/uvod do TK I.htm">Technické kreslení</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="konst/index.html">Autodesk</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="../kriz/kriz.html">Křižovky</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+<section class="sez-hero" aria-label="Původní úvodní fotografie SEZ">
+  <img src="../images/SEZ_2.jfif" alt="Historická kotelna s obsluhou parních kotlů" fetchpriority="high">
+</section>
+<main>
+<header class="quiz-header">
+  <h1>Online test – obsluha parních kotlů</h1>
+  <p class="muted">Procvičovací test pro topiče parních kotlů. Otázky se náhodně vybírají z jednotlivých okruhů podle zvolené třídy.</p>
+  <div class="rules"><span class="pill">15 otázek</span><span class="pill">20 minut</span><span class="pill">Úspěšnost alespoň 80 %</span><span class="pill">Nejvýše 3 chyby</span></div>
+</header>
+<section id="setup" class="panel">
+  <h2>Vyberte test</h2>
+  <p>Vyberte kategorii topiče. Test obsahuje 5 náhodných otázek z každého ze tří okruhů.</p>
+  <div class="levels" role="group" aria-label="Třída topiče">
+    <button class="level" data-level="1" aria-pressed="true">TOP-PK1</button>
+    <button class="level" data-level="2" aria-pressed="false">TOP-PK2</button>
+    <button class="level" data-level="3" aria-pressed="false">TOP-PK3</button>
+    <button class="level" data-level="4" aria-pressed="false">TOP-PK4</button>
+  </div>
+  <button id="start" class="primary" disabled>Načítám otázky…</button>
+  <p id="loadStatus" class="load-status" role="status" aria-live="polite">Načítám databázi otázek ze souboru TOPICI_otazky.json…</p>
+</section>
+<section id="test" class="hidden">
+  <div class="topbar">
+    <strong id="testTitle">TOP-PK1 · Test</strong>
+    <span id="timer" class="timer" aria-live="polite">20:00</span>
+  </div>
+  <div class="progress" aria-label="Postup testem"><span id="progressBar"></span></div>
+  <div id="questions"></div>
+  <div class="actions">
+    <button id="back" class="secondary">Předchozí otázka</button>
+    <span id="position" class="muted" style="align-self:center"></span>
+    <button id="next" class="secondary">Další otázka</button>
+    <button id="submit" class="primary">Vyhodnotit test</button>
+  </div>
+</section>
+<section id="results" class="panel hidden" aria-live="polite">
+  <h2>Výsledek testu</h2>
+  <div id="summary"></div>
+  <div class="actions"><button id="again" class="primary">Nový test</button></div>
+  <div id="review"></div>
+</section>
+<footer>Otázky se načítají ze samostatného souboru <code>TOPICI_otazky.json</code>. Zdrojové podklady a další materiály jsou dostupné na stránce <a href="sez_text.html">Podklady k testům</a>. Jde o procvičovací materiál; před použitím pro ostré zkoušení doporučujeme ověřit obsah a správnost podkladů.</footer>
+</main>
+<script>
+let BANK = [];
+let bankReady = false;
+
+async function loadQuestionBank() {
+  const startButton = document.getElementById('start');
+  const status = document.getElementById('loadStatus');
+  try {
+    // JSON je samostatný soubor vedle sez_test.html; načítá se při otevření stránky.
+    const response = await fetch('TOPICI_otazky.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Server vrátil HTTP ' + response.status + '.');
+    const data = await response.json();
+    if (!data || !Array.isArray(data.questions)) {
+      throw new Error('Soubor JSON nemá očekávanou strukturu (chybí pole questions).');
+    }
+    // Otázky bez označené správné odpovědi se nepoužijí, aby nebyly neřešitelné.
+    BANK = data.questions
+      .filter(q => Array.isArray(q.answers) && q.answers.some(a => a.correct === true))
+      .map(q => ({
+        id: q.id,
+        source_index: q.source_paragraph,
+        section: Number(q.section),
+        levels: (q.levels || []).map(value => String(value).replace('TOP-PK', '')),
+        question: q.question,
+        options: q.answers.map(a => ({ text: a.text, correct: a.correct === true }))
+      }))
+      .filter(q => q.question && q.options.length > 0 && [1, 2, 3].includes(q.section));
+    if (!BANK.length) throw new Error('V databázi nejsou žádné použitelné otázky.');
+    bankReady = true;
+    startButton.disabled = false;
+    startButton.textContent = 'Spustit test';
+    status.classList.remove('error');
+    status.textContent = 'Databáze načtena: ' + BANK.length + ' použitelných otázek. Otázky bez označené správné odpovědi se vynechávají.';
+  } catch (error) {
+    startButton.disabled = true;
+    startButton.textContent = 'Otázky se nenačetly';
+    status.classList.add('error');
+    status.textContent = 'Nepodařilo se načíst TOPICI_otazky.json. Zkontrolujte, že je soubor nahraný ve stejné složce jako sez_test.html a že stránku otevíráte přes webový server. Podrobnosti: ' + error.message;
+  }
+}
+
+const setup = document.getElementById('setup');
+const test = document.getElementById('test');
+const results = document.getElementById('results');
+const questionsEl = document.getElementById('questions');
+const timerEl = document.getElementById('timer');
+const progressBar = document.getElementById('progressBar');
+const positionEl = document.getElementById('position');
+let level = '1', activeQuestions = [], answers = {}, current = 0, secondsLeft = 1200, timerId = null, finished = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+document.querySelectorAll('.level').forEach(btn => btn.addEventListener('click', () => {
+  level = btn.dataset.level;
+  document.querySelectorAll('.level').forEach(b => b.setAttribute('aria-pressed', String(b===btn)));
+}));
+function buildTest() {
+  if (!bankReady) throw new Error('Databáze otázek ještě není načtená.');
+  const chosen = [];
+  for (const section of [1,2,3]) {
+    const pool = BANK.filter(q => q.section === section && q.levels.includes(level));
+    if (pool.length < 5) throw new Error('V okruhu ' + section + ' není dostatek otázek pro zvolenou třídu.');
+    chosen.push(...shuffle(pool).slice(0,5));
+  }
+  return chosen.map(q => ({...q, options:shuffle(q.options)}));
+}
+function startTest() {
+  clearInterval(timerId);
+  activeQuestions = buildTest();
+  answers = {}; current = 0; secondsLeft = 1200; finished = false;
+  setup.classList.add('hidden'); results.classList.add('hidden'); test.classList.remove('hidden');
+  document.getElementById('testTitle').textContent = 'TOP-PK' + level + ' · Test';
+  renderQuestion();
+  updateTimer();
+  timerId = setInterval(() => {
+    secondsLeft--;
+    updateTimer();
+    if (secondsLeft <= 0) finishTest(true);
+  },1000);
+}
+function updateTimer() {
+  const m=String(Math.floor(secondsLeft/60)).padStart(2,'0');
+  const s=String(secondsLeft%60).padStart(2,'0');
+  timerEl.textContent=m+':'+s;
+  timerEl.classList.toggle('bad',secondsLeft<=60);
+}
+function renderQuestion() {
+  const q=activeQuestions[current];
+  questionsEl.innerHTML='';
+  const card=document.createElement('article'); card.className='question';
+  const meta=document.createElement('div'); meta.className='qmeta'; meta.textContent='Okruh '+q.section+' · Otázka '+(current+1)+' z '+activeQuestions.length;
+  const title=document.createElement('p'); title.className='qtext'; title.textContent=q.question;
+  const answersBox=document.createElement('div'); answersBox.className='answers';
+  q.options.forEach((opt,i)=>{
+    const label=document.createElement('label'); label.className='answer';
+    const radio=document.createElement('input'); radio.type='radio'; radio.name='answer'; radio.value=String(i);
+    radio.checked=answers[current]===i;
+    radio.addEventListener('change',()=>{answers[current]=i;updateProgress();});
+    const span=document.createElement('span'); span.textContent=String.fromCharCode(97+i)+') '+opt.text;
+    label.append(radio,span); answersBox.append(label);
+  });
+  card.append(meta,title,answersBox); questionsEl.append(card);
+  document.getElementById('back').disabled=current===0;
+  document.getElementById('next').classList.toggle('hidden',current===activeQuestions.length-1);
+  document.getElementById('submit').classList.toggle('hidden',current!==activeQuestions.length-1);
+  positionEl.textContent='Zodpovězeno '+Object.keys(answers).length+' / '+activeQuestions.length;
+  updateProgress();
+}
+function updateProgress() {
+  const done=Object.keys(answers).length;
+  progressBar.style.width=(done/activeQuestions.length*100)+'%';
+  positionEl.textContent='Zodpovězeno '+done+' / '+activeQuestions.length;
+}
+document.getElementById('back').addEventListener('click',()=>{if(current>0){current--;renderQuestion();}});
+document.getElementById('next').addEventListener('click',()=>{if(current<activeQuestions.length-1){current++;renderQuestion();}});
+document.getElementById('start').addEventListener('click',startTest);
+loadQuestionBank();
+document.getElementById('submit').addEventListener('click',()=>finishTest(false));
+document.getElementById('again').addEventListener('click',()=>{setup.classList.remove('hidden');results.classList.add('hidden');test.classList.add('hidden');clearInterval(timerId);});
+function finishTest(timedOut) {
+  if(finished)return;
+  finished=true; clearInterval(timerId); test.classList.add('hidden'); results.classList.remove('hidden');
+  let correct=0, wrong=0, unanswered=0;
+  activeQuestions.forEach((q,i)=>{
+    const selected=answers[i]===undefined?null:q.options[answers[i]];
+    if(selected===null) unanswered++;
+    else if(selected.correct) correct++;
+    else wrong++;
+  });
+  const percent=Math.round(correct/activeQuestions.length*100);
+  const passed=percent>=80 && wrong<=3;
+  document.getElementById('summary').innerHTML=
+    '<p class="result-score '+(passed?'good':'bad')+'">'+(passed?'USPĚL/A':'NEUSPĚL/A')+'</p>'+
+    '<p>Správně: <strong>'+correct+' z '+activeQuestions.length+'</strong> ('+percent+' %)</p>'+
+    '<p>Chyby: <strong>'+wrong+'</strong> · Nezodpovězeno: <strong>'+unanswered+'</strong></p>'+
+    (timedOut?'<p class="bad">Časový limit vypršel.</p>':'')+
+    '<p class="muted">'+(passed?'Byla splněna podmínka alespoň 80% úspěšnosti.':'Pro úspěch je potřeba alespoň 12 správných odpovědí a nejvýše 3 chyby.')+'</p>';
+  const review=document.getElementById('review'); review.innerHTML='<h2 style="margin-top:24px">Kontrola odpovědí</h2>';
+  activeQuestions.forEach((q,i)=>{
+    const chosen=answers[i]===undefined?null:q.options[answers[i]];
+    const accepted=q.options.filter(o=>o.correct);
+    const ok=chosen!==null && chosen.correct;
+    const item=document.createElement('div'); item.className='review-item';
+    const h=document.createElement('strong'); h.textContent=(i+1)+'. '+q.question; item.append(h);
+    const p=document.createElement('p'); p.className=ok?'correct-text':'wrong-text';
+    p.textContent='Vaše odpověď: '+(chosen?chosen.text:'Bez odpovědi'); item.append(p);
+    const cp=document.createElement('p'); cp.className='correct-text';
+    cp.textContent='Správná odpověď podle podkladu: '+accepted.map(o=>o.text).join(' / '); item.append(cp);
+    review.append(item);
+  });
+}
+</script>
+</body>
+</html>
