@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor otázek TOPICI</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#172033;background:#f3f5f8}
+*{box-sizing:border-box}body{margin:0}header{background:#183b63;color:#fff;padding:18px 22px}
+header h1{font-size:1.35rem;margin:0 0 5px}header p{margin:0;color:#dce8f5;font-size:.94rem}
+main{max-width:1400px;margin:0 auto;padding:18px;display:grid;grid-template-columns:minmax(250px,340px) minmax(0,1fr);gap:18px}
+.panel{background:#fff;border:1px solid #dce2ea;border-radius:12px;padding:16px;box-shadow:0 2px 8px #1b2b3b0b;min-width:0}
+h2{font-size:1.08rem;margin:0 0 12px}label{display:block;font-size:.9rem;font-weight:650;margin:12px 0 5px}
+input,select,textarea,button{font:inherit}input[type=text],input[type=number],select,textarea{width:100%;border:1px solid #c8d1dc;border-radius:7px;padding:9px;background:#fff;color:#172033}
+textarea{min-height:105px;resize:vertical;line-height:1.45}
+button{border:0;border-radius:7px;padding:9px 12px;cursor:pointer;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}.primary{background:#1769aa;color:white}.secondary{background:#e8eef5;color:#183b63}.danger{background:#fde9e7;color:#9d2620}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+#status{font-size:.9rem;padding:10px 12px;border-radius:8px;background:#edf5ff;color:#184b79;margin-top:12px;overflow-wrap:anywhere}
+#status.error{background:#fff0ee;color:#a22a20}#status.success{background:#eaf8ef;color:#176237}
+.small{font-size:.84rem;color:#5a6575}.question-list{margin-top:12px;max-height:60vh;overflow:auto;border-top:1px solid #e1e6ed}
+.qitem{padding:10px;border-bottom:1px solid #e7ebf0;cursor:pointer;display:flex;gap:9px;align-items:flex-start}
+.qitem:hover{background:#f4f8fc}.qitem.active{background:#eaf3ff;border-left:4px solid #1769aa;padding-left:6px}
+.qid{font-size:.78rem;color:#5a6575;white-space:nowrap;padding-top:2px}.qtext{font-size:.9rem;line-height:1.35}
+.meta{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px}
+.levels{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.levels label{font-weight:500;margin:0;background:#f1f4f8;padding:7px 9px;border-radius:6px;display:flex;gap:6px;align-items:center}
+.answer{border:1px solid #dfe5ec;border-radius:8px;padding:10px;margin:10px 0;display:grid;grid-template-columns:34px minmax(0,1fr) 38px;gap:9px;align-items:start}
+.answer .letter{font-weight:750;padding-top:9px}.answer textarea{min-height:64px}.answer .correct{display:flex;align-items:center;gap:4px;font-size:.8rem;margin:6px 0 0;font-weight:600}
+.answer .remove{padding:6px;background:#fde9e7;color:#9d2620}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}.filelabel{display:inline-flex;align-items:center;gap:8px;background:#e8eef5;color:#183b63;border-radius:7px;padding:9px 12px;font-weight:650;cursor:pointer}
+input[type=file]{display:none}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#empty{padding:35px 10px;text-align:center;color:#657184}
+@media(max-width:800px){main{grid-template-columns:1fr;padding:10px}.question-list{max-height:35vh}.meta{grid-template-columns:1fr;gap:0}.answer{grid-template-columns:26px minmax(0,1fr) 34px}header{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Editor otázek TOPICI</h1>
+  <p>Jednoduchá úprava TOPICI_otazky.json bez instalace. Původní soubor se nepřepisuje — stáhneš si novou verzi JSON.</p>
+</header>
+<main>
+  <aside class="panel">
+    <h2>Soubor a seznam otázek</h2>
+    <div class="top-actions">
+      <label class="filelabel" for="fileInput">📂 Načíst JSON</label>
+      <input id="fileInput" type="file" accept=".json,application/json">
+      <button id="downloadBtn" class="primary" disabled>⬇ Uložit JSON</button>
+    </div>
+    <div class="toolbar">
+      <button id="newBtn" class="secondary" disabled>＋ Nová otázka</button>
+      <button id="deleteBtn" class="danger" disabled>Smazat vybranou</button>
+    </div>
+    <label for="search">Hledat v otázkách</label>
+    <input id="search" type="text" placeholder="Číslo, text otázky nebo odpověď…" disabled>
+    <div class="small" id="count">Nejprve načti soubor TOPICI_otazky.json.</div>
+    <div id="questionList" class="question-list"></div>
+    <div id="status" role="status">Vyber JSON soubor z počítače. Funguje i při otevření tohoto HTML dvojklikem.</div>
+  </aside>
+  <section class="panel">
+    <div id="empty">Po načtení JSON vyber otázku vlevo, nebo vytvoř novou.</div>
+    <div id="editor" hidden>
+      <div class="section-head"><h2 id="editorTitle">Úprava otázky</h2><span id="questionIndex" class="small"></span></div>
+      <div class="meta">
+        <div><label for="qid">ID otázky</label><input id="qid" type="text"></div>
+        <div><label for="section">Číslo okruhu (section)</label><input id="section" type="number" min="1" step="1"></div>
+      </div>
+      <label>Úrovně zkoušky</label>
+      <div class="levels" id="levels">
+        <label><input type="checkbox" value="TOP-PK1"> TOP-PK1</label>
+        <label><input type="checkbox" value="TOP-PK2"> TOP-PK2</label>
+        <label><input type="checkbox" value="TOP-PK3"> TOP-PK3</label>
+        <label><input type="checkbox" value="TOP-PK4"> TOP-PK4</label>
+      </div>
+      <label for="question">Znění otázky</label>
+      <textarea id="question" placeholder="Zadej otázku…"></textarea>
+      <div class="section-head" style="margin-top:18px"><h2>Odpovědi</h2><button id="addAnswerBtn" class="secondary">＋ Přidat odpověď</button></div>
+      <p class="small">Zaškrtni správnou odpověď. Lze označit i více správných odpovědí.</p>
+      <div id="answers"></div>
+      <details style="margin-top:16px">
+        <summary class="small">Další metadata (volitelné)</summary>
+        <label for="sourceParagraph">Odstavec zdroje (source_paragraph)</label>
+        <input id="sourceParagraph" type="number" min="0" step="1">
+        <label for="validation">Ověření (validation)</label>
+        <input id="validation" type="text">
+      </details>
+      <div class="toolbar" style="margin-top:18px">
+        <button id="applyBtn" class="primary">Použít změny</button>
+        <button id="cancelBtn" class="secondary">Zrušit úpravy</button>
+      </div>
+      <p class="small">Změny se průběžně ukládají do seznamu po stisku „Použít změny“. Nezapomeň potom stáhnout JSON.</p>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const levelsAll = ['TOP-PK1','TOP-PK2','TOP-PK3','TOP-PK4'];
+  let data = null, selectedId = null, draftNew = false, nextNewNumber = 1;
+  const fileInput = $('fileInput');
+
+  function status(message, kind='') {
+    $('status').textContent = message;
+    $('status').className = kind;
+  }
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function makeId() {
+    const used = new Set(data.questions.map(q => String(q.id)));
+    let n = 1;
+    while (used.has('Q' + String(n).padStart(3,'0'))) n++;
+    return 'Q' + String(n).padStart(3,'0');
+  }
+  function refresh() {
+    const term = $('search').value.trim().toLocaleLowerCase('cs');
+    const questions = data ? data.questions : [];
+    const filtered = questions.filter(q => {
+      const text = [q.id, q.question, ...(q.answers||[]).map(a=>a.text), q.section, ...(q.levels||[])].join(' ').toLocaleLowerCase('cs');
+      return text.includes(term);
+    });
+    $('questionList').innerHTML = filtered.map(q => `
+      <div class="qitem ${String(q.id)===String(selectedId)?'active':''}" data-id="${esc(q.id)}" tabindex="0" role="button">
+        <span class="qid">${esc(q.id)}</span><span class="qtext">${esc(q.question || '(bez textu)')}</span>
+      </div>`).join('');
+    $('count').textContent = data ? `Otázek: ${questions.length} · Zobrazeno: ${filtered.length}` : 'Nejprve načti soubor TOPICI_otazky.json.';
+    $('questionList').querySelectorAll('.qitem').forEach(el => {
+      const select = () => { if (selectedId !== null && $('editor').hidden === false && !draftNew) saveCurrent(false); selectedId = el.dataset.id; draftNew = false; showQuestion(); refresh(); };
+      el.addEventListener('click', select);
+      el.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();select();} });
+    });
+    const loaded = !!data;
+    $('downloadBtn').disabled = !loaded;
+    $('newBtn').disabled = !loaded;
+    $('deleteBtn').disabled = !loaded || selectedId === null;
+    $('search').disabled = !loaded;
+  }
+  function currentQuestion() { return data?.questions.find(q => String(q.id)===String(selectedId)); }
+  function renderAnswers(answers) {
+    $('answers').innerHTML = '';
+    (answers || []).forEach((a,i) => {
+      const item = document.createElement('div');
+      item.className = 'answer';
+      item.innerHTML = `<div class="letter">${esc(a.label || String.fromCharCode(97+i))}</div>
+        <div><textarea aria-label="Text odpovědi">${esc(a.text||'')}</textarea>
+        <label class="correct"><input type="checkbox" ${a.correct?'checked':''}> Správná odpověď</label></div>
+        <button type="button" class="remove" title="Odstranit odpověď" aria-label="Odstranit odpověď">×</button>`;
+      item.querySelector('.remove').addEventListener('click', () => { item.remove(); renumberAnswers(); });
+      $('answers').appendChild(item);
+    });
+  }
+  function renumberAnswers() {
+    [...$('answers').children].forEach((el,i)=>el.querySelector('.letter').textContent=String.fromCharCode(97+i));
+  }
+  function readAnswers() {
+    return [...$('answers').children].map((el,i)=>({
+      text: el.querySelector('textarea').value.trim(),
+      label: String.fromCharCode(97+i),
+      correct: el.querySelector('input[type=checkbox]').checked
+    }));
+  }
+  function showQuestion() {
+    const q = currentQuestion();
+    if (!q) { $('editor').hidden=true; $('empty').hidden=false; return; }
+    $('empty').hidden=true; $('editor').hidden=false;
+    $('editorTitle').textContent = 'Úprava otázky';
+    $('questionIndex').textContent = `${data.questions.findIndex(x=>String(x.id)===String(selectedId))+1} / ${data.questions.length}`;
+    $('qid').value = q.id ?? '';
+    $('section').value = q.section ?? 1;
+    $('question').value = q.question ?? '';
+    $('sourceParagraph').value = q.source_paragraph ?? '';
+    $('validation').value = q.validation ?? '';
+    $('levels').querySelectorAll('input').forEach(cb=>cb.checked=(q.levels||[]).includes(cb.value));
+    renderAnswers(q.answers || []);
+  }
+  function readEditor() {
+    const q = {
+      id: $('qid').value.trim(),
+      section: Number($('section').value),
+      levels: [...$('levels').querySelectorAll('input:checked')].map(cb=>cb.value),
+      question: $('question').value.trim(),
+      answers: readAnswers()
+    };
+    const sp = $('sourceParagraph').value.trim();
+    if (sp !== '') q.source_paragraph = Number(sp);
+    const validation = $('validation').value.trim();
+    if (validation !== '') q.validation = validation;
+    return q;
+  }
+  function validateQuestion(q) {
+    if (!q.id) return 'Vyplň ID otázky.';
+    if (!Number.isInteger(q.section) || q.section < 1) return 'Číslo okruhu musí být celé číslo od 1.';
+    if (!q.question) return 'Zadej znění otázky.';
+    if (!q.levels.length) return 'Vyber alespoň jednu úroveň TOP-PK.';
+    if (q.answers.length < 2) return 'Otázka musí mít alespoň dvě odpovědi.';
+    if (q.answers.some(a=>!a.text)) return 'Vyplň text všech odpovědí.';
+    if (!q.answers.some(a=>a.correct)) return 'Označ alespoň jednu správnou odpověď.';
+    const duplicate = data.questions.some(old=>String(old.id)===q.id && String(old.id)!==String(selectedId));
+    if (duplicate) return `ID ${q.id} už existuje. Zvol jiné ID.`;
+    return '';
+  }
+  function saveCurrent(showMessage=true) {
+    if (!data || selectedId===null) return true;
+    const q = readEditor(), error = validateQuestion(q);
+    if (error) { if(showMessage) status(error,'error'); return false; }
+    if (draftNew) data.questions.push(q);
+    else {
+      const i = data.questions.findIndex(old=>String(old.id)===String(selectedId));
+      if(i<0) return false;
+      data.questions[i] = q;
+    }
+    selectedId = q.id; draftNew = false;
+    if(showMessage) status(`Změny otázky ${q.id} byly použity. Nezapomeň stáhnout JSON.`,'success');
+    return true;
+  }
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files?.[0]; if(!file) return;
+    try {
+      const parsed = JSON.parse(await file.text());
+      if (!parsed || !Array.isArray(parsed.questions)) throw new Error('JSON musí obsahovat pole „questions“.');
+      if (selectedId !== null && !$('editor').hidden && !draftNew) { /* loaded file replaces current in-memory data intentionally */ }
+      data = parsed;
+      data.questions = data.questions.map(q=>({...q, answers:Array.isArray(q.answers)?q.answers:[], levels:Array.isArray(q.levels)?q.levels:[]}));
+      selectedId = data.questions.length ? String(data.questions[0].id) : null;
+      draftNew = false;
+      $('search').value = '';
+      refresh(); showQuestion();
+      status(`Načten soubor ${file.name}. Po úpravách klikni na „Uložit JSON“ a nahraj stažený soubor na web.`,'success');
+    } catch(e) { status('Soubor se nepodařilo načíst: ' + e.message,'error'); }
+    fileInput.value = '';
+  });
+  $('search').addEventListener('input', refresh);
+  $('newBtn').addEventListener('click', () => {
+    if (selectedId !== null && !$('editor').hidden && !saveCurrent(false)) { status('Nejdřív oprav nebo zruš neuložené změny ve formuláři.','error'); return; }
+    selectedId = null; draftNew = true;
+    const q = {id:makeId(), section:1, levels:['TOP-PK1'], question:'', answers:[{text:'',label:'a',correct:true},{text:'',label:'b',correct:false}], validation:'NOVÁ'};
+    $('empty').hidden=true; $('editor').hidden=false; $('editorTitle').textContent='Nová otázka'; $('questionIndex').textContent='Nová';
+    $('qid').value=q.id; $('section').value=q.section; $('question').value=''; $('sourceParagraph').value=''; $('validation').value='NOVÁ';
+    $('levels').querySelectorAll('input').forEach(cb=>cb.checked=q.levels.includes(cb.value));
+    renderAnswers(q.answers); $('qid').focus(); $('deleteBtn').disabled=true;
+    status('Vyplň otázku a odpovědi, označ správnou odpověď a klikni na „Použít změny“.');
+  });
+  $('deleteBtn').addEventListener('click', () => {
+    const q=currentQuestion(); if(!q) return;
+    if(!confirm(`Opravdu smazat otázku ${q.id}?`)) return;
+    data.questions=data.questions.filter(old=>String(old.id)!==String(selectedId));
+    selectedId=data.questions.length?String(data.questions[0].id):null;
+    refresh(); showQuestion(); status(`Otázka ${q.id} byla smazána. Stažením JSON změnu uložíš.`,'success');
+  });
+  $('addAnswerBtn').addEventListener('click', () => {
+    const n=$('answers').children.length;
+    if(n>=26){status('Jedna otázka může mít nejvýše 26 odpovědí.','error');return;}
+    const item=document.createElement('div'); item.className='answer';
+    item.innerHTML=`<div class="letter">${String.fromCharCode(97+n)}</div><div><textarea aria-label="Text odpovědi" placeholder="Text odpovědi"></textarea><label class="correct"><input type="checkbox"> Správná odpověď</label></div><button type="button" class="remove" title="Odstranit odpověď">×</button>`;
+    item.querySelector('.remove').addEventListener('click',()=>{item.remove();renumberAnswers();});
+    $('answers').appendChild(item); item.querySelector('textarea').focus();
+  });
+  $('applyBtn').addEventListener('click', () => {
+    if (!saveCurrent(true)) return;
+    refresh(); showQuestion();
+  });
+  $('cancelBtn').addEventListener('click', () => {
+    if(draftNew){draftNew=false;selectedId=data.questions.length?String(data.questions[0].id):null;}
+    showQuestion();refresh();status('Úpravy ve formuláři byly zrušeny.','');
+  });
+  $('downloadBtn').addEventListener('click', () => {
+    if(selectedId!==null && !$('editor').hidden && !saveCurrent(false)){status('Nelze stáhnout: nejdřív oprav aktuální otázku nebo zruš její úpravy.','error');return;}
+    if(draftNew){status('Nejdřív klikni na „Použít změny“ u nové otázky.','error');return;}
+    const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url;a.download='TOPICI_otazky.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+    status('JSON byl připraven ke stažení. Nahraď jím původní TOPICI_otazky.json ve složce webu.','success');
+    refresh();showQuestion();
+  });
+})();
+</script>
+</body>
+</html>
