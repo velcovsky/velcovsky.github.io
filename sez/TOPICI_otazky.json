@@ -464,8 +464,8 @@
       "question": "V jakém případě se kotel  musí ihned odstavit z provozu ?",
       "answers": [
         {
-          "text": "ojde-li u kotlů s výtavnými ohništi k zatavení výtokového otvoru, takže není možný odvod tvořící se strusky, popř. dojde-li k takové poruše odstruskovacího zařízení, že je vyřazeno z provozu, takže zatavení výtokových otvorů hrozí a ne-ní možno provést opravu.",
-          "label": "d",
+          "text": "dojde-li u kotlů s výtavnými ohništi k zatavení výtokového otvoru, takže není možný odvod tvořící se strusky, popř. dojde-li k takové poruše odstruskovacího zařízení, že je vyřazeno z provozu, takže zatavení výtokových otvorů hrozí a ne-ní možno provést opravu.",
+          "label": "a",
           "correct": true
         },
         {
@@ -581,17 +581,22 @@
         "TOP-PK3",
         "TOP-PK4"
       ],
-      "question": "Jak je posuzováno krátkodobé překročení jmenovitých parametrů kotle v mezích určených a) Provoz kotle za mimořádných podmínek",
+      "question": "Jak je posuzováno krátkodobé překročení jmenovitých parametrů kotle v mezích určených ČSN 07 0010 ?",
       "answers": [
         {
           "text": "Neekonomický provoz kotle",
-          "label": "b",
+          "label": "a",
           "correct": false
         },
         {
           "text": "Provoz kotle za standartních podmínek",
-          "label": "c",
+          "label": "b",
           "correct": false
+        },
+        {
+          "text": "Provoz kotle za mimořádných podmínek",
+          "label": "c",
+          "correct": true
         }
       ],
       "source_paragraph": 122,
@@ -1299,17 +1304,17 @@
         },
         {
           "text": "Změkčením vody na katexovém filtru, poté chemická úprava (dávkování inhibitorů, úprava zjevné alkality, úprava PH) -",
-          "label": "a",
+          "label": "b",
           "correct": true
         },
         {
           "text": "Termickým odplyněním",
-          "label": "b",
+          "label": "c",
           "correct": false
         },
         {
           "text": "Reverzní osmózou",
-          "label": "c",
+          "label": "d",
           "correct": false
         }
       ],
@@ -1672,17 +1677,17 @@
         },
         {
           "text": "Nejnižší přípustná hladina vody",
-          "label": "a",
+          "label": "b",
           "correct": true
         },
         {
           "text": "Nejvyšší přípustná hladina vody",
-          "label": "b",
+          "label": "c",
           "correct": false
         },
         {
           "text": "Optimální hladina vody",
-          "label": "c",
+          "label": "d",
           "correct": false
         }
       ],
@@ -2173,7 +2178,7 @@
         {
           "text": "Vysokotlaký kotel",
           "label": "b",
-          "correct": false
+          "correct": true
         },
         {
           "text": "Kotel s nadkritickým tlakem",
@@ -2205,7 +2210,7 @@
         {
           "text": "Každou směnu (uzavřením přívodu páry)",
           "label": "c",
-          "correct": false
+          "correct": true
         }
       ],
       "source_paragraph": 461,
