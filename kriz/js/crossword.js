@@ -8,7 +8,7 @@
   const isLetter = c => c && c.t === 'L';
 
   async function fetchJson(url) {
-    const r = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
+    const r = await fetch(url, { cache: 'no-store' });
     if (!r.ok) throw new Error(`HTTP ${r.status} při načítání ${url}`);
     return r.json();
   }
@@ -16,24 +16,38 @@
   async function loadFiles() {
     const select = $('#puzzle-select'), statusEl = $('#catalog-status');
     try {
-      const repo = await fetchJson(`https://api.github.com/repos/${OWNER}/${REPO}`);
-      const branch = repo.default_branch;
-      const items = await fetchJson(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=${encodeURIComponent(branch)}`);
-      state.files = items.filter(x => x.type === 'file' && x.name.toLowerCase().endsWith('.json')).sort((a, b) => a.name.localeCompare(b.name, 'cs'));
+      // Statický katalog nevyužívá GitHub API, a proto jej neomezuje anonymní limit API.
+      const manifestUrl = `https://${OWNER}.github.io/kriz/krizovky/index.json?v=${Date.now()}`;
+      const listing = await fetchJson(manifestUrl);
+      if (!Array.isArray(listing)) throw new Error('index.json musí obsahovat seznam souborů.');
+      const baseRaw = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${FOLDER}/`;
+      const files = listing.map(item => {
+        if (typeof item === 'string') {
+          const path = item.replace(/^\/+/, '');
+          return { name: path.split('/').pop(), download_url: baseRaw + path.split('/').map(encodeURIComponent).join('/') };
+        }
+        const path = String(item.path || item.name || '').replace(/^\/+/, '');
+        if (!path) return null;
+        return {
+          name: item.name || path.split('/').pop(),
+          download_url: item.url || item.download_url || (baseRaw + path.split('/').map(encodeURIComponent).join('/'))
+        };
+      }).filter(x => x && x.name.toLowerCase().endsWith('.json') && x.name.toLowerCase() !== 'index.json');
+      state.files = files.sort((a, b) => a.name.localeCompare(b.name, 'cs'));
       select.replaceChildren();
       if (!state.files.length) {
         select.add(new Option('Ve složce nejsou JSON soubory', ''));
-        statusEl.textContent = `Ve složce ${FOLDER}/ zatím nejsou žádné JSON soubory. Přidej YARIS.json a další soubory do repozitáře.`;
+        statusEl.textContent = 'Katalog se načetl, ale neobsahuje žádné křížovky. Zkontroluj soubor kriz/krizovky/index.json.';
         return;
       }
       select.add(new Option('— Vyberte křížovku —', ''));
       state.files.forEach(f => select.add(new Option(f.name.replace(/\.json$/i, '').replace(/[-_]/g, ' '), f.name)));
-      statusEl.textContent = `Načteno křížovek: ${state.files.length}. Seznam se čte přímo z veřejné složky ${FOLDER}/ v GitHub repozitáři.`;
+      statusEl.textContent = `Načteno křížovek: ${state.files.length}.`;
       const params = new URLSearchParams(location.search), initial = params.get('puzzle');
       if (initial && state.files.some(f => f.name === initial)) { select.value = initial; await openSelected(); }
     } catch (e) {
       select.replaceChildren(new Option('Seznam se nepodařilo načíst', ''));
-      statusEl.textContent = `Chyba načítání seznamu: ${e.message}. Ověř, že je repozitář veřejný a složka ${FOLDER}/ existuje.`;
+      statusEl.textContent = `Seznam se nepodařilo načíst (${e.message}). Ověř, že existuje ${FOLDER}/index.json a že GitHub Pages už změny zveřejnil.`;
     }
   }
 
@@ -86,10 +100,20 @@
       if (cell.t === 'W') el.classList.add('block');
       else if (cell.t === 'C') {
         el.classList.add('clue-cell'); el.setAttribute('role', 'button'); el.tabIndex = 0;
-        const clue = state.clues.find(x => x.r === r && x.c === c);
-        const a = document.createElement('span'); a.className = 'arrow-mark'; a.textContent = clue?.d === 'D' ? '↓' : '→';
-        const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || ''; el.append(a, n); el.title = clue?.text || 'Vybrat nápovědu';
-        const chooseClue = () => { if (clue) { state.direction = clue.d; state.selected = clue.cells[0]; renderClues(); highlights(); focusCell(...state.selected); } };
+        const cluesHere = state.clues.filter(x => x.r === r && x.c === c);
+        const clue = cluesHere.find(x => x.d === state.direction) || cluesHere[0];
+        const a = document.createElement('span'); a.className = 'arrow-mark';
+        a.textContent = clue?.d === 'D' ? '↓' : '→';
+        const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || '';
+        const text = document.createElement('span'); text.className = 'clue-in-cell';
+        text.textContent = cluesHere.map(x => x.text).join(' / ');
+        el.append(a, n, text); el.title = cluesHere.map(x => x.text).join(' | ') || 'Vybrat nápovědu';
+        const chooseClue = () => {
+          if (!cluesHere.length) return;
+          const current = cluesHere.find(x => x.d === state.direction);
+          const nextClue = cluesHere.length > 1 && current ? cluesHere.find(x => x.d !== current.d) : (current || cluesHere[0]);
+          state.direction = nextClue.d; state.selected = nextClue.cells[0]; renderClues(); highlights(); focusCell(...state.selected);
+        };
         el.addEventListener('click', chooseClue); el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chooseClue(); } });
       } else {
         el.classList.add('letter-cell');
@@ -101,6 +125,14 @@
         // Důležité: při kliknutí do již vybraného políčka se mřížka znovu nevykresluje.
         // Zůstane tak zachované focus a mobilní klávesnice se může otevřít.
         input.addEventListener('focus', () => selectCell(r, c));
+        // Kliknutí na stejné písmeno přepne směr, pokud tudy prochází vodorovné i svislé slovo.
+        input.addEventListener('click', () => {
+          const across = clueAt(r, c, 'R'), down = clueAt(r, c, 'D');
+          if (across && down && state.selected && state.selected[0] === r && state.selected[1] === c) {
+            state.direction = state.direction === 'R' ? 'D' : 'R';
+            renderClues(); highlights();
+          }
+        });
         input.addEventListener('input', () => {
           let v = norm(input.value).replace(/[^A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]/g, '');
           if (p.ch_single !== false) v = [...v].slice(-1).join('');
@@ -151,6 +183,9 @@
   }
   function renderClues() {
     const host = $('#clues-list'); host.replaceChildren();
+    const current = state.selected ? clueAt(...state.selected, state.direction) : null;
+    const currentBar = $('#current-clue');
+    if (currentBar) currentBar.textContent = current ? `${current.d === 'D' ? '↓ Svisle' : '→ Vodorovně'}: ${current.text} (${current.cells.length} písmen)` : 'Kliknutím vyberte nápovědu v mřížce nebo v seznamu níže.';
     document.querySelectorAll('.clue-tab').forEach(b => b.classList.toggle('active', b.dataset.direction === state.direction));
     state.clues.filter(c => c.d === state.direction).forEach((clue, i) => {
       const b = document.createElement('button'); b.className = 'clue-item';
