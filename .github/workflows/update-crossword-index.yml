@@ -1,46 +1,57 @@
-name: Aktualizace seznamu křížovek
+name: Update crossword index
 
 on:
   push:
+    branches: [main]
     paths:
-      - "kriz/krizovky/*.json"
-      - ".github/workflows/update-crossword-index.yml"
+      - 'kriz/krizovky/**/*.json'
+      - 'kriz/krizovky/*.json'
+      - '.github/workflows/update-crossword-index.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-index:
+  build-index:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repozitáře
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Vygenerovat seznam JSON souborů
-        shell: bash
+        with:
+          ref: main
+
+      - name: Generate index.json
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          folder = Path("kriz/krizovky")
-          files = sorted(
-              p.name for p in folder.glob("*.json")
-              if p.name.lower() != "index.json"
+
+          folder = Path('kriz/krizovky')
+          entries = []
+          for file in sorted(folder.rglob('*.json')):
+              if file.name.lower() == 'index.json':
+                  continue
+              rel = file.relative_to(folder).as_posix()
+              entries.append({
+                  'name': file.name,
+                  'path': rel,
+                  'url': f'https://raw.githubusercontent.com/velcovsky/velcovsky.github.io/main/kriz/krizovky/{rel}'
+              })
+          (folder / 'index.json').write_text(
+              json.dumps(entries, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
           )
-          (folder / "index.json").write_text(
-              json.dumps(files, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-          print(f"Index obsahuje {len(files)} křížovek.")
+          print(f'Generated index with {len(entries)} crossword(s).')
           PY
-      - name: Uložit aktualizovaný index
+
+      - name: Commit updated index
         run: |
-          if git diff --quiet -- kriz/krizovky/index.json; then
-            echo "Seznam křížovek se nezměnil."
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kriz/krizovky/index.json
+          if git diff --cached --quiet; then
+            echo 'Index is already up to date.'
           else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add kriz/krizovky/index.json
-            git commit -m "Automaticky aktualizovat seznam křížovek"
+            git commit -m 'Update crossword index'
             git push
           fi
