@@ -16,24 +16,38 @@
   async function loadFiles() {
     const select = $('#puzzle-select'), statusEl = $('#catalog-status');
     try {
-      const repo = await fetchJson(`https://api.github.com/repos/${OWNER}/${REPO}`);
-      const branch = repo.default_branch;
-      const items = await fetchJson(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=${encodeURIComponent(branch)}`);
-      state.files = items.filter(x => x.type === 'file' && x.name.toLowerCase().endsWith('.json')).sort((a, b) => a.name.localeCompare(b.name, 'cs'));
+      // Nejdřív použijeme jsDelivr CDN, které není omezené anonymním limitem GitHub API.
+      // GitHub API zůstává jako záložní varianta.
+      let files = [];
+      try {
+        const listing = await fetchJson(`https://data.jsdelivr.com/v1/package/gh/${OWNER}/${REPO}@main/flat`);
+        files = (listing.files || [])
+          .map(x => x.name || '')
+          .filter(path => path.startsWith(`/${FOLDER}/`) && path.toLowerCase().endsWith('.json'))
+          .map(path => {
+            const name = path.slice(path.lastIndexOf('/') + 1);
+            return { name, download_url: `https://cdn.jsdelivr.net/gh/${OWNER}/${REPO}@main/${FOLDER}/${encodeURIComponent(name)}` };
+          });
+      } catch (cdnError) {
+        const items = await fetchJson(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=main`);
+        files = items.filter(x => x.type === 'file' && x.name.toLowerCase().endsWith('.json'))
+          .map(x => ({ name: x.name, download_url: x.download_url }));
+      }
+      state.files = files.sort((a, b) => a.name.localeCompare(b.name, 'cs'));
       select.replaceChildren();
       if (!state.files.length) {
         select.add(new Option('Ve složce nejsou JSON soubory', ''));
-        statusEl.textContent = `Ve složce ${FOLDER}/ zatím nejsou žádné JSON soubory. Přidej YARIS.json a další soubory do repozitáře.`;
+        statusEl.textContent = `Ve složce ${FOLDER}/ nebyly nalezeny žádné JSON soubory.`;
         return;
       }
       select.add(new Option('— Vyberte křížovku —', ''));
       state.files.forEach(f => select.add(new Option(f.name.replace(/\.json$/i, '').replace(/[-_]/g, ' '), f.name)));
-      statusEl.textContent = `Načteno křížovek: ${state.files.length}. Seznam se čte přímo z veřejné složky ${FOLDER}/ v GitHub repozitáři.`;
+      statusEl.textContent = `Načteno křížovek: ${state.files.length}.`;
       const params = new URLSearchParams(location.search), initial = params.get('puzzle');
       if (initial && state.files.some(f => f.name === initial)) { select.value = initial; await openSelected(); }
     } catch (e) {
       select.replaceChildren(new Option('Seznam se nepodařilo načíst', ''));
-      statusEl.textContent = `Chyba načítání seznamu: ${e.message}. Ověř, že je repozitář veřejný a složka ${FOLDER}/ existuje.`;
+      statusEl.textContent = `Seznam se nepodařilo načíst (${e.message}). Zkus obnovit stránku za chvíli.`;
     }
   }
 
@@ -89,10 +103,10 @@
         const cluesHere = state.clues.filter(x => x.r === r && x.c === c);
         const clue = cluesHere.find(x => x.d === state.direction) || cluesHere[0];
         const a = document.createElement('span'); a.className = 'arrow-mark';
-        a.textContent = cluesHere.length > 1 ? '↔↕' : (clue?.d === 'D' ? '↓' : '→');
+        a.textContent = clue?.d === 'D' ? '↓' : '→';
         const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || '';
         const text = document.createElement('span'); text.className = 'clue-in-cell';
-        text.textContent = cluesHere.map(x => `${x.d === 'D' ? '↓' : '→'} ${x.text}`).join(' / ');
+        text.textContent = cluesHere.map(x => x.text).join(' / ');
         el.append(a, n, text); el.title = cluesHere.map(x => x.text).join(' | ') || 'Vybrat nápovědu';
         const chooseClue = () => {
           if (!cluesHere.length) return;
@@ -169,12 +183,10 @@
   }
   function renderClues() {
     const host = $('#clues-list'); host.replaceChildren();
+    const current = state.selected ? clueAt(...state.selected, state.direction) : null;
+    const currentBar = $('#current-clue');
+    if (currentBar) currentBar.textContent = current ? `${current.d === 'D' ? '↓ Svisle' : '→ Vodorovně'}: ${current.text} (${current.cells.length} písmen)` : 'Kliknutím vyberte nápovědu v mřížce nebo v seznamu níže.';
     document.querySelectorAll('.clue-tab').forEach(b => b.classList.toggle('active', b.dataset.direction === state.direction));
-    const activeClue = state.selected ? clueAt(...state.selected, state.direction) : null;
-    const currentText = $('#current-clue-text');
-    const currentDirection = document.querySelector('#current-clue-bar .current-direction');
-    if (currentText) currentText.textContent = activeClue ? `${activeClue.text} (${activeClue.cells.length} písmen)` : 'Klikněte na buňku s nápovědou nebo vyberte slovo ze seznamu níže.';
-    if (currentDirection) currentDirection.textContent = state.direction === 'D' ? '↓' : '→';
     state.clues.filter(c => c.d === state.direction).forEach((clue, i) => {
       const b = document.createElement('button'); b.className = 'clue-item';
       if (state.selected && clue.cells.some(([r, c]) => r === state.selected[0] && c === state.selected[1])) b.classList.add('active');
