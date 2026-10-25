@@ -102,12 +102,20 @@
         el.classList.add('clue-cell'); el.setAttribute('role', 'button'); el.tabIndex = 0;
         const cluesHere = state.clues.filter(x => x.r === r && x.c === c);
         const clue = cluesHere.find(x => x.d === state.direction) || cluesHere[0];
-        const a = document.createElement('span'); a.className = 'arrow-mark';
-        a.textContent = clue?.d === 'D' ? '↓' : '→';
         const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || '';
-        const text = document.createElement('span'); text.className = 'clue-in-cell';
-        text.textContent = cluesHere.map(x => x.text).join(' / ');
-        el.append(a, n, text); el.title = cluesHere.map(x => x.text).join(' | ') || 'Vybrat nápovědu';
+        const parts = document.createElement('div'); parts.className = 'clue-parts';
+        cluesHere.forEach((item, index) => {
+          const part = document.createElement('div'); part.className = 'clue-part';
+          part.dataset.direction = item.d;
+          const a = document.createElement('span'); a.className = 'arrow-mark';
+          a.textContent = item.d === 'D' ? '↓' : '→';
+          const text = document.createElement('span'); text.className = 'clue-in-cell';
+          text.textContent = item.text;
+          part.append(a, text);
+          part.addEventListener('click', event => { event.stopPropagation(); state.direction = item.d; state.selected = item.cells[0]; renderClues(); highlights(); focusCell(...state.selected); });
+          parts.append(part);
+        });
+        el.append(parts, n); el.title = cluesHere.map(x => x.text).join(' | ') || 'Vybrat nápovědu';
         const chooseClue = () => {
           if (!cluesHere.length) return;
           const current = cluesHere.find(x => x.d === state.direction);

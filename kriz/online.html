@@ -13,6 +13,28 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 @media(max-width:850px){.cell .clue-in-cell{font-size:clamp(5px,1.05vw,9px)}}
 @media(max-width:850px){.container{width:calc(100% - 24px);max-width:none}.solver-layout{display:flex;flex-direction:column}#clues-list{max-height:none}.solver .topbar .notice{white-space:normal}.hero img{height:clamp(180px,42vw,320px)}.selector-row select{flex:1;min-width:180px}}
 .current-clue{font-weight:800;font-size:1rem;margin:0 0 .65rem;min-height:44px;display:flex;align-items:center}.solver-layout>#all-clues{width:100%;order:2}.solver-layout>div{width:100%;min-width:0}.cell .clue-in-cell{padding:15% 5% 5%}.cell .arrow-mark{display:none!important}@media(max-width:480px){.hero img{height:180px;object-position:center}.site-header .topbar{min-height:56px}.brand{font-size:1.2rem}nav a{margin-left:.5rem}.selector-row{align-items:stretch}.selector-row label{width:100%}.selector-row select,.selector-row button{width:100%}.toolbar .btn{flex:1}.cell .arrow-mark{left:1px}.cell .clue-number{right:1px}}
+
+/* Desktop: limit individual cells so a wide monitor does not inflate the grid. */
+@media (min-width: 1000px) {
+  #crossword {
+    grid-template-columns: repeat(var(--cols, 10), minmax(0, 58px)) !important;
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+}
+/* A clue square with two clues is split into separate halves. */
+.cell.clue-cell { padding: 0; }
+.cell .clue-parts { display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 0; }
+.cell .clue-part { position: relative; display: block; flex: 1 1 0; min-height: 0; overflow: hidden; padding: 14% 5% 4%; }
+.cell .clue-part + .clue-part { border-top: 1px solid #71879a; }
+.cell .clue-part .arrow-mark { display: block !important; position: absolute; left: 2px; top: 1px; font-size: clamp(7px, .65vw, 10px); line-height: 1; color: #334155; }
+.cell .clue-part .clue-in-cell { display: block; width: 100%; height: 100%; padding: 0; overflow: hidden; white-space: normal; overflow-wrap: anywhere; text-align: left; font-size: clamp(5px, .58vw, 9px); line-height: 1.08; font-weight: 600; color: #183b58; }
+.cell .clue-number { z-index: 2; background: #edf6ff; }
+@media (max-width: 999px) {
+  #crossword { width: 100%; max-width: none; grid-template-columns: repeat(var(--cols, 10), minmax(0, 1fr)) !important; }
+  .cell .clue-part .clue-in-cell { font-size: clamp(5px, 1.05vw, 9px); }
+}
 </style>
 </head>
 <body>
@@ -29,5 +51,5 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 <div id="current-clue" class="notice current-clue" aria-live="polite">Vyberte políčko s nápovědou.</div><div class="solver-layout"><div><div id="crossword" aria-label="Mřížka křížovky"></div><h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div><div class="toolbar"><button id="check-btn" class="btn btn-primary">✓ Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Nápověda – písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><p id="status-message" class="notice" role="status"></p></div><aside class="card" id="all-clues"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
 </section>
 </main><footer><div class="container">Křížovky online · Chvilka pro sebe, trénink pro mozek.</div></footer>
-<script src="js/crossword.js?v=20261022-mobilefix"></script>
+<script src="js/crossword.js?v=20261025-cell-layout"></script>
 </body></html>
