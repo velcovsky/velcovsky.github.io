@@ -170,6 +170,11 @@
   function renderClues() {
     const host = $('#clues-list'); host.replaceChildren();
     document.querySelectorAll('.clue-tab').forEach(b => b.classList.toggle('active', b.dataset.direction === state.direction));
+    const activeClue = state.selected ? clueAt(...state.selected, state.direction) : null;
+    const currentText = $('#current-clue-text');
+    const currentDirection = document.querySelector('#current-clue-bar .current-direction');
+    if (currentText) currentText.textContent = activeClue ? `${activeClue.text} (${activeClue.cells.length} písmen)` : 'Klikněte na buňku s nápovědou nebo vyberte slovo ze seznamu níže.';
+    if (currentDirection) currentDirection.textContent = state.direction === 'D' ? '↓' : '→';
     state.clues.filter(c => c.d === state.direction).forEach((clue, i) => {
       const b = document.createElement('button'); b.className = 'clue-item';
       if (state.selected && clue.cells.some(([r, c]) => r === state.selected[0] && c === state.selected[1])) b.classList.add('active');
