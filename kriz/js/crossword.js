@@ -86,20 +86,10 @@
       if (cell.t === 'W') el.classList.add('block');
       else if (cell.t === 'C') {
         el.classList.add('clue-cell'); el.setAttribute('role', 'button'); el.tabIndex = 0;
-        const cluesHere = state.clues.filter(x => x.r === r && x.c === c);
-        const clue = cluesHere.find(x => x.d === state.direction) || cluesHere[0];
-        const a = document.createElement('span'); a.className = 'arrow-mark';
-        a.textContent = cluesHere.length > 1 ? '↔↕' : (clue?.d === 'D' ? '↓' : '→');
-        const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || '';
-        const text = document.createElement('span'); text.className = 'clue-in-cell';
-        text.textContent = cluesHere.map(x => `${x.d === 'D' ? '↓' : '→'} ${x.text}`).join(' / ');
-        el.append(a, n, text); el.title = cluesHere.map(x => x.text).join(' | ') || 'Vybrat nápovědu';
-        const chooseClue = () => {
-          if (!cluesHere.length) return;
-          const current = cluesHere.find(x => x.d === state.direction);
-          const nextClue = cluesHere.length > 1 && current ? cluesHere.find(x => x.d !== current.d) : (current || cluesHere[0]);
-          state.direction = nextClue.d; state.selected = nextClue.cells[0]; renderClues(); highlights(); focusCell(...state.selected);
-        };
+        const clue = state.clues.find(x => x.r === r && x.c === c);
+        const a = document.createElement('span'); a.className = 'arrow-mark'; a.textContent = clue?.d === 'D' ? '↓' : '→';
+        const n = document.createElement('span'); n.className = 'clue-number'; n.textContent = cell.tj || ''; el.append(a, n); el.title = clue?.text || 'Vybrat nápovědu';
+        const chooseClue = () => { if (clue) { state.direction = clue.d; state.selected = clue.cells[0]; renderClues(); highlights(); focusCell(...state.selected); } };
         el.addEventListener('click', chooseClue); el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chooseClue(); } });
       } else {
         el.classList.add('letter-cell');
@@ -111,14 +101,6 @@
         // Důležité: při kliknutí do již vybraného políčka se mřížka znovu nevykresluje.
         // Zůstane tak zachované focus a mobilní klávesnice se může otevřít.
         input.addEventListener('focus', () => selectCell(r, c));
-        // Kliknutí na stejné písmeno přepne směr, pokud tudy prochází vodorovné i svislé slovo.
-        input.addEventListener('click', () => {
-          const across = clueAt(r, c, 'R'), down = clueAt(r, c, 'D');
-          if (across && down && state.selected && state.selected[0] === r && state.selected[1] === c) {
-            state.direction = state.direction === 'R' ? 'D' : 'R';
-            renderClues(); highlights();
-          }
-        });
         input.addEventListener('input', () => {
           let v = norm(input.value).replace(/[^A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]/g, '');
           if (p.ch_single !== false) v = [...v].slice(-1).join('');
@@ -170,11 +152,6 @@
   function renderClues() {
     const host = $('#clues-list'); host.replaceChildren();
     document.querySelectorAll('.clue-tab').forEach(b => b.classList.toggle('active', b.dataset.direction === state.direction));
-    const activeClue = state.selected ? clueAt(...state.selected, state.direction) : null;
-    const currentText = $('#current-clue-text');
-    const currentDirection = document.querySelector('#current-clue-bar .current-direction');
-    if (currentText) currentText.textContent = activeClue ? `${activeClue.text} (${activeClue.cells.length} písmen)` : 'Klikněte na buňku s nápovědou nebo vyberte slovo ze seznamu níže.';
-    if (currentDirection) currentDirection.textContent = state.direction === 'D' ? '↓' : '→';
     state.clues.filter(c => c.d === state.direction).forEach((clue, i) => {
       const b = document.createElement('button'); b.className = 'clue-item';
       if (state.selected && clue.cells.some(([r, c]) => r === state.selected[0] && c === state.selected[1])) b.classList.add('active');
