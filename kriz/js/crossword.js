@@ -107,11 +107,9 @@
         cluesHere.forEach((item, index) => {
           const part = document.createElement('div'); part.className = 'clue-part';
           part.dataset.direction = item.d;
-          const a = document.createElement('span'); a.className = 'arrow-mark';
-          a.textContent = item.d === 'D' ? '↓' : '→';
           const text = document.createElement('span'); text.className = 'clue-in-cell';
           text.textContent = item.text;
-          part.append(a, text);
+          part.append(text);
           part.addEventListener('click', event => { event.stopPropagation(); state.direction = item.d; state.selected = item.cells[0]; renderClues(); highlights(); focusCell(...state.selected); });
           parts.append(part);
         });
