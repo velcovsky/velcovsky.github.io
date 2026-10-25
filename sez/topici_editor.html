@@ -47,6 +47,7 @@ input[type=file]{display:none}.section-head{display:flex;justify-content:space-b
     </div>
     <div class="toolbar">
       <button id="newBtn" class="secondary" disabled>＋ Nová otázka</button>
+      <button id="new50Btn" class="secondary" disabled>＋ Přidat 50 prázdných otázek</button>
       <button id="deleteBtn" class="danger" disabled>Smazat vybranou</button>
     </div>
     <label for="search">Hledat v otázkách</label>
@@ -187,14 +188,15 @@ input[type=file]{display:none}.section-head{display:flex;justify-content:space-b
   }
   function validateQuestion(q) {
     if (!q.id) return 'Vyplň ID otázky.';
-    if (!Number.isInteger(q.section) || q.section < 1) return 'Číslo okruhu musí být celé číslo od 1.';
-    if (!q.question) return 'Zadej znění otázky.';
-    if (!q.levels.length) return 'Vyber alespoň jednu úroveň TOP-PK.';
-    if (q.answers.length < 2) return 'Otázka musí mít alespoň dvě odpovědi.';
-    if (q.answers.some(a=>!a.text)) return 'Vyplň text všech odpovědí.';
-    if (!q.answers.some(a=>a.correct)) return 'Označ alespoň jednu správnou odpověď.';
     const duplicate = data.questions.some(old=>String(old.id)===q.id && String(old.id)!==String(selectedId));
     if (duplicate) return `ID ${q.id} už existuje. Zvol jiné ID.`;
+    // Prázdné i rozpracované otázky lze průběžně ukládat. Kontrola se spustí
+    // až po vyplnění zadání a textů alespoň dvou odpovědí.
+    const readyToValidate = q.question && q.answers.length >= 2 && q.answers.every(a=>a.text);
+    if (!readyToValidate) return '';
+    if (!Number.isInteger(q.section) || q.section < 1) return 'Číslo okruhu musí být celé číslo od 1.';
+    if (!q.levels.length) return 'Vyber alespoň jednu úroveň TOP-PK.';
+    if (!q.answers.some(a=>a.correct)) return 'Označ alespoň jednu správnou odpověď.';
     return '';
   }
   function saveCurrent(showMessage=true) {
@@ -238,6 +240,21 @@ input[type=file]{display:none}.section-head{display:flex;justify-content:space-b
     renderAnswers(q.answers); $('qid').focus(); $('deleteBtn').disabled=true;
     status('Vyplň otázku a odpovědi, označ správnou odpověď a klikni na „Použít změny“.');
   });
+  $('new50Btn').addEventListener('click', () => {
+    if (!data) return;
+    if (selectedId !== null && !$('editor').hidden && !saveCurrent(false)) {
+      status('Nejdřív oprav ID otázky nebo zruš neuložené změny ve formuláři.','error'); return;
+    }
+    const added = [];
+    for (let i=0; i<50; i++) {
+      const q = {id:makeId(), section:1, levels:['TOP-PK1'], question:'',
+        answers:[{text:'',label:'a',correct:false},{text:'',label:'b',correct:false}]};
+      data.questions.push(q); added.push(q);
+    }
+    selectedId = String(added[0].id); draftNew = false;
+    refresh(); showQuestion();
+    status(`Přidáno 50 prázdných otázek (${added[0].id}–${added[added.length-1].id}). Lze je vyplňovat postupně a uložit do JSON.`,'success');
+  });
   $('deleteBtn').addEventListener('click', () => {
     const q=currentQuestion(); if(!q) return;
     if(!confirm(`Opravdu smazat otázku ${q.id}?`)) return;
@@ -270,6 +287,12 @@ input[type=file]{display:none}.section-head{display:flex;justify-content:space-b
     status('JSON byl připraven ke stažení. Nahraď jím původní TOPICI_otazky.json ve složce webu.','success');
     refresh();showQuestion();
   });
+  $('new50Btn').disabled = true;
+  const originalRefresh = refresh;
+  refresh = function() {
+    originalRefresh();
+    $('new50Btn').disabled = !data;
+  };
 })();
 </script>
 </body>
