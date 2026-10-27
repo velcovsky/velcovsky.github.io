@@ -1,5 +1,10 @@
 [
   {
+    "name": "KNIHA.json",
+    "path": "KNIHA.json",
+    "url": "https://raw.githubusercontent.com/velcovsky/velcovsky.github.io/main/kriz/krizovky/KNIHA.json"
+  },
+  {
     "name": "MINI.json",
     "path": "MINI.json",
     "url": "https://raw.githubusercontent.com/velcovsky/velcovsky.github.io/main/kriz/krizovky/MINI.json"
