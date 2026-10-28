@@ -30,10 +30,11 @@
         if (!path) return null;
         return {
           name: item.name || path.split('/').pop(),
-          download_url: item.url || item.download_url || (baseRaw + path.split('/').map(encodeURIComponent).join('/'))
+          download_url: item.url || item.download_url || (baseRaw + path.split('/').map(encodeURIComponent).join('/')),
+          added: Number(item.added || item.created || 0)
         };
       }).filter(x => x && x.name.toLowerCase().endsWith('.json') && x.name.toLowerCase() !== 'index.json');
-      state.files = files.sort((a, b) => a.name.localeCompare(b.name, 'cs'));
+      state.files = files.sort((a, b) => (b.added - a.added) || b.name.localeCompare(a.name, 'cs')); // Nejnověji přidané první
       select.replaceChildren();
       if (!state.files.length) {
         select.add(new Option('Ve složce nejsou JSON soubory', ''));
