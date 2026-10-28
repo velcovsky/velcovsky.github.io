@@ -818,3 +818,13 @@ footer.entry-meta .meta-in {
   border-radius: 4px;
   text-align: center;
 }
+
+#main img { display: block; margin-right: auto; margin-left: auto; }
+
+#main .row > .thumbnails.recentworks.row {
+  box-sizing: border-box;
+  flex: 0 0 calc(100% - 24px);
+  width: calc(100% - 24px);
+  margin-right: 12px;
+  margin-left: 12px;
+}
