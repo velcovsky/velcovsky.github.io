@@ -796,3 +796,25 @@ footer.entry-meta .meta-in {
     max-width: 1080px;
   }
 }
+
+/* Restore the legacy centered code panels on article pages. */
+#main .col-md-12 { text-align: center; }
+#main pre {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 9.5px;
+  overflow: auto;
+  color: #333;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.43;
+  word-break: break-all;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
