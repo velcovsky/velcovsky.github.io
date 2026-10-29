@@ -118,177 +118,220 @@
                 </div>
             </div>
         </section>
-
-<main id="main">
-      <div class="container">
-        <div class="row section topspace">
-          <div class="col-md-12">
-            <p class="lead text-center text-muted">Přidání tlačítka do autocadu
+        <main id="main">
+            <div class="container">
+                <div class="row section topspace">
+                    <div class="col-md-12">
+                        <p class="lead text-center text-muted">Přidání tlačítka do autocadu
               (VBA)</p>
-            <b>Prostředí</b>: Autocad model </div>
-          <div class="col-md-12"><br>
-          </div>
-          <div class="col-md-12">Nejprve je potřeba vědět, kde máme umístěný
-            soubor projektu s moduly VBA. Uložené projekty můžeme najít přes
-            funkci načíst projekt, která je umístěna na panelu nástrojů Správa
-            &gt; karta Aplikace &gt; v rozbalovací nabídce.</div>
-          <div class="col-md-12"> &nbsp;&nbsp; </div>
-          <div class="col-md-12">
-            <div style="text-align: center;"><img src="./images/acad-vba-01.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Je potřeba znát složku a název
-              projektu s příponou dvb (v našem příkladu <u>Projekt.dvb</u>)</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-01-5.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-02.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Pro přidání tlačítka použijeme
-              Uživatelské rozhraní (CUI) umístěné na panelu nástrojů Správa &gt;
-              karta Přizpůsobení.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-03.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Na obrázku níže vydíme pracovní
-              prostředí úpravy uživatelského rozhraní.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-04.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Na záložce Seznam příkazů klikneme
-              pravým tlačítkem myši a zvolíme nový příkaz.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-05.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Vytvořili jsme nový příkaz, který
-              je dobré si výstižně pojmenovat.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-06.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-07.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Na panelu Obrázek tlačítka zvolíme
-              výstižnou ikonu ze připravených náhledů.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-08.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Dle potřeby můžeme tlačítkem
-              Upravit otevřít nástroj Editace tlačítek a ikonu dle potřeby
-              upravit.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-10.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">V panelu Vlastnosti pak upravíme
-              položku Makro. Zadáme do ní cestu k modulu, který chceme tlačítkem
-              vyvolat.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">
-              <pre><span style="color: #808080; ">^C^C_-vbarun;"==cesta a název projektu==!==modul číslo==.==název makra=="</span></pre>
-            </div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">příklad cesty:</div>
-            <div style="text-align: center;">
-              <pre><span style="color: #808080; ">^C^C_-vbarun;"C:/trans/ilogic/Projekt.dvb!module1.Black_SetWindowToPlot"</span></pre>
-            </div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-12.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Odkaz zobrazený v Editoru dlouhých
-              textů.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-13.png"
-                alt=""></div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;">Nyní stačí "přetáhnout" vytvořený
-              příkaz ze Seznamu příkazů do panelu nástrojů rychlý přístup.</div>
-            <div style="text-align: center;"><br>
-            </div>
-            <div style="text-align: center;"><img src="./images/acad-vba-14.png"
-                alt=""></div>
-            <ul>
-            </ul>
-          </div>
-          <div class="col-md-12"><b><br>
-            </b></div>
-          <span style="color: #FF0000; "></span><span style="color: #800000; "></span>
-          <div class="col-md-12">
-            <p class="lead text-center text-muted"> </p>
-          </div>
-          <h2 class="section-title"><span>náhledy</span></h2>
-          <div class="thumbnails recentworks row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
-                  <img src="./images/ilogic.png" alt="" style="height: 241px;">
-                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
-                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="vba.html"> <span class="img" style="height: 241px;"> <img
-                    src="./images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
-                      class="more">See details →</span></span> </span>AUTOCAD -
-                VBA </a><span class="details"></span> </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
-                  <img src="./images/TK.png" alt=""> <span class="cover"><span
-                      class="more">See details →</span></span>&nbsp;</span><span
-                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
-                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
-                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row section clients topspace">
-            <h2 class="section-title"><span>Odkazy</span></h2>
-            <div class="col-lg-12">
-              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
+                        <b>Prostředí</b>: Autocad model
+                    </div>
+                    <div class="col-md-12">
+                        <br>
+                    </div>
+                    <div class="col-md-12">Nejprve je potřeba vědět, kde máme umístěný
+                        soubor projektu s moduly VBA. Uložené projekty můžeme najít přes
+                        funkci načíst projekt, která je umístěna na panelu nástrojů Správa
+                        &gt; karta Aplikace &gt; v rozbalovací nabídce.
+</div>
+                    <div class="col-md-12"> &nbsp;&nbsp; </div>
+                    <div class="col-md-12">
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-01.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Je potřeba znát složku a název
+                            projektu s příponou dvb (v našem příkladu <u>Projekt.dvb</u>)
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-01-5.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-02.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Pro přidání tlačítka použijeme
+                            Uživatelské rozhraní (CUI) umístěné na panelu nástrojů Správa &gt;
+                            karta Přizpůsobení.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-03.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Na obrázku níže vydíme pracovní
+                            prostředí úpravy uživatelského rozhraní.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-04.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Na záložce Seznam příkazů klikneme
+                            pravým tlačítkem myši a zvolíme nový příkaz.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-05.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Vytvořili jsme nový příkaz, který
+                            je dobré si výstižně pojmenovat.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-06.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-07.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Na panelu Obrázek tlačítka zvolíme
+                            výstižnou ikonu ze připravených náhledů.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-08.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Dle potřeby můžeme tlačítkem
+                            Upravit otevřít nástroj Editace tlačítek a ikonu dle potřeby
+                            upravit.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-10.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">V panelu Vlastnosti pak upravíme
+                            položku Makro. Zadáme do ní cestu k modulu, který chceme tlačítkem
+                            vyvolat.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <pre><span style="color: #808080; ">^C^C_-vbarun;"==cesta a název projektu==!==modul číslo==.==název makra=="</span></pre>
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">příklad cesty:</div>
+                        <div style="text-align: center;">
+                            <pre><span style="color: #808080; ">^C^C_-vbarun;"C:/trans/ilogic/Projekt.dvb!module1.Black_SetWindowToPlot"</span></pre>
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-12.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Odkaz zobrazený v Editoru dlouhých
+                            textů.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-13.png" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">Nyní stačí "přetáhnout" vytvořený
+                            příkaz ze Seznamu příkazů do panelu nástrojů rychlý přístup.
+</div>
+                        <div style="text-align: center;">
+                            <br>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="./images/acad-vba-14.png" alt="">
+                        </div>
+                        <ul>
+</ul>
+                    </div>
+                    <div class="col-md-12">
+                        <b><br> </b>
+                    </div>
+                    <span style="color: #FF0000; "></span><span style="color: #800000; "></span>
+                    <div class="col-md-12">
+                        <p class="lead text-center text-muted"> </p>
+                    </div>
+                    <h2 class="section-title"><span>náhledy</span></h2>
+                    <div class="thumbnails recentworks row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;"> <img src="./images/ilogic.png" alt="" style="height: 241px;"> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">Inventor - ilogic</span> </a><span class="details"></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="vba.html"> <span class="img" style="height: 241px;"> <img src="./images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span class="more">See details →</span></span> </span>AUTOCAD -
+                VBA </a><span class="details"></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;"> <img src="./images/TK.png" alt=""> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row section clients topspace">
+                        <h2 class="section-title"><span>Odkazy</span></h2>
+                        <div class="col-lg-12">
+                            <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
                   (EN)</a></p>
+                        </div>
+                    </div>
+                    <!-- /section -->
+                </div>
+                <!-- /container -->
             </div>
-          </div>
-          <!-- /section --> </div>
-        <!-- /container --> </div>
-    </main>
-
+        </main>
     </body>
 </html>
