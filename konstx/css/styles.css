@@ -816,7 +816,7 @@ footer.entry-meta .meta-in {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border-radius: 4px;
-  text-align: center;
+  text-align: left;
 }
 
 #main img { display: block; margin-right: auto; margin-left: auto; }
@@ -827,4 +827,66 @@ footer.entry-meta .meta-in {
   width: calc(100% - 24px);
   margin-right: 12px;
   margin-left: 12px;
+}
+
+/* Python code panels: align source to the left while preserving its whitespace indentation. */
+#main div[style*="background-color: #1e1e1e"] {
+  text-align: left;
+  overflow-x: auto;
+}
+
+
+#main div[style*="background-color: #1e1e1e"] {
+  padding: 4px;
+  line-height: 17px;
+}
+
+
+#main div[style*="background-color: #1e1e1e"] {
+  padding: 4px;
+  line-height: 17px;
+}
+
+
+
+/* iLogic page: responsive YouTube video and consistent three-column thumbnail grids. */
+.ilogic-page .video-frame {
+  position: relative;
+  width: min(100%, 900px);
+  aspect-ratio: 16 / 9;
+  margin: 20px auto;
+}
+.ilogic-page .video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.ilogic-page #main .thumbnails.recentworks.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  flex: none;
+}
+.ilogic-page #main .thumbnails.recentworks.row > [class*="col-"] {
+  box-sizing: border-box;
+  float: none;
+  width: auto;
+  max-width: none;
+  padding: 0;
+}
+@media (min-width: 576px) {
+  .ilogic-page #main .thumbnails.recentworks.row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) {
+  .ilogic-page #main .thumbnails.recentworks.row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
