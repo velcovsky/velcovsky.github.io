@@ -122,123 +122,159 @@
             <div class="container">
                 <div class="row section topspace">
                     <div class="col-md-12">
-                        <p class="lead text-center text-muted">Export do xls</p>
-                        <br>
-                        <b>Prostředí</b>: výkres<br>
+                        <p class="lead text-center text-muted">Export do xls (VBA)</p>
+                        <b>Prostředí</b>: Autocad model <br>
                         &nbsp;&nbsp;
+                        <ul>
+                            <li>v definovaném xls souboru najde první volný řádek</li>
+                            <li>zapíše do něj příslušné hodnoty ze souboru (číslo výkresu...)</li>
+                            <li>vytvoří tak přehlednou tabulku výkresu...</li>
+                        </ul>
+                        <pre><span style="color: #808080; "><span style="color: #333333;">
+Public Sub Vykresy_excel_test()
+
+'pracovni verze!!!
+
+'nastaveni excel- zapnout tools_references_microsoft excel
+'setup excel- chech if tools_references_microsoft excel is enable
+Dim ExL As Excel.Application
+Dim XlWorkBook As Excel.Workbook
+Dim excelSheet As Excel.Worksheet
+
+'kontrola musi byt nainstalovany excel
+'chech if excel is instaled
+On Error Resume Next
+Set ExL = GetObject("", "Excel.Application")
+ExL.Visible = True
+If (Err.Number &lt;&gt; 0) Then
+Err.Clear
+MsgBox "You must have Excel loaded on your computer!"
+Exit Sub
+End If
+
+'cesta k excel souboru a listu sesitu
+'path, name and sheet of workbook
+Set XlWorkBook = Workbooks.Open("C:\trans\TestFile.xlsx")
+Sheets("List1").Select
+Set excelSheet = ExL.ActiveWorkbook.Sheets("List1")
+
+'najdi prvni prazdny radek - nefunguje
+'find first empty row - not work
+'Dim i As Long
+'i = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Select
+
+'najdi prvni prazdny radek
+'find first empty row
+Dim Fnd As Excel.Range
+Set Fnd = excelSheet.Range("A1:A1000").Find("")
+R$ = Fnd.Address
+Rw = Val(Mid$(R$, 4))
+'Resulting_Value = excelSheet.Cells(Rw, 2).Value
+
+'zapis do bunek
+'edit cells
+'excelSheet.Cells(Rw, 1).Value = "test29"
+
+
+' najde blok - Rohové razítko Aquarex - zapise hodnoty do &lt;Číslo_výkresu&gt;, &lt;Název_výkresu&gt;, &lt;Datum vytvoření&gt;, &lt;Autor&gt;
+' SEARCH BLOCK ON DRAWING.
+
+Dim DrNumber_kpl As String '&lt;Číslo_výkresu&gt; - \W0.7500;xxxxxx
+Dim DrNumber As String  '&lt;Číslo_výkresu&gt; editovane
+
+Dim DrName_kpl As String '&lt;Název_výkresu&gt;
+Dim DrName As String '&lt;Název_výkresu&gt; edit
+
+Dim CrDate_kpl As String '&lt;Datum vytvoření&gt;
+Dim CrDate As String '&lt;Datum vytvoření&gt; edit
+
+Dim Autor_kpl As String '&lt;Autor&gt;
+Dim Autor As String '&lt;Autor&gt; edit
+
+For Each ENTITY In ThisDrawing.ModelSpace                                                   '  For eache entity inside modele space
+    If ENTITY.ObjectName = "AcDbBlockReference" Then                                        '
+        If ENTITY.EffectiveName = "Rohová razítka Aquarex" Or ENTITY.EffectiveName = "block name 2" Then  ' check block name inside the dwg
+            If ENTITY.HasAttributes = True Then                                             ' Se il blocco ha attributi
+                ATTRIB_LIST = ENTITY.GetAttributes                                          ' GET THE ARRAY "ATTRIB_LIST"
+                INS_POINT = ENTITY.InsertionPoint                                           ' BLOCK INSERTION POINT
+            'excelSheet.Cells(Rw, 1) = ENTITY.Name                                  ' BLOCK NAME
+                    'excelSheet.Cells(Rw, 2) = ENTITY.Layer                         ' BLOCK LAYER
+                    'excelSheet.Cells(Rw, 3) = ENTITY.EffectiveName                  ' BLOCK EFFECTIVE NAME
+                    'excelSheet.Cells(Rw, 4) = INS_POINT(0)                  ' BLOCK INSERTION POINT X
+                    'excelSheet.Cells(Rw, 5) = INS_POINT(1)                      ' BLOCK INSERTION POINT Y
+                    'excelSheet.Cells(Rw, 6) = INS_POINT(2)                  ' BLOCK INSERTION POINT Z
+                    'excelSheet.Cells(Rw, 1) = ATTRIB_LIST(9).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Číslo_výkresu&gt;
+                    'excelSheet.Cells(Rw, 2) = ATTRIB_LIST(0).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Název_výkresu&gt;
+                    'excelSheet.Cells(Rw, 3) = ATTRIB_LIST(11).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Datum vytvoření&gt;
+                    'excelSheet.Cells(Rw, 4) = ATTRIB_LIST(1).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Autor&gt;
+                    DrNumber_kpl = ATTRIB_LIST(9).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Číslo_výkresu&gt;
+                    DrName_kpl = ATTRIB_LIST(0).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Název_výkresu&gt;
+                    CrDate_kpl = ATTRIB_LIST(11).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Datum vytvoření&gt;
+                    Autor_kpl = ATTRIB_LIST(1).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE &lt;Autor&gt;
+                    'ExRow = ExRow + 1
+                    'i = i + 1
+                End If
+            End If
+        End If
+        
+'editace textu ( odstrani "\W0.7500;")
+'edit text ( remove "\W0.7500;")
+DrNumber = Replace(DrNumber_kpl, "\W0.7500;", "")
+DrName = Replace(DrName_kpl, "\W0.7500;", "")
+CrDate = Replace(CrDate_kpl, "\W0.7500;", "")
+Autor = Replace(Autor_kpl, "\W0.7500;", "")
+
+
+'zapise hodnoty do bunek v excelu
+' put text value in excel
+excelSheet.Cells(Rw, 1) = DrNumber
+excelSheet.Cells(Rw, 2) = DrName
+excelSheet.Cells(Rw, 3) = CrDate
+excelSheet.Cells(Rw, 4) = Autor
+
+
+'Najde a nahradi(vymaze) prebytecne casti textu (atributu)
+'Find and replace unnecessary part of attributs
+'Dim MyRange As Range
+'Sheets("List1").UsedRange.Replace What:="\W0.7500;", Replacement:=""
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+XlWorkBook.Save
+XlWorkBook.Close
+Next
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+'ExL.ScreenUpdating = True
+'XlWorkBook.Save
+'XlWorkBook.Close
+ExL.Application.Quit
+'Set ExL = Nothing
+'Set XlWorkBook = Nothing
+'Set excelSheet = Nothing
+
+'show message  - first empty row
+'MsgBox Rw
+
+End Sub
+</span><br></span></pre> <b></b>
                     </div>
-                    <ul>
-                        <li>v definovaném xls souboru najde první volný řádek</li>
-                        <li>zapíše do něj příslušné hodnoty ze souboru (číslo výkresu...)</li>
-                        <li>vytvoří tak přehlednou tabulku výkresu...</li>
-                    </ul>
                     <div class="col-md-12">
-                        <pre><span style="color: #808080; "></span><span style="color: #808080; ">'GoExcel.Open("C:\trans\vykresy.xlsx", "List1")</span>
-<span style="color: #808080; ">'FindProjectNumber = GoExcel.FindRow("C:\trans\vykresy.xlsx", "List1")</span>
-
-<span style="color: #808080; ">'GoExcel.CellValue("A" &amp; i) = iProperties.Value("Custom", "003_cislo_vykresu")</span>
-<span style="color: #808080; ">'GoExcel.CellValue("B" &amp; i) = iProperties.Value("Custom", "001_nazev_vykresu")</span>
-<span style="color: #808080; ">'GoExcel.CellValue("C" &amp; i) = iProperties.Value("Summary", "Author")</span>
-<span style="color: #808080; ">'GoExcel.CellValue("D3") = iProperties.Value("Project", "Creation Date")</span>
-<span style="color: #808080; ">'GoExcel.CellValue("D" &amp; i) = DateString</span>
-
-<span style="color: #808080; ">'GoExcel.Save</span>
-
-<span style="color: #808080; ">'MessageBox.Show("iProperties successfully copied!")</span>
-
-<span style="color: #FF0000; ">If</span> -1 = <span style="color: #800080; ">GoExcel</span>.<span
-
-style="color: #800080; ">FindRow</span>(<span style="color: #008080; ">"C:\trans\vykresy.xlsx"</span>, <span
-
-style="color: #008080; ">"List1"</span>, <span style="color: #008080; ">"Číslo výkresu"</span>, <span
-
-style="color: #008080; ">"="</span>, <span style="color: #800080; ">iProperties</span>.<span
-
-style="color: #800080; ">Value</span>(<span style="color: #008080; ">"Custom"</span>, <span
-
-style="color: #008080; ">"003_cislo_vykresu"</span>))
-
-
-<span style="color: #800000; ">Worksheet</span> = (<span style="color: #008080; ">"C:\trans\vykresy.xlsx"</span>)
-<span style="color: #800000; ">Sheetno</span> = (<span style="color: #008080; ">"List1"</span>)
-<span style="color: #808080; ">' Open excel </span>
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">Open</span>(<span
-
-style="color: #800000; ">Worksheet</span>, <span style="color: #800000; ">Sheetno</span>)
-<span style="color: #808080; ">' Define Range</span>
-<span style="color: #800000; ">RowStart</span> = 2
-<span style="color: #800000; ">RowEnd</span> = 10000
-<span style="color: #FF0000; ">For</span> <span style="color: #800000; ">count</span> = <span
-
-style="color: #800000; ">RowStart</span> <span style="color: #FF0000; ">To</span> <span
-
-style="color: #800000; ">RowEnd</span>
-	<span style="color: #808080; ">' If it's blank count it</span>
-	<span style="color: #FF0000; ">If</span> <span style="color: #FF0000; ">String</span>.<span
-
-style="color: #800000; ">IsNullOrEmpty</span>(<span style="color: #800080; ">GoExcel</span>.<span
-
-style="color: #800080; ">CellValue</span>(<span style="color: #008080; ">"A"</span> &amp; <span
-
-style="color: #800000; ">count</span>)) <span style="color: #FF0000; ">Then</span> 
-		<span style="color: #800000; ">i</span> = <span style="color: #800000; ">i</span> + 1
-	<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span>
-<span style="color: #FF0000; ">Next</span>
-<span style="color: #808080; ">' Next empty row is max rows minus blank rows plus one</span>
-<span style="color: #800000; ">row</span> = <span style="color: #800000; ">RowEnd</span> - <span
-
-style="color: #800000; ">i</span> + 1
-<span style="color: #808080; ">' MsgBox("Inserting Data on Row " &amp; row)</span>
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
-
-style="color: #008080; ">"A"</span> &amp; <span style="color: #800000; ">row</span>) = <span
-
-style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
-
-style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"003_cislo_vykresu"</span>)
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
-
-style="color: #008080; ">"B"</span> &amp; <span style="color: #800000; ">row</span>) = <span
-
-style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
-
-style="color: #008080; ">"Custom"</span>, <span style="color: #008080; ">"001_nazev_vykresu"</span>)
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
-
-style="color: #008080; ">"C"</span> &amp; <span style="color: #800000; ">row</span>) = <span
-
-style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
-
-style="color: #008080; ">"Summary"</span>, <span style="color: #008080; ">"Author"</span>)
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
-
-style="color: #008080; ">"D"</span> &amp; <span style="color: #800000; ">row</span>) = <span
-
-style="color: #800000; ">DateString</span>
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">CellValue</span>(<span
-
-style="color: #008080; ">"E"</span> &amp; <span style="color: #800000; ">row</span>) = <span
-
-style="color: #800080; ">iProperties</span>.<span style="color: #800080; ">Value</span>(<span
-
-style="color: #008080; ">"Project"</span>, <span style="color: #008080; ">"Stock Number"</span>)
-<span style="color: #800080; ">GoExcel</span>.<span style="color: #800080; ">Save</span>
-
-<span style="color: #FF0000; ">Else</span>
-<span style="color: #808080; ">' MsgBox("Value already exist")	</span>
-<span style="color: #FF0000; ">End</span> <span style="color: #FF0000; ">If</span><span
-
-style="color: #800000; "></span></pre>
+                        <b><br> </b>
+                    </div>
+                    <span style="color: #FF0000; "></span><span style="color: #800000; "></span>
+                    <div class="col-md-12">
                         <p class="lead text-center text-muted"> </p>
                     </div>
                     <h2 class="section-title"><span>náhledy</span></h2>
                     <div class="thumbnails recentworks row">
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;"> <img src="images/ilogic.png" alt="" style="height: 241px;"> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">Inventor - ilogic</span> </a><span class="details"></span>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;"> <img src="assets/images/ilogic.png" alt="" style="height: 241px;"> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">Inventor - ilogic</span> </a><span class="details"></span>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="vba.html"> <span class="img" style="height: 241px;"> <img src="images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span class="more">See details →</span></span> </span>AUTOCAD -
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="vba.html"> <span class="img" style="height: 241px;"> <img src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span class="more">See details →</span></span> </span>AUTOCAD -
                 VBA </a><span class="details"></span>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;"> <img src="images/TK.png" alt=""> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail" href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;"> <img src="assets/images/TK.png" alt=""> <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a>
                         </div>
                     </div>
                 </div>
