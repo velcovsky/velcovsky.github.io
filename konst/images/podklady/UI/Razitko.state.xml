@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormStatePersist xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Size>
+    <Width>496</Width>
+    <Height>912</Height>
+  </Size>
+  <Location>
+    <X>743</X>
+    <Y>64</Y>
+  </Location>
+  <DipToPixelConversionFactors>
+    <WidthFactor>1</WidthFactor>
+    <HeightFactor>1</HeightFactor>
+  </DipToPixelConversionFactors>
+  <SplitterLocations>
+    <SplitterLocation>
+      <Name>Dělič 2</Name>
+      <Location>
+        <X>0</X>
+        <Y>96</Y>
+      </Location>
+    </SplitterLocation>
+    <SplitterLocation>
+      <Name>Dělič 1</Name>
+      <Location>
+        <X>0</X>
+        <Y>487</Y>
+      </Location>
+    </SplitterLocation>
+  </SplitterLocations>
+  <GroupExpansionStateList>
+    <GroupExpansionState>
+      <Name>Skupina 1</Name>
+      <Expanded>true</Expanded>
+    </GroupExpansionState>
+    <GroupExpansionState>
+      <Name>Skupina 2</Name>
+      <Expanded>true</Expanded>
+    </GroupExpansionState>
+  </GroupExpansionStateList>
+  <TabGroupSelectedPageList>
+    <TabGroupSelectedPage>
+      <Name />
+      <SelectedIndex>0</SelectedIndex>
+    </TabGroupSelectedPage>
+  </TabGroupSelectedPageList>
+</FormStatePersist>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormStatePersist xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Size>
+    <Width>515</Width>
+    <Height>827</Height>
+  </Size>
+  <Location>
+    <X>903</X>
+    <Y>0</Y>
+  </Location>
+  <DipToPixelConversionFactors>
+    <WidthFactor>1</WidthFactor>
+    <HeightFactor>1</HeightFactor>
+  </DipToPixelConversionFactors>
+  <SplitterLocations>
+    <SplitterLocation>
+      <Name>Dělič 1</Name>
+      <Location>
+        <X>0</X>
+        <Y>96</Y>
+      </Location>
+    </SplitterLocation>
+  </SplitterLocations>
+  <GroupExpansionStateList>
+    <GroupExpansionState>
+      <Name>Helios položky</Name>
+      <Expanded>true</Expanded>
+    </GroupExpansionState>
+    <GroupExpansionState>
+      <Name>iVlastnosti</Name>
+      <Expanded>true</Expanded>
+    </GroupExpansionState>
+    <GroupExpansionState>
+      <Name>Helios_ivlastnosti</Name>
+      <Expanded>true</Expanded>
+    </GroupExpansionState>
+  </GroupExpansionStateList>
+  <TabGroupSelectedPageList />
+</FormStatePersist>

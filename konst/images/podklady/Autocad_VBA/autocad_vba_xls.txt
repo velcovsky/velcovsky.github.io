@@ -1,0 +1,548 @@
+
+Public Sub Vykresy_excel_test()
+
+'nastaveni excel- zapnout tools_references_microsoft excel
+'setup excel- chech if tools_references_microsoft excel is enable
+Dim ExL As Excel.Application
+Dim XlWorkBook As Excel.Workbook
+Dim excelSheet As Excel.Worksheet
+
+'kontrola musi byt nainstalovany excel
+'chech if excel is instaled
+On Error Resume Next
+Set ExL = GetObject("", "Excel.Application")
+ExL.Visible = True
+If (Err.Number <> 0) Then
+Err.Clear
+MsgBox "You must have Excel loaded on your computer!"
+Exit Sub
+End If
+
+'cesta k excel souboru a listu sesitu
+'path, name and sheet of workbook
+Set XlWorkBook = Workbooks.Open("C:\trans\TestFile.xlsx")
+Sheets("List1").Select
+Set excelSheet = ExL.ActiveWorkbook.Sheets("List1")
+
+'najdi prvni prazdny radek - nefunguje
+'find first empty row - not work
+'Dim i As Long
+'i = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Select
+
+'najdi prvni prazdny radek
+'find first empty row
+Dim Fnd As Excel.Range
+Set Fnd = excelSheet.Range("A1:A1000").Find("")
+R$ = Fnd.Address
+Rw = Val(Mid$(R$, 4))
+'Resulting_Value = excelSheet.Cells(Rw, 2).Value
+
+'zapis do bunek
+'edit cells
+'excelSheet.Cells(Rw, 1).Value = "test29"
+
+
+' najde blok - Rohové razítko Aquarex - zapise hodnoty do bunek
+' SEARCH BLOCK ON DRAWING.
+For Each ENTITY In ThisDrawing.ModelSpace                                                   '  For eache entity inside modele space
+    If ENTITY.ObjectName = "AcDbBlockReference" Then                                        '
+        If ENTITY.EffectiveName = "Rohová razítka Aquarex" Or ENTITY.EffectiveName = "block name 2" Then  ' check block name inside the dwg
+            If ENTITY.HasAttributes = True Then                                             ' Se il blocco ha attributi
+                ATTRIB_LIST = ENTITY.GetAttributes                                          ' GET THE ARRAY "ATTRIB_LIST"
+                INS_POINT = ENTITY.InsertionPoint                                           ' BLOCK INSERTION POINT
+            'excelSheet.Cells(Rw, 1) = ENTITY.Name                                  ' BLOCK NAME
+                    'excelSheet.Cells(Rw, 2) = ENTITY.Layer                         ' BLOCK LAYER
+                    'excelSheet.Cells(Rw, 3) = ENTITY.EffectiveName                  ' BLOCK EFFECTIVE NAME
+                    'excelSheet.Cells(Rw, 4) = INS_POINT(0)                  ' BLOCK INSERTION POINT X
+                    'excelSheet.Cells(Rw, 5) = INS_POINT(1)                      ' BLOCK INSERTION POINT Y
+                    'excelSheet.Cells(Rw, 6) = INS_POINT(2)                  ' BLOCK INSERTION POINT Z
+                    excelSheet.Cells(Rw, 1) = ATTRIB_LIST(9).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE <Název_výkresu>
+                    excelSheet.Cells(Rw, 2) = ATTRIB_LIST(0).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE <Číslo_výkresu>
+                    excelSheet.Cells(Rw, 3) = ATTRIB_LIST(11).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE <Datum vytvoření>
+                    excelSheet.Cells(Rw, 4) = ATTRIB_LIST(1).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE <Autor>
+                    'ExRow = ExRow + 1
+                    'i = i + 1
+                End If
+            End If
+        End If
+        
+'Najde a nahradi(vymaze) prebytecne casti textu (atributu)
+'Find and replace unnecessary part of attributs
+Dim MyRange As Range
+Sheets("List1").UsedRange.Replace What:="\W0.7500;", Replacement:=""
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+XlWorkBook.Save
+XlWorkBook.Close
+Next
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+'ExL.ScreenUpdating = True
+'XlWorkBook.Save
+'XlWorkBook.Close
+ExL.Application.Quit
+'Set ExL = Nothing
+'Set XlWorkBook = Nothing
+'Set excelSheet = Nothing
+
+'show message  - first empty row
+'MsgBox Rw
+
+End Sub
+
+_________________________________________________________________________________________________
+
+
+Public Sub Vykresy_excel_test()
+
+'nastaveni excel- zapnout tools_references_microsoft excel
+'setup excel- chech if tools_references_microsoft excel is enable
+Dim ExL As Excel.Application
+Dim XlWorkBook As Excel.Workbook
+Dim excelSheet As Excel.Worksheet
+
+'kontrola musi byt nainstalovany excel
+'chech if excel is instaled
+On Error Resume Next
+Set ExL = GetObject("", "Excel.Application")
+ExL.Visible = True
+If (Err.Number <> 0) Then
+Err.Clear
+MsgBox "You must have Excel loaded on your computer!"
+Exit Sub
+End If
+
+'cesta k excel souboru a listu sesitu
+'path, name and sheet of workbook
+Set XlWorkBook = Workbooks.Open("C:\trans\TestFile.xlsx")
+Sheets("List1").Select
+Set excelSheet = ExL.ActiveWorkbook.Sheets("List1")
+
+'najdi prvni prazdny radek - nefunguje
+'find first empty row - not work
+'Dim i As Long
+'i = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Select
+
+'najdi prvni prazdny radek
+'find first empty row
+Dim Fnd As Excel.Range
+Set Fnd = excelSheet.Range("A1:A1000").Find("")
+R$ = Fnd.Address
+Rw = Val(Mid$(R$, 4))
+'Resulting_Value = excelSheet.Cells(Rw, 2).Value
+
+'zapis do bunek
+'edit cells
+excelSheet.Cells(Rw, 1).Value = "test29"
+
+
+
+' SEARCH BLOCK ON DRAWING.
+For Each ENTITY In ThisDrawing.ModelSpace                                                   '  For eache entity inside modele space
+    If ENTITY.ObjectName = "AcDbBlockReference" Then                                        '
+        If ENTITY.EffectiveName = "Rohová razítka Aquarex" Or ENTITY.EffectiveName = "block name 2" Then  ' check block name inside the dwg
+            If ENTITY.HasAttributes = True Then                                             ' Se il blocco ha attributi
+                ATTRIB_LIST = ENTITY.GetAttributes                                          ' GET THE ARRAY "ATTRIB_LIST"
+                INS_POINT = ENTITY.InsertionPoint                                           ' BLOCK INSERTION POINT
+            'excelSheet.Cells(Rw, 1) = ENTITY.Name                                  ' BLOCK NAME
+                    'excelSheet.Cells(Rw, 2) = ENTITY.Layer                         ' BLOCK LAYER
+                    excelSheet.Cells(Rw, 3) = ENTITY.EffectiveName                  ' BLOCK EFFECTIVE NAME
+                    'excelSheet.Cells(Rw, 4) = INS_POINT(0)                  ' BLOCK INSERTION POINT X
+                    'excelSheet.Cells(Rw, 5) = INS_POINT(1)                      ' BLOCK INSERTION POINT Y
+                    'excelSheet.Cells(Rw, 6) = INS_POINT(2)                  ' BLOCK INSERTION POINT Z
+                    excelSheet.Cells(Rw, 7) = ATTRIB_LIST(9).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE N.1
+                    excelSheet.Cells(Rw, 8) = ATTRIB_LIST(0).TextString             ' WRITE ON EXCEL ATTRIBUTE VALUE N.2
+                    excelSheet.Cells(Rw, 9) = ATTRIB_LIST(11).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE N.3
+                    excelSheet.Cells(Rw, 10) = ATTRIB_LIST(1).TextString            ' WRITE ON EXCEL ATTRIBUTE VALUE N.4
+                    'ExRow = ExRow + 1
+                    'i = i + 1
+                End If
+            End If
+        End If
+XlWorkBook.Save
+XlWorkBook.Close
+Next
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+'ExL.ScreenUpdating = True
+'XlWorkBook.Save
+'XlWorkBook.Close
+ExL.Application.Quit
+'Set ExL = Nothing
+'Set XlWorkBook = Nothing
+'Set excelSheet = Nothing
+
+'show message  - first empty row
+'MsgBox Rw
+
+End Sub
+
+____________________________________________________________________________________________
+
+Public Sub Vykresy_excel_test()
+
+'nastaveni excel- zapnout tools_references_microsoft excel
+'setup excel- chech if tools_references_microsoft excel is enable
+Dim ExL As Excel.Application
+Dim XlWorkBook As Excel.Workbook
+Dim excelSheet As Excel.Worksheet
+
+'kontrola musi byt nainstalovany excel
+'chech if excel is instaled
+On Error Resume Next
+Set ExL = GetObject("", "Excel.Application")
+ExL.Visible = True
+If (Err.Number <> 0) Then
+Err.Clear
+MsgBox "You must have Excel loaded on your computer!"
+Exit Sub
+End If
+
+'cesta k excel souboru a listu sesitu
+'path, name and sheet of workbook
+Set XlWorkBook = Workbooks.Open("C:\trans\TestFile.xlsx")
+Sheets("List1").Select
+Set excelSheet = ExL.ActiveWorkbook.Sheets("List1")
+
+'najdi prvni prazdny radek - nefunguje
+'find first empty row - not work
+'Dim i As Long
+'i = Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Select
+
+'najdi prvni prazdny radek
+'find first empty row
+Dim Fnd As Excel.Range
+Set Fnd = excelSheet.Range("A1:A1000").Find("")
+R$ = Fnd.Address
+Rw = Val(Mid$(R$, 4))
+'Resulting_Value = excelSheet.Cells(Rw, 2).Value
+
+'zapis do bunek
+'edit cells
+excelSheet.Cells(Rw, 1).Value = "test29"
+
+'ulozit a zavrit~~~~~~~~~~~~~~~~~~'
+'save and close~~~~~~~~~~~~~~~~~~~'
+'ExL.ScreenUpdating = True
+XlWorkBook.Save
+XlWorkBook.Close
+ExL.Application.Quit
+'Set ExL = Nothing
+'Set XlWorkBook = Nothing
+'Set excelSheet = Nothing
+
+'show message  - first empty row
+'MsgBox Rw
+
+End Sub
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+Option Explicit
+' Requires:
+' Microsoft Excel Object Library
+' go to Tools->Options->General Tab and check 'Break on Unhandled Errors'
+
+Const xlFileName As String = "C:\trans\TestFile.xlsx" '<--change existing file name here
+
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+Public Sub ExportText()
+
+Dim oSset As AcadSelectionSet
+Dim oEnt As AcadEntity
+Dim oText As AcadText
+Dim i As Long
+
+Dim ftype(0) As Integer
+Dim fdata(0) As Variant
+ftype(0) = 0: fdata(0) = "TEXT"
+
+Dim dxftype As Variant
+Option Explicit
+' Requires:
+' Microsoft Excel Object Library
+' go to Tools->Options->General Tab and check 'Break on Unhandled Errors'
+
+Const xlFileName As String = "C:\trans\TestFile.xlsx" '<--change existing file name here
+
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+Public Sub ExportText()
+
+Dim oSset As AcadSelectionSet
+Dim oEnt As AcadEntity
+Dim oText As AcadText
+Dim i As Long
+
+Dim ftype(0) As Integer
+Dim fdata(0) As Variant
+ftype(0) = 0: fdata(0) = "TEXT"
+
+Dim dxftype As Variant
+Dim dxfdata As Variant
+
+dxftype = ftype
+dxfdata = fdata
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+Dim xlApp As Object
+
+Dim xlBook As Object
+
+Dim xlSheet As Object
+Dim lngRow As Long, lngCol As Long
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+On Error Resume Next
+Set xlApp = GetObject(, "Excel.Application")
+If Err <> 0 Then
+Err.Clear
+Set xlApp = CreateObject("Excel.Application")
+If Err <> 0 Then
+MsgBox "Impossible to run Excel.", vbExclamation
+End
+End If
+End If
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+On Error GoTo Err_Control
+
+         With ThisDrawing.SelectionSets
+              While .Count > 0
+                   .Item(0).Delete
+              Wend
+         Set oSset = .Add("$Texts$")
+         End With
+oSset.SelectOnScreen dxftype, dxfdata
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+xlApp.Visible = True
+Set xlBook = xlApp.Workbooks.Open(xlFileName)
+Set xlSheet = xlBook.Sheets(1)
+xlApp.ScreenUpdating = False
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+lngRow = 1: lngCol = 1
+For Each oEnt In oSset
+Set oText = oEnt
+xlSheet.Cells(lngRow, lngCol).Value = oText.TextString
+lngCol = lngCol + 1
+Next oEnt
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+'xlSheet.Columns.HorizontalAlignment = xlLeft
+'xlSheet.Columns.AutoFit
+
+xlApp.ScreenUpdating = True
+
+xlBook.Save
+xlBook.Close
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+xlApp.Application.Quit
+Set xlApp = Nothing
+Set xlBook = Nothing
+Set xlSheet = Nothing
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+MsgBox "Done"
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+Err_Control:
+If Err.Number <> 0 Then
+MsgBox Err.Description
+End If
+
+End Sub
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+
+
+-----------------------------------------------------------------------------------
+
+
+Sub Export()
+
+    Dim oExcel As Object
+    Dim oBook As Object
+    Dim oSheet As Object
+
+    'Start a new workbook in Excel
+    Set oExcel = CreateObject("Excel.Application")
+    Set oBook = oExcel.Workbooks.Add
+    Set oSheet = oBook.Worksheets(1)
+    
+    'If Not Dir("C:\trans\Beam Locations1.xlsx") = "" Then Kill ("C:\trans\Beam Locations1.xlsx")
+    
+    'Save the Workbook and Quit Excel
+    oBook.SaveAs "C:\trans\Beam Locations3.xlsx"
+    
+    Call SortDims("C:\trans\Beam Locations3.xlsx", oExcel, oBook, oSheet)
+    
+    oExcel.Save
+    oExcel.Quit
+     
+End Sub
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
+Option Explicit
+
+Sub Export()
+
+    On Error GoTo ErrorHandler
+
+    If Not Dir("C:\Users\" & Environ$("Username") & "\Documents\RESUME.XLW") = "" Then Kill ("C:\Users\" & Environ$("Username") & "\Documents\RESUME.XLW")
+    
+    Dim oExcel As Object
+    Dim oBook As Object
+    Dim oSheet As Object
+
+    'Start a new workbook in Excel
+    Set oExcel = CreateObject("Excel.Application")
+    Set oBook = oExcel.Workbooks.Add
+    Set oSheet = oBook.Worksheets(1)
+    
+    If Not Dir("C:\trans\Beam Locations.xlsx") = "" Then Kill ("C:\trans\Beam Locations.xlsx")
+    
+    'Save the Workbook and Quit Excel
+    oBook.SaveAs "C:\trans\Beam Locations.xlsx"
+    
+    Call SortDims("C:\trans\Beam Locations.xlsx", oExcel, oBook, oSheet)
+    
+    oExcel.Save
+    oExcel.Quit
+    
+    Set oSheet = Nothing
+    Set oBook = Nothing
+    Set oExcel = Nothing
+    
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ErrorHandler:
+    If Err.Number = -2147352567 Then
+    
+        oExcel.Save
+        oExcel.Quit
+    
+        Set oSheet = Nothing
+        Set oBook = Nothing
+        Set oExcel = Nothing
+    
+        Exit Sub
+    End If
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    
+End Sub
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Function SortDims(strFileName, xlApp, xlBook, xlSheet)
+
+    On Error GoTo ErrorHandler
+
+    Dim oSset As AcadSelectionSet
+    Dim oEnt As AcadEntity
+    Dim oDim As AcadDimension
+    Dim oDimOrd As AcadDimOrdinate
+    Dim eCnt As Integer
+    Dim iCnt As Integer
+    Dim rCnt As Integer
+    Dim iNdx As Integer
+    Dim insPnt() As Double
+    Dim fcode(0) As Integer
+    Dim fdata(0) As Variant
+    Dim dxfCode, dxfdata
+
+    fcode(0) = 0: fdata(0) = "DIMENSION"
+    dxfCode = fcode
+    dxfdata = fdata
+    Set oSset = ThisDrawing.PickfirstSelectionSet
+    oSset.Clear
+    oSset.SelectOnScreen dxfCode, dxfdata
+
+    iCnt = oSset.Count
+
+    ReDim SelPnt(0 To iCnt - 1, 0 To 3) As Variant
+    eCnt = 0
+
+    For Each oEnt In oSset
+
+        Set oDim = oEnt
+
+        insPnt = oDim.TextPosition
+        SelPnt(eCnt, 0) = insPnt(0)
+        SelPnt(eCnt, 1) = insPnt(1)
+        SelPnt(eCnt, 2) = insPnt(2)
+
+        Set oDimOrd = oEnt
+        SelPnt(eCnt, 3) = oDimOrd.Measurement
+            
+        eCnt = eCnt + 1
+    Next oEnt
+
+    ReDim sortPnt(0 To iCnt - 1, 0 To 3) As Variant
+    sortPnt = ColSort(SelPnt, 1)
+
+    Dim irow As Long
+    irow = 1
+    
+    With xlSheet
+        .Range("A:A").NumberFormat = "0.00#"
+        For iNdx = 0 To UBound(sortPnt, 1)
+            .Cells(irow, 1) = CStr(sortPnt(iNdx, 3))
+            irow = irow + 1
+        Next iNdx
+
+    End With
+    
+    '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ErrorHandler:
+    If Err.Number = -2147352567 Then
+    
+        xlApp.Save
+        xlApp.Quit
+    
+        Set xlSheet = Nothing
+        Set xlBook = Nothing
+        Set xlApp = Nothing
+    
+        Exit Function
+    End If
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+End Function
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Public Function ColSort(SourceArr As Variant, iPos As Integer) As Variant
+
+    Dim Check As Boolean
+    ReDim tmpArr(UBound(SourceArr, 2)) As Variant
+    Dim iCount As Integer
+    Dim jCount As Integer
+    Dim nCount As Integer
+
+    iPos = iPos - 1
+    Check = False
+
+    Do Until Check
+        Check = True
+        For iCount = LBound(SourceArr, 1) To UBound(SourceArr, 1) - 1
+            If SourceArr(iCount, iPos) > SourceArr(iCount + 1, iPos) Then
+                For jCount = LBound(SourceArr, 2) To UBound(SourceArr, 2)
+                    tmpArr(jCount) = SourceArr(iCount, jCount)
+                    SourceArr(iCount, jCount) = SourceArr(iCount + 1, jCount)
+                    SourceArr(iCount + 1, jCount) = tmpArr(jCount)
+                    Check = False
+                Next
+            End If
+        Next
+    Loop
+
+    ColSort = SourceArr
+
+End Function
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

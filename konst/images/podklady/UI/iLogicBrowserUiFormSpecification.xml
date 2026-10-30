@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSpecification xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>iLogicBrowserUiFormSpecification</Name>
+  <Guid>0dd411ee-4844-4619-834c-151a7a620d37</Guid>
+  <Items>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Razitko</Name>
+      <Guid>a44aa0c2-d8e6-4c1b-87e0-ee6b2e6c980e</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Helios</Name>
+      <Guid>ca0143ce-f417-4e93-9b0f-fcae933d46f2</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+  </Items>
+  <StyleAndSkinName>
+    <StyleName>Default</StyleName>
+  </StyleAndSkinName>
+  <AllowCustomization>false</AllowCustomization>
+  <PredefinedButtons>None</PredefinedButtons>
+  <Modal>false</Modal>
+  <IsLauncherPage>true</IsLauncherPage>
+</FormSpecification>
