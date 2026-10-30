@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs" style="font-size:16px">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Křížovky k vytisknutí ve formátu PDF">
+  <title>Křížovky k vytisknutí</title>
+  <link rel="stylesheet" href="../nicepage.css" media="screen">
+  <link rel="stylesheet" href="kriz_tisk.css" media="screen">
+  <script src="../jquery.js" defer></script>
+  <script src="../nicepage.js" defer></script>
+  <style>
+    .pdf-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:18px 0;list-style:none;margin:0}
+    .pdf-list li{min-width:0}
+    .pdf-card{display:flex;align-items:center;gap:12px;height:100%;box-sizing:border-box;padding:16px;border:1px solid #d8e1eb;border-radius:10px;background:#fff;color:#245b91;text-decoration:none;overflow-wrap:anywhere;transition:box-shadow .15s,transform .15s}
+    .pdf-card:hover,.pdf-card:focus-visible{box-shadow:0 4px 16px #00000012;transform:translateY(-1px);text-decoration:underline}
+    .pdf-icon{font-size:28px;flex:0 0 auto}
+    #pdf-status{padding:8px 0;color:#555}
+    .pdf-empty{padding:16px;border-radius:8px;background:#f5f7fa;color:#444}
+  </style>
+</head>
+<body data-path-to-root="../" data-include-products="false" class="u-body u-clearfix u-xl-mode" data-lang="cs">
+<header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+  <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Hlavní menu">
+    <div class="u-custom-menu u-nav-container"><ul class="u-nav u-unstyled u-nav-1" role="menubar">
+      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Rozdělovník</a></li>
+      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="kriz.html">Křížovky</a></li>
+      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="online.html">Online křížovky</a></li>
+    </ul></div>
+  </nav>
+</div></header>
+<section class="u-clearfix u-container-align-center u-image u-section-1" id="block-10">
+  <div class="u-clearfix u-sheet u-sheet-1"><div class="u-expanded-width u-list u-list-1"><div class="u-repeater u-repeater-1">
+    <div class="u-border-2 u-border-white u-container-align-center u-container-style u-grey-10 u-list-item u-radius u-repeater-item"><div class="u-container-layout u-valign-middle u-container-layout-1"><h5 class="u-align-center u-text u-text-1"><a class="u-button-style u-button-link u-text-palette-1-base" href="kriz.html">Křížovky</a></h5></div></div>
+    <div class="u-border-2 u-border-white u-container-align-center u-container-style u-grey-10 u-list-item u-radius u-repeater-item"><div class="u-container-layout u-valign-middle u-container-layout-2"><h5 class="u-align-center u-text u-text-2"><a class="u-button-style u-button-link u-text-palette-1-base" href="kriz_tisk.html">Křížovky k vytisknutí</a></h5></div></div>
+    <div class="u-border-2 u-border-white u-container-align-center u-container-style u-grey-10 u-list-item u-radius u-repeater-item"><div class="u-container-layout u-valign-middle u-container-layout-3"><h5 class="u-align-center u-text u-text-3"><a class="u-button-style u-button-link u-text-palette-1-base" href="../Contact.html">Kontakt</a></h5></div></div>
+  </div></div></div>
+</section>
+<section class="u-align-center u-clearfix u-container-align-center u-section-2" id="block-14">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <h2>Křížovky k vytisknutí</h2>
+    <p>Vyberte křížovku ve formátu PDF. Seznam se automaticky aktualizuje podle souborů ve složce <code>kriz/pdf/</code>.</p>
+    <p id="pdf-status" role="status" aria-live="polite">Načítám seznam PDF…</p>
+    <ul id="pdf-list" class="pdf-list" aria-label="PDF křížovky"></ul>
+  </div>
+</section>
+<footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="footer"><div class="u-clearfix u-sheet u-sheet-1"></div></footer>
+<script>
+(async function loadPdfList(){
+  const list = document.getElementById('pdf-list');
+  const status = document.getElementById('pdf-status');
+  try {
+    const response = await fetch('pdf/index.json?v=' + Date.now(), {cache:'no-store'});
+    if (!response.ok) throw new Error('Seznam PDF se nepodařilo načíst.');
+    const files = await response.json();
+    if (!Array.isArray(files) || files.length === 0) {
+      status.textContent = 'Ve složce PDF zatím nejsou žádné soubory.';
+      return;
+    }
+    files.sort((a,b) => a.name.localeCompare(b.name, 'cs', {numeric:true, sensitivity:'base'}));
+    for (const file of files) {
+      if (!file || typeof file.name !== 'string' || typeof file.url !== 'string' || !file.name.toLowerCase().endsWith('.pdf')) continue;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.className = 'pdf-card';
+      a.href = file.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      const icon = document.createElement('span');
+      icon.className = 'pdf-icon';
+      icon.setAttribute('aria-hidden','true');
+      icon.textContent = '📄';
+      const label = document.createElement('span');
+      label.textContent = file.name;
+      a.append(icon,label);
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+    status.textContent = list.children.length ? `Dostupné křížovky: ${list.children.length}` : 'Ve složce PDF zatím nejsou žádné soubory.';
+  } catch (error) {
+    status.textContent = 'Seznam PDF se nepodařilo načíst. Zkontrolujte, zda proběhlo vytvoření souboru pdf/index.json v GitHub Actions.';
+    console.error(error);
+  }
+})();
+</script>
+</body>
+</html>

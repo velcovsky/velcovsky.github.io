@@ -1,0 +1,2816 @@
+{
+  "title": "Odborná část – obor tlaková zařízení",
+  "source_file": "TOPICI_otazky.doc",
+  "description": "Strukturovaný přepis zdrojového dokumentu. Správná odpověď je označena polem correct podle tučného písma. Text nebyl odborně ověřen.",
+  "questions": [
+    {
+      "id": "Q001",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Který dokument musí být vypracován aby kotel mohl být uveden do trvalého provozu ?",
+      "answers": [
+        {
+          "text": "Místní provozní předpisy",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Provozní předpis výrobce",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Blokové schéma kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 4,
+      "validation": "OK"
+    },
+    {
+      "id": "Q002",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Který dokument musí být vypracován aby kotel mohl být uveden do trvalého provozu ?",
+      "answers": [
+        {
+          "text": "Provozní deník kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Místní provozní předpisy",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Rozměrový nákres kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 9,
+      "validation": "OK"
+    },
+    {
+      "id": "Q003",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Do kterého dokumentu je topič povinen provádět předepsané záznamy ?",
+      "answers": [
+        {
+          "text": "firemní intranet",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Dokumentace skutečného provedení kotle",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Provozní deník kotle.",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 15,
+      "validation": "OK"
+    },
+    {
+      "id": "Q004",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co patří mezi povinnosti topiče ?",
+      "answers": [
+        {
+          "text": "Znát obsluhované kotelní zařízení a stav plnění příkazů revizního technika a dbát, aby se v kotelně nezdržovaly nepovolané osoby",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Provádět opravy  kotle v intervalech předepsaným výrobcem",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Každý den čistit otvor pro odvod strusky",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 22,
+      "validation": "OK"
+    },
+    {
+      "id": "Q005",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co patří mezi povinnosti topiče ?",
+      "answers": [
+        {
+          "text": "Nevzdalovat se od obsluhovaného kotle, popř. skupiny kotlů s výjimkou krátkodobého zdržení v blízkosti kotelny, nutného v zájmu obsluhy kotle nebo při použití hygienického zařízení; za krátkodobé vzdálení se považuje doba 5 minut.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "neopouštět pracoviště kotelny případně velínu",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Podrobit se lékařským prohlídkám každého půl roku",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 27,
+      "validation": "OK"
+    },
+    {
+      "id": "Q006",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co patří mezi povinnosti topiče ?",
+      "answers": [
+        {
+          "text": "Podrobit se nejméně jednou za tři roky prověrce odborné způsobilosti před pracovníkem stanoveným provozovatelem",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "neopouštět pracoviště kotelny případně velínu",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Podrobit se lékařským prohlídkám každého půl roku",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 32,
+      "validation": "OK"
+    },
+    {
+      "id": "Q007",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co patří mezi povinnosti topiče ?",
+      "answers": [
+        {
+          "text": "Provádět opravy  kotle v intervalech předepsaným výrobcem",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Každý den čistit otvor pro odvod strusky",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Provádět předepsané záznamy do provozního deníku kotle a ohlásit nadřízenému neprodleně každou poruchu nebo závadu na obsluhovaném kotelním zařízení",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 40,
+      "validation": "OK"
+    },
+    {
+      "id": "Q008",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Na jak dlouhou dobu se smí topič vzdálit od obsluhovaného kotle, není-li stanoveno jinak?",
+      "answers": [
+        {
+          "text": "10 minut",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "5 minut",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "nesmí se vzdálit",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 47,
+      "validation": "OK"
+    },
+    {
+      "id": "Q009",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "O čem je nutno se přesvědčit před uzavřením tlakového celku kotle ?",
+      "answers": [
+        {
+          "text": "Jestli nejsou díry v tlakovém celku kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Zda v něm nezůstaly osoby nebo předměty, které tam nepatří.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Zda je provozuschopný",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 53,
+      "validation": "OK"
+    },
+    {
+      "id": "Q010",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co je nutno překontrolovat před zatopením kotle ?",
+      "answers": [
+        {
+          "text": "pouze je-li v kotli dost vody",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "zavodnění přehříváků, otevření odkalu kotle a nouzovou výpusť bubnu",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Před zatopením kolte je nutno překontroloval úplnost a správnost nastavení výstroje tlakového celku, jakož i spalovací zařízení včetně topeniště, funkci signalizačních a blokovacích zařízení, je-li jimi  zařízení vybaveno.",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 58,
+      "validation": "OK"
+    },
+    {
+      "id": "Q011",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaká doba je potřebná k řádnému provětrání topeniště ?",
+      "answers": [
+        {
+          "text": "minimálně 30 minut",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Doba, za kterou se 5x vymění objem vzduchu v topeništi.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Doba, za kterou se 10x vymění objem vzduchu v topeništi.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 64,
+      "validation": "OK"
+    },
+    {
+      "id": "Q012",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Do jaké úrovně se před zatápěním plní parní kotle napájecí vodou ?",
+      "answers": [
+        {
+          "text": "Plní se až ke značce nejnižší přípustné hladiny.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "záleží na zkušenostech obsluhy",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Plní se až ke značce nejvyšší přípustné hladiny.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 70,
+      "validation": "OK"
+    },
+    {
+      "id": "Q013",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Kdy smí být otevřen hlavní parní uzávěr při připojování kotle k nahřátému parovodu ?",
+      "answers": [
+        {
+          "text": "záleží na zkušenostech obsluhy",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Je-li tlak páry v tlakovém celku kotle (těsně před uzávěrem) o 0,05 až 0,1 MPa vyšší než tlak v parovodu a teplota přehřáté páry buď stejná nebo nejvýše o 50 °C nižší než v parovodu.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Je-li tlak páry v tlakovém celku kotle (těsně před uzávěrem) stejný jako tlak v parovodu a teplota přehřáté páry buď stejná nebo nejvýše o 50 °C vyšší než v parovodu.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 80,
+      "validation": "OK"
+    },
+    {
+      "id": "Q014",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaký je postup při mimořádných podmínkách ?",
+      "answers": [
+        {
+          "text": "provádět obchůzku kotle každou hodinu",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Informovat osobu uvedenou MPP, zápis do provozního deníku, zahájit práce na jejich odstranění",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Není potřeba provádět žádná opatření",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 86,
+      "validation": "OK"
+    },
+    {
+      "id": "Q015",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK4"
+      ],
+      "question": "Které části vodotrubného kotle mohou být nejvíce napadeny korozí, způsobenou kondenzací kyseliny sírové při poklesu teploty spalin obsahujících síru do oblasti rosného bodu kyseliny, případně vody ?",
+      "answers": [
+        {
+          "text": "výstupní přehřívák kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Ohřívák vzduchu (LUVO)",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "buben kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 91,
+      "validation": "OK"
+    },
+    {
+      "id": "Q016",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "V jakém případě se kotel  musí ihned odstavit z provozu ?",
+      "answers": [
+        {
+          "text": "dojde-li u kotlů s výtavnými ohništi k zatavení výtokového otvoru, takže není možný odvod tvořící se strusky, popř. dojde-li k takové poruše odstruskovacího zařízení, že je vyřazeno z provozu, takže zatavení výtokových otvorů hrozí a ne-ní možno provést opravu.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "vyskytnou-li se za provozu neobvyklé jevy, jejich příčiny lze zjistit a odstranit",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "ve všech případech stanovených vedoucích provozu",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 97,
+      "validation": "OK"
+    },
+    {
+      "id": "Q017",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaký je postup při vzniku malých, snadno zjistitelných netěsností na stěnách tlakového celku kotle, které neohrožují bezpečnost zařízení a osob ?",
+      "answers": [
+        {
+          "text": "Kotel je nutno ihned odstavit",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel lze po přechodnou dobu udržet v provozu.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Kotel lze jet pouze s minimálním výkonem",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 103,
+      "validation": "OK"
+    },
+    {
+      "id": "Q018",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "V jakém případě musí být kotel ihned odstaven z provozu ?",
+      "answers": [
+        {
+          "text": "ve všech případech, kdy je stavem kotelního zařízení bezprostředně ohrožena bezpečnost osob a okolí",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "ve všech případech, kdy je stavem kotelního zařízení ohrožena ekonomika provozu",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "ve všech případech, kdy je stavem kotelního zařízení bezprostředně ohrožena jakost výstupní páry případně její hlavní parametry",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 109,
+      "validation": "OK"
+    },
+    {
+      "id": "Q019",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je posuzováno zhoršení předepsané jakosti napájecí nebo kotelní vody ?",
+      "answers": [
+        {
+          "text": "jako důvod k okamžitému odstavení kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Provoz kotle za mimořádných podmínek",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Provoz kotle za standartních podmínek",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 116,
+      "validation": "OK"
+    },
+    {
+      "id": "Q020",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je posuzováno krátkodobé překročení jmenovitých parametrů kotle v mezích určených ČSN 07 0010 ?",
+      "answers": [
+        {
+          "text": "Neekonomický provoz kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Provoz kotle za standartních podmínek",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Provoz kotle za mimořádných podmínek",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 122,
+      "validation": "Chybí označená správná odpověď"
+    },
+    {
+      "id": "Q021",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaký je postup při vzniku nebezpečných deformací  na stěnách tlakového celku kotle ?",
+      "answers": [
+        {
+          "text": "Kotel musí být pravidelně kontrolován v intervalu 30 minut",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel muže jet po přechodnou dobu na minimální výkon",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Kotel musí být ihned odstaven z provozu",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 126,
+      "validation": "OK"
+    },
+    {
+      "id": "Q022",
+      "section": 1,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaký je postup, vyskytnou-li se za provozu kotle neobvyklé jevy, jejichž příčiny nelze zjistit a odstranit ?",
+      "answers": [
+        {
+          "text": "Na kotli musí být provedena generální oprava",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel muže jet po přechodnou dobu na minimální výkon",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Kotel musí být ihned odstaven z provozu",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 133,
+      "validation": "OK"
+    },
+    {
+      "id": "Q023",
+      "section": 1,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jaký je postup při selhání jednoho ze dvou přímých vodoznaků ?",
+      "answers": [
+        {
+          "text": "Kotel nevybavený dálkovými vodoznaky schválené konstrukce je nutno ihned odstavit z provozu",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel nevybavený dálkovými vodoznaky schválené konstrukce musí být vodoznak opraven do 24 hodin. Po uplynutí 24 hodin je další provoz kotle nepřípustný.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Kotel nevybavený dálkovými vodoznaky schválené konstrukce je možno provozovat dál, zbylý funkční přímý vodoznak je nutno kontrolovat nejméně jednou za hodinu.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 137,
+      "validation": "OK"
+    },
+    {
+      "id": "Q024",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Před vstupem do tlakového celku kotle nebo do topeniště je nutno ověřit, zda není uvnitř teplota vyšší než",
+      "answers": [
+        {
+          "text": "35°C",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "60 °C",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "80 °C",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 146,
+      "validation": "OK"
+    },
+    {
+      "id": "Q025",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaká revize nebo zkouška se provádí ve všech případech, kdy z důvodu ohrožení bezpečného provozu bylo nutno kotel odstavit ihned, před opětovným uvedením kotle do provozu ?",
+      "answers": [
+        {
+          "text": "Vnitřní revize",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Celková revize",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Generální revize",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 151,
+      "validation": "OK"
+    },
+    {
+      "id": "Q026",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Průlezy a čistící otvory tlakového celku kotle smějí být otevřeny až po zchladnutí jeho obsahu nejvýše na teplotu",
+      "answers": [
+        {
+          "text": "60 °C v celém kotli",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "80 °C v úrovni vodní hladiny",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "40 °C v místě vstupu do kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 156,
+      "validation": "OK"
+    },
+    {
+      "id": "Q027",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak často se provozní tlakoměry kotlů  kontrolují nulováním ?",
+      "answers": [
+        {
+          "text": "Každý týden",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou měsíčně",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jednou ročně",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 162,
+      "validation": "OK"
+    },
+    {
+      "id": "Q028",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK4"
+      ],
+      "question": "Oblast Molliérova diagramu (diagram entropie – entalpie) vodní páry nad horní mezní křivkou suchosti páry x = 1 znázorňuje stav",
+      "answers": [
+        {
+          "text": "Mokré páry",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Suché páry",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Přehřáté páry",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 168,
+      "validation": "OK"
+    },
+    {
+      "id": "Q029",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Provozní tlakoměr musí být vyměněn, je-li úchylka mezi údaji provozního a kontrolního tlakoměru v rozmezí mezi nejvyšším a nejnižším používaným tlakem větší než",
+      "answers": [
+        {
+          "text": "5% nejvyššího tlaku uvedeného na stupnici tlakoměru.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "10% nejvyššího tlaku uvedeného na stupnici tlakoměru.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "100 Pa",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 176,
+      "validation": "OK"
+    },
+    {
+      "id": "Q030",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaké vlastnosti musí mít podle ČSN 07 7401 přídavná voda pro napájení parních kotlů ?",
+      "answers": [
+        {
+          "text": "Přídavná voda musí mít takové vlastnosti,",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Přídavná voda musí mít takové vlastnosti, aby po smíšení s vratnými kondenzáty měla napájecí voda složení požadované příslušnou normou.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Přídavnou vodu není potřeba sledovat, pokud není za kotelním zařízení instalovaná turbína, v tom případě se řídíme předpisy výrobce turbíny",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 183,
+      "validation": "OK"
+    },
+    {
+      "id": "Q031",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaký převodní vztah platí pro jednotku 1 MPa ?",
+      "answers": [
+        {
+          "text": "1 MPa = 1 bar",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "1 MPa = 10 bar",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "1 MPa = 100 bar",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 188,
+      "validation": "OK"
+    },
+    {
+      "id": "Q032",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "V jaké úrovni se udržuje hladina vody v parním kotli při pravidelném provozu ?",
+      "answers": [
+        {
+          "text": "Na hranici Maximální přípustné hladiny, aby v případě poruchy napájení, bylo možno kotel přechodně udržet v provozu.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "V úzkém rozmezí kolem normálního stavu hladiny. Při provozu parního kotle nesmí hladina vody klesnout pod nejnižší ani stoupnout nad nejvyšší přípustný stav vody.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Hladina vody v parním kotli není standartně sledování parametr.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 193,
+      "validation": "OK"
+    },
+    {
+      "id": "Q033",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK4"
+      ],
+      "question": "V jaké části vodotrubného kotle se uplatní přestup tepla sáláním ?",
+      "answers": [
+        {
+          "text": "Ve spalovací komoře, respektive ve varných trubkách (výparníku), případně ve všech dalších plochách, které jsou „okolo“ plamene.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "V ekonomizéru, respektive v trubkách na konci druhého tahu kotle, případně ve všech dalších plochách, které jsou mimo hlavní spalovací prostor.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Přestup tepla nelze jednoznačně určit, záleží na konstrukci kotle.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 200,
+      "validation": "OK"
+    },
+    {
+      "id": "Q034",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co patří mezi povinnosti topiče ?",
+      "answers": [
+        {
+          "text": "znát obsluhované kotelní zařízení a stav plnění příkazů revizního technika, dbát, aby se v kotelně nezdržovaly nepovolané osoby.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Asistovat u Běžných oprav kotle, být k dispozici vedoucím pracovníkům kotelny",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "odstraňovat nánosy na teplosměnných plochách kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 206,
+      "validation": "OK"
+    },
+    {
+      "id": "Q035",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak často se musí topič podrobit prověrce odborné způsobilosti před pracovníkem stanoveným provozovatelem?",
+      "answers": [
+        {
+          "text": "Nejméně jednou za rok",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou za tři roky",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jednou za pět let",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 212,
+      "validation": "OK"
+    },
+    {
+      "id": "Q036",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Musí se topič podrobovat lékařským prohlídkám stanoveným zvláštními předpisy",
+      "answers": [
+        {
+          "text": "Ano, je to povinnost topiče.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Ne, lékařská prohlídka je dobrovolná.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Pouze při nástupu do zaměstnání, pak už nikdy.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 219,
+      "validation": "OK"
+    },
+    {
+      "id": "Q037",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definována účinnost kotelního zařízení podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Poměrem mezi celkovým a relativním výkonem kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Poměr mezi výrobním teplem a teplem přiváděných do kotle.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Účinnost není v normě definována, je určena výrobcem zařízení",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 227,
+      "validation": "OK"
+    },
+    {
+      "id": "Q038",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3"
+      ],
+      "question": "Proč se přehříváky páry před zatápěním kotlů zavodňují ?",
+      "answers": [
+        {
+          "text": "Aby se vytvořil parní polštář v bubnu kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Ochrana před nepřípustným zahřátím",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Ochrana před nepřípustným tlakem na výstupu kotle",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 233,
+      "validation": "OK"
+    },
+    {
+      "id": "Q039",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co má největší vliv na velikost ztráty tepla hořlavinou ve spalinách, způsobenou odváděním spalin s obsahem nespálených plynných hořlavých složek ?",
+      "answers": [
+        {
+          "text": "Nedokonalé spalování (nedostatek kyslíku)",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "výhřevnost paliva",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Účinnost kotelního zařízení",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 238,
+      "validation": "OK"
+    },
+    {
+      "id": "Q040",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definována jemná armatura kotle  podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Armatury do průměru 80 mm",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Armatury tlakového systému kotle",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Armatury systému kotle do výkonu 10 GJ/h",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 243,
+      "validation": "OK"
+    },
+    {
+      "id": "Q041",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definována napájecí voda v ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Voda s parametry odpovídající předpisům výrobce",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Vhodně upravená směs vratného kondenzátu a přídavné napájecí vody.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Voda s parametry odpovídající pitné vodě",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 249,
+      "validation": "OK"
+    },
+    {
+      "id": "Q042",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Čím je způsoben přirozený oběh vody a parovodní směsi ve výparníku kotle ?",
+      "answers": [
+        {
+          "text": "Speciální konstrukcí kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "V důsledku stejné hustoty pracovního média (vody) ve varných a zavodňovacích trubkách",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "V důsledku rozdílné hustoty pracovního média (vody) ve varných a zavodňovacích trubkách",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 255,
+      "validation": "OK"
+    },
+    {
+      "id": "Q043",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co způsobují soli vápníku a hořčíku obsažené v napájecí vodě  na stěnách tlakového celku kotle ?",
+      "answers": [
+        {
+          "text": "Způsobuje korozi tlakového celku kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Vytváří vrstvu soli na vnitřní stěně tlakového celku. (usazené soli, zarůstání)",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Vytváří ochranou vrstvu která chrání tlakový celek před korozí",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 260,
+      "validation": "OK"
+    },
+    {
+      "id": "Q044",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jakým způsobem se provádí změkčování vody výměnou iontů ?",
+      "answers": [
+        {
+          "text": "Odborná literatura o úpravě vody pro kotelní zařízení",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Změkčením vody na katexovém filtru, poté chemická úprava (dávkování inhibitorů, úprava zjevné alkality, úprava PH) -",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Termickým odplyněním",
+          "label": "c",
+          "correct": false
+        },
+        {
+          "text": "Reverzní osmózou",
+          "label": "d",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 266,
+      "validation": "OK"
+    },
+    {
+      "id": "Q045",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jakým způsobem se snižuje obsah rozpuštěného kyslíku a oxidu uhličitého ve vodě ?",
+      "answers": [
+        {
+          "text": "Obsah rozpuštěného kyslíku a oxidu uhličitého ve vodě se nesnižuje",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Odplyňování – termickou (pomocí páry) nebo chemickou cestou",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Pomocí reverzní osmózy",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 272,
+      "validation": "OK"
+    },
+    {
+      "id": "Q046",
+      "section": 2,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co je alkalizace ?",
+      "answers": [
+        {
+          "text": "Alkalizace (kyselení) - přidání chemikálií (kyseliny chlorovodíkové nebo kyseliny sírové ) tak aby se hodnota pH a zjevné alkality zvýšila na požadované hodnoty.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Alkalizace (odkyselení) - přidání chemikálií (louhu-hydroxidu sodného nebo fosforečnanu sodného) tak aby se hodnota pH a zjevné alkality snížila na požadované hodnoty.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Snižování obsahu volných iontů ve vodě",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 278,
+      "validation": "OK"
+    },
+    {
+      "id": "Q047",
+      "section": 2,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jak často musí být kontrolována přesnost údajů provozních tlakoměrů kontrolními tlakoměry?",
+      "answers": [
+        {
+          "text": "Nejméně jednou za rok.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jednou za měsíc.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou za týden.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 283,
+      "validation": "OK"
+    },
+    {
+      "id": "Q048",
+      "section": 2,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Čím je vyvolán přirozený tah (pohyb spalin) definovaný podle ČSN 07 0000?",
+      "answers": [
+        {
+          "text": "Tah vyvolaný rozdílem hustoty horkých spalin ve svislém sloupci a okolního vzduchu.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Tah vyvolaný působení odstředivé síly způsobené rotací země",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Tah vyvolaný rozdílem rychlosti proudění nasávaného vzduchu a proudění vzduchu na nejvyšším místě komína",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 289,
+      "validation": "OK"
+    },
+    {
+      "id": "Q049",
+      "section": 2,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Na čem závisí teplota bodu varu vody?",
+      "answers": [
+        {
+          "text": "Na průřezu potrubí",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Na ročním období",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Na tlaku",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 294,
+      "validation": "OK"
+    },
+    {
+      "id": "Q050",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jakým způsobem se musí provádět odkalování u kotlů s přirozeným oběhem vody v kotli?",
+      "answers": [
+        {
+          "text": "Kotel se neodkaluje, lze jej pouze vypustit a znovu napustit",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel lze odkalovat pouze při jeho odstavení, pomalým vypouštěním",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Odkalovat se musí krátce, při takovém výkonu kotle, aby dostačoval průtok napáječek.",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 308,
+      "validation": "OK"
+    },
+    {
+      "id": "Q051",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Tlakoměry nově vyrobených kotlů podle evropských norem musí mít na stupnici vyznačenu červenou značku označující",
+      "answers": [
+        {
+          "text": "Nejnižší dovolený tlak",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Optimální tlak",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Nejvyšší dovolený tlak",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 313,
+      "validation": "OK"
+    },
+    {
+      "id": "Q052",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jakým zařízením musí být opatřeno připojovací potrubí tlakoměrů nově vyrobených kotlů podle evropských norem ?",
+      "answers": [
+        {
+          "text": "Ventilem zabraňujícím úniku média do atmosféry v případě poruchy tlakoměru",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Přípojkou ventilu pro připojení zkušebního tlakoměru v průběhu provozu kotle.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Ochranou proti přetížení",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 319,
+      "validation": "OK"
+    },
+    {
+      "id": "Q053",
+      "section": 3,
+      "levels": [
+        "TOP-PK1"
+      ],
+      "question": "Do které třídy je zařazen parní kotel s jmenovitým množstvím vyrobené páry 120 t/h ?",
+      "answers": [
+        {
+          "text": "1. třída",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "4. třída",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "2. třída",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 327,
+      "validation": "OK"
+    },
+    {
+      "id": "Q054",
+      "section": 3,
+      "levels": [
+        "TOP-PK1"
+      ],
+      "question": "Jak je z hlediska tlaku nazván parní kotel produkující páru o přetlaku 17,0 MPa podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Kotel vysokým tlakem",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Kotel s velmi vysokým tlakem",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Kotel se středním tlakem",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 333,
+      "validation": "OK"
+    },
+    {
+      "id": "Q055",
+      "section": 3,
+      "levels": [
+        "TOP-PK1"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem nad 7,8 MPa  kontrolují  vodoznaky ?",
+      "answers": [
+        {
+          "text": "1x denně se zkouší průchodnost vodoznaků, pokud kotel není vybaven dálkovými vodoznaky",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "1x týdně se zkouší průchodnost vodoznaků, za podmínky, že se každou směnu provádí porovnání alespoň 3 nezávislých vodoznaků a jejich údaje se shodují.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "U kotlů s konstrukčním tlakem nad 7,8 MPa  se vodoznaky z bezpečnostních důvodu nekontrolují",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 339,
+      "validation": "OK"
+    },
+    {
+      "id": "Q056",
+      "section": 3,
+      "levels": [
+        "TOP-PK1"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem nad  4,5 MPa funkčně přezkušují pojistné ventily ?",
+      "answers": [
+        {
+          "text": "Min. 1x ročně",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Min. 1x měsíčně",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Každý týden, není-li v provozních předpisech uvedeno jinak",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 344,
+      "validation": "OK"
+    },
+    {
+      "id": "Q057",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK4"
+      ],
+      "question": "Co označuje značka LWL která podle ČSN EN 12952-7 musí být na parním vodotrubném kotli (s výjimkou průtočných/průtlačných) trvale a čitelně vyznačena ?",
+      "answers": [
+        {
+          "text": "ČSN EN 12952-7",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejnižší přípustná hladina vody",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Nejvyšší přípustná hladina vody",
+          "label": "c",
+          "correct": false
+        },
+        {
+          "text": "Optimální hladina vody",
+          "label": "d",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 350,
+      "validation": "OK"
+    },
+    {
+      "id": "Q058",
+      "section": 3,
+      "levels": [
+        "TOP-PK1"
+      ],
+      "question": "V jakém místě musí být nainstalovány přístroje k měření teploty vodotrubných kotlů podle ČSN EN 12952-7 ?",
+      "answers": [
+        {
+          "text": "Dle požadavků Technické Inspekce České republiky",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Na výstupu z přehříváku prvního stupně a na vstupu a výstupu přehříváků/přihříváků následujících stupňů",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "V napájecí větvi, v bubnu kotle a na vstupu a výstupu přehříváků/přihříváků",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 357,
+      "validation": "OK"
+    },
+    {
+      "id": "Q059",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK4"
+      ],
+      "question": "Která norma stanoví požadavky na výstroj vodotrubných kotlů ?",
+      "answers": [
+        {
+          "text": "ČSN 07 0710",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "ČSN EN 12952-7",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "ČSN 07 0000",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 363,
+      "validation": "OK"
+    },
+    {
+      "id": "Q060",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definován přehřívák kotle ?",
+      "answers": [
+        {
+          "text": "Cesta pracovní látky začínající uzávěrem napájecí vody do kotle a končí parním uzávěrem zahrnující výhřevné plochy komory, bubny, parovodní separátory, převáděcí potrubí a jemnou armaturu.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají pracovnímu médiu (páře) přehřívací teplo.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají teplo vratné páře z turbíny.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 369,
+      "validation": "OK"
+    },
+    {
+      "id": "Q061",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jakou platnost má osvědčení k obsluze vyhrazených tlakových zařízení – kotlů, vydané pověřenou organizací podle zákona č. 250/2021 Sb. v platném znění?",
+      "answers": [
+        {
+          "text": "3 roky ode dne jeho udělení",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "5 let ode dne jeho udělení",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "neomezenou platnost",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 375,
+      "validation": "OK"
+    },
+    {
+      "id": "Q062",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Topič obsluhující kotel, který je vyhrazeným tlakovým zařízením musí být podle zákona č. 250/2021 Sb. v platném znění držitelem",
+      "answers": [
+        {
+          "text": "Pouze občanský průkaz",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Řidičský průkaz skupiny B",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Osvědčení o odborné způsobilosti k činnostem na vyhrazených technických zařízeních",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 382,
+      "validation": "OK"
+    },
+    {
+      "id": "Q063",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak často se topič podle ČSN 07 0710 podrobuje prověrce odborné způsobilosti před pracovníkem stanoveným provozovatelem?",
+      "answers": [
+        {
+          "text": "Nejméně jednou za 3 roky",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jednou za 5 let",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Každý rok",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 388,
+      "validation": "OK"
+    },
+    {
+      "id": "Q064",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "V jakém případě vzniká při spalování paliva ve zvýšené míře oxid uhelnatý?",
+      "answers": [
+        {
+          "text": "při nedokonalém spalování (nedostatek kyslíku, nízká teplota, krátký čas hoření)",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "při spalování paliva s nízkou výhřevností",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "při spalování kapalných paliv, které obsahují alespoň 20% ropných produktů",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 394,
+      "validation": "OK"
+    },
+    {
+      "id": "Q065",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaké vlastnosti má oxid uhelnatý?",
+      "answers": [
+        {
+          "text": "Bez barvy, bez zápachu, nevýbušný, toxický při vdechnutí",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Bez barvy, bez zápachu, výbušný (12,5%obj-74%obj), toxický při vdechnutí",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Bez barvy, bez zápachu, výbušný (5,5%obj-12,4%obj), toxický při vdechnutí",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 400,
+      "validation": "OK"
+    },
+    {
+      "id": "Q066",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jaká je účinná první pomoc při otravě oxidem uhelnatým?",
+      "answers": [
+        {
+          "text": "S postiženým nehýbáme, dle možností zahájíme intenzivní větrání, vyčkáme příjezdu složek Integrovaného Záchranného Systému,",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Postiženého vzneseme na čerstvý vzduch. V případě zástavy dechu zahájíme umělé dýchání, při zástavě KO nepřímou masáž srdce. Neprodleně zajistíme převoz postiženého do zdravotnického zařízení",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Postiženého vzneseme na čerstvý vzduch. Převoz postiženého do zdravotnického zařízení zajistíme pouze v případě bezvědomí postiženého.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 406,
+      "validation": "OK"
+    },
+    {
+      "id": "Q067",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definován tlakový systém kotle podle ČSN 07 0000?",
+      "answers": [
+        {
+          "text": "Cesta pracovní látky začínající uzávěrem napájecí vody do kotle a končí parním uzávěrem zahrnující výhřevné plochy komory, bubny, parovodní separátory, převáděcí potrubí a jemnou armaturu.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají pracovnímu médiu (páře) přehřívací teplo.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají teplo vratné páře z turbíny.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 413,
+      "validation": "OK"
+    },
+    {
+      "id": "Q068",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Za jakým účelem se podle ČSN 07 0000 do vody dávkuje fosforečnan sodný?",
+      "answers": [
+        {
+          "text": "Za účelem zvýšení tvrdosti a alkalizace vody.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Za účelem snížení počtu volných iontů ve vodě.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Za účelem vázání zbytkové tvrdosti a alkalizace vody.",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 421,
+      "validation": "OK"
+    },
+    {
+      "id": "Q069",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definována hydraulická ztráta podle ČSN 07 0000?",
+      "answers": [
+        {
+          "text": "Jako nejvyšší přípustný tlak v potrubí",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Tlakové rozdíly v tlakovém systému způsobené jeho hydraulickými odpory.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Jako rozdíl mezi nejvyšším dovoleným tlakem a aktuálním tlakem v systému kotle.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 426,
+      "validation": "OK"
+    },
+    {
+      "id": "Q070",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK4"
+      ],
+      "question": "Jak je definován přihřívák podle ČSN 07 0000?",
+      "answers": [
+        {
+          "text": "Cesta pracovní látky začínající uzávěrem napájecí vody do kotle a končí parním uzávěrem zahrnující výhřevné plochy komory, bubny, parovodní separátory, převáděcí potrubí a jemnou armaturu.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají pracovnímu médiu",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Souhrn výhřevných ploch, tlakového systému kotle, které dodávají teplo vratné páře z turbíny.",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 434,
+      "validation": "OK"
+    },
+    {
+      "id": "Q071",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Kde musí být uloženy Místní provozní předpisy (MPP) a provozní deník?",
+      "answers": [
+        {
+          "text": "V trezoru vedení společnosti v jiné budově",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Trvale k dispozici v kotelně pro obsluhu",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Uloženy pouze v elektronické podobě na internetu",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 439,
+      "validation": "OK"
+    },
+    {
+      "id": "Q072",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2",
+        "TOP-PK3",
+        "TOP-PK4"
+      ],
+      "question": "Co musí udělat topič při zjištění jakékoliv závady ohrožující provoz?",
+      "answers": [
+        {
+          "text": "Pokračovat v topení a počkat do konce směny",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nahlásit závadu nadřízenému a v případě ohrožení provést odstavení kotle",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Vypnout hlavní jistič světel v kotelně",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 444,
+      "validation": "OK"
+    },
+    {
+      "id": "Q073",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Do které třídy je zařazen parní kotel s jmenovitým množstvím vyrobené páry 60 t/h ?",
+      "answers": [
+        {
+          "text": "1. třída",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "2. třída",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "3. třída",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 449,
+      "validation": "OK"
+    },
+    {
+      "id": "Q074",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jak je z hlediska tlaku nazván parní kotel produkující páru o přetlaku 6,0 MPa  podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Středotlaký kotel",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Vysokotlaký kotel",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Kotel s nadkritickým tlakem",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 454,
+      "validation": "Chybí označená správná odpověď"
+    },
+    {
+      "id": "Q075",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem nad 1,55 do 7,8 MPa  kontrolují  vodoznaky ?",
+      "answers": [
+        {
+          "text": "Každý den (uzavřením přívodu vody)",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Každý týden směnu (uzavřením přívodu páry)",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Každou směnu (uzavřením přívodu páry)",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 461,
+      "validation": "Chybí označená správná odpověď"
+    },
+    {
+      "id": "Q076",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem nad 1,55 do 4,5 MPa funkčně přezkušují pojistné ventily ?",
+      "answers": [
+        {
+          "text": "Nejméně jednou za den",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou za měsíc",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jednou za týden",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 467,
+      "validation": "OK"
+    },
+    {
+      "id": "Q077",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Do které třídy je zařazen parní kotel s jmenovitým množstvím vyrobené páry 36 t/h ?",
+      "answers": [
+        {
+          "text": "3. třída",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "2. třída",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "1. třída",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 474,
+      "validation": "OK"
+    },
+    {
+      "id": "Q078",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Středotlaké parní kotle, definované podle ČSN 07 0000 produkují páru o přetlaku",
+      "answers": [
+        {
+          "text": "do 0,05 MPa",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "0,05 až 1,6 MPa",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "1,6 až 16MPa",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 479,
+      "validation": "OK"
+    },
+    {
+      "id": "Q079",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jakým způsobem se u kotlů s konstrukčním tlakem do 1,55 MPa zkouší vodoznaky  ?",
+      "answers": [
+        {
+          "text": "u kotlů s konstrukčním tlakem do 1,55 MPa se vodoznaky nekontrolují, je potřeba je v intervalech depsaných výrobcem měnit.",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Profoukováním",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Nulováním",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 484,
+      "validation": "OK"
+    },
+    {
+      "id": "Q080",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jakým způsobem se u kotlů s konstrukčním tlakem do 1,55 MPa funkčně přezkušují pojistné ventily ?",
+      "answers": [
+        {
+          "text": "Přetížením každý den",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Odlehčením jednou za týden",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Odlehčením jednou za měsíc",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 493,
+      "validation": "OK"
+    },
+    {
+      "id": "Q081",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Čím je vyvolán přirozený tah (pohyb spalin) definovaný podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Tah vyvolaný rozdílem hustoty horkých spalin ve svislém sloupci a okolního vzduchu.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Tah vyvolaný působení odstředivé síly způsobené rotací země",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Tah vyvolaný rozdílem rychlosti proudění nasávaného vzduchu a proudění vzduchu na nejvyšším místě komína",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 500,
+      "validation": "OK"
+    },
+    {
+      "id": "Q082",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Do které třídy je zařazen parní kotel s jmenovitým množstvím vyrobené páry 6 t/h ?",
+      "answers": [
+        {
+          "text": "2. třída",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "3. třída",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "4. třída",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 505,
+      "validation": "OK"
+    },
+    {
+      "id": "Q083",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Jak je z hlediska tlaku nazván parní kotel produkující páru o přetlaku 1,0 MPa  podle ČSN 07 0000 ?",
+      "answers": [
+        {
+          "text": "Nízkotlaký parní kotel",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Středotlaký parní kotel",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Vysokotlaký parní kotel",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 510,
+      "validation": "OK"
+    },
+    {
+      "id": "Q084",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem do 1,55 MPa  profukují vodoznaky ?",
+      "answers": [
+        {
+          "text": "Nejméně jedenkrát za směnu",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Nejméně jedenkrát za den",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jedenkrát za týden",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 515,
+      "validation": "OK"
+    },
+    {
+      "id": "Q085",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Jak často se u kotlů s konstrukčním tlakem do 1,55 MPa funkčně přezkušují pojistné ventily ?",
+      "answers": [
+        {
+          "text": "Nejméně jednou za rok",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou za měsíc",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Nejméně jednou za týden",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 520,
+      "validation": "OK"
+    },
+    {
+      "id": "Q086",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Ryska s nápisem LWL na válcovém kotli podle ČSN EN 12953-6:2011 označuje",
+      "answers": [
+        {
+          "text": "Nejvyšší přípustná hladina vody",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejnižší přípustná hladina vody",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Optimální hladina vody",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 525,
+      "validation": "OK"
+    },
+    {
+      "id": "Q087",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Jaké požadavky stanoví evropská norma ČSN EN 12953-6 ?",
+      "answers": [
+        {
+          "text": "Minimální požadavky na výstroj válcových kotlů",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Minimální požadavky na dimenzování potrubí válcových kotlů",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Minimální požadavky na blokády kotlů",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 532,
+      "validation": "OK"
+    },
+    {
+      "id": "Q088",
+      "section": 3,
+      "levels": [
+        "TOP-PK4"
+      ],
+      "question": "Jak často se u parních kotlů s jmenovitým přetlakem do 2,5 MPa provádí kontrola kvality napájecí a kotelní vody podle ČSN 07 0711 ?",
+      "answers": [
+        {
+          "text": "1krát za směnu",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "1krát za den",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "1krát za týden",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 537,
+      "validation": "OK"
+    },
+    {
+      "id": "Q089",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jakým zařízením musí být vybaven parní válcový kotel podle ČSN EN 12953-6:2011 ?",
+      "answers": [
+        {
+          "text": "Ukazatel úrovně hladiny vody, tlakoměr, teploměr, uzavírací armatura na parním potrubí, uzavírací armatury a zpětnou armaturu na napájecím potrubí, dvěma omezovači úrovně hladiny, jedním omezovačem tlaku",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Omezovačem výkonu, kontrolou plamene, zhášecím zařízením",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Norma konkrétně nespecifikuje zařízení, kterým musí být vybaven parní válcový kotel, pouze specifikuje požadavky na bezpečnost kotle.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 542,
+      "validation": "OK"
+    },
+    {
+      "id": "Q090",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Která evropská norma stanoví požadavky na výstroj válcových kotlů ?",
+      "answers": [
+        {
+          "text": "ČSN 07 0710",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "ČSN EN 9001:2016",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "ČSN EN 12953-6",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 547,
+      "validation": "OK"
+    },
+    {
+      "id": "Q091",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Jak jsou definovány žárové trubky kotle ?",
+      "answers": [
+        {
+          "text": "Trubky většího průměru, kterými je odváděna voda s kotle",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Trubky menšího průměru procházející vodním prostorem kotle, kterými uvnitř proudí spaliny.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Trubky menšího průměru procházející vodním prostorem kotle, uvnitř kterých se mění voda na páru.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 552,
+      "validation": "OK"
+    },
+    {
+      "id": "Q092",
+      "section": 3,
+      "levels": [
+        "TOP-PK3"
+      ],
+      "question": "Napájecí potrubí parních válcových kotlů podle ČSN EN 12953-6:2011 musí být vybaveno",
+      "answers": [
+        {
+          "text": "Uzavírací armaturou",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Uzavírací armaturou a zpětnou armaturou.",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Uzavírací armaturou, regulační armaturou a pojišťovacím ventilem",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 558,
+      "validation": "OK"
+    },
+    {
+      "id": "Q093",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jaká značka musí být trvale a čitelně vyznačena na parním vodotrubném kotli (s výjimkou průtočných/průtlačných) podle ČSN EN 12952-7 ?",
+      "answers": [
+        {
+          "text": "Nejvyšší přípustná hladina vody",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejnižší přípustná hladina vody",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "Optimální hladina vody",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 564,
+      "validation": "OK"
+    },
+    {
+      "id": "Q094",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jakým zařízením musí být vybaven parní vodotrubný kotel (s výjimkou průtočných/průtlačných) podle ČSN EN 12952-7  ?",
+      "answers": [
+        {
+          "text": "Alespoň jedním přístrojem pro indikaci vody v kotli (přístrojem musí být přímí vodoznak)",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "Nejméně třemi přístroji pro indikaci vody v kotli (jedním přístrojem musí být přímí vodoznak)",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Nejméně dvěma přístroji pro indikaci vody v kotli (jedním přístrojem musí být přímí vodoznak)",
+          "label": "c",
+          "correct": true
+        }
+      ],
+      "source_paragraph": 570,
+      "validation": "OK"
+    },
+    {
+      "id": "Q095",
+      "section": 3,
+      "levels": [
+        "TOP-PK2"
+      ],
+      "question": "Jaké požadavky stanoví evropská norma ČSN EN 12952-7 ?",
+      "answers": [
+        {
+          "text": "Základní požadavky na výstroj (tlakovou i bezpečnostní) a na ochranná zařízení vodotrubných kotlů.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Minimální požadavky na dimenzování potrubí válcových kotlů",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Minimální požadavky na blokády kotlů",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 576,
+      "validation": "OK"
+    },
+    {
+      "id": "Q096",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2"
+      ],
+      "question": "Jak je definován ekonomizér vodotrubného kotle ?",
+      "answers": [
+        {
+          "text": "Výhřevná plocha tlakového systému umístěná v proudu spalin zpravidla za plochami přehříváku, v níž se ohřívá napájecí voda.",
+          "label": "a",
+          "correct": true
+        },
+        {
+          "text": "Výhřevná plocha tlakového systému umístěná v proudu spalin zpravidla za plochami přehříváku, v níž se mění voda na přehřátou páru.",
+          "label": "b",
+          "correct": false
+        },
+        {
+          "text": "Cesta pracovní látky začínající uzávěrem napájecí vody do kotle a končí parním uzávěrem zahrnující výhřevné plochy komory, bubny, parovodní separátory, převáděcí potrubí a jemnou armaturu.",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 582,
+      "validation": "OK"
+    },
+    {
+      "id": "Q097",
+      "section": 3,
+      "levels": [
+        "TOP-PK1",
+        "TOP-PK2"
+      ],
+      "question": "Jednotkou konduktivity napájecí a kotelní vody je",
+      "answers": [
+        {
+          "text": "mC.m-1  (mC/m)",
+          "label": "a",
+          "correct": false
+        },
+        {
+          "text": "µS.cm-1  (µS/cm)",
+          "label": "b",
+          "correct": true
+        },
+        {
+          "text": "µF.cm-1  (µF/cm)",
+          "label": "c",
+          "correct": false
+        }
+      ],
+      "source_paragraph": 587,
+      "validation": "Více správných odpovědí označeno (2)"
+    }
+  ]
+}
