@@ -1,93 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
-    <title>Líný konstruktér Ilogic VBA</title>
-    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
-    <!-- Bootstrap -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
-      rel="stylesheet">
-    <!-- Icons -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-      rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice%7COpen+Sans:400,300,700">
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
-  </head>
-  <body class="home">
-    <header id="header">
-      <div id="head" class="parallax" parallax-speed="2">
-        <h1 class="text-center"><br>
-        </h1>
-        <p><br>
-        </p>
-        <h1 class="text-center">&nbsp; </h1>
-        <p><br>
-        </p>
-      </div>
-      <nav class="navbar navbar-default navbar-sticky">
-        <div class="container-fluid">
-          <div class="navbar-header"> <button type="button" class="navbar-toggle"
-              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="index.html" title="domů">Domů</a></li>
-              <li><a href="ilogic.html" title="ilogic">Ilogic</a></li>
-              <li class="dropdown"> <a href="vba.html" title="ilogic">Autocad
-                  VBA</a>
-                <ul class="dropdown-menu">
-                </ul>
-              </li>
-              <li><a href="web%20TK/uvod%20do%20TK%20I.htm" title="TK">Technické
-                  kreslení</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main id="main">
-      <div class="container">
-        <div class="row section topspace">
-          <h3 style="text-align: center;">Pyth<span style="color: #666666;">on</span></h3>
-        </div>
-        <div class="row section topspace">&nbsp; # zobraz<br>
-          <pre><span style="color: #808080; "></span># zobraz
-x = '10'
+<html lang="cs">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="description" content="Python">
+        <title>Python</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/nicepage.css" media="screen">
+        <link rel="stylesheet" href="./css/index.css" media="screen">
+        <script class="u-script" type="text/javascript" src="./js/jquery.js" defer=""></script>
+        <script class="u-script" type="text/javascript" src="./js/nicepage.js" defer=""></script>
+        <meta name="generator" content="Nicepage 8.8.2, nicepage.com">
+        <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800">
+        <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+        <meta name="theme-color" content="#478ac9">
+        <meta property="og:title" content="Konstruktér | Rozdělovník">
+        <meta property="og:type" content="website">
+        <meta data-intl-tel-input-cdn-path="intlTelInput/">
+        <link href="./css/tailwind.css" rel="stylesheet" type="text/css">
+        <style id="links-page-frame-style">#main pre { box-sizing: border-box; width: 100%; margin: 0 0 1.25rem; padding: 1.25rem 1.5rem; border: 1px solid #dedede; background: #f3f3f3; box-shadow: 0 0 0 3px #fff, 0 0 0 4px #e1e1e1; color: #4a5157; font: inherit; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }</style>
+    </head>
+    <body data-home-page="velcovsky.html" data-home-page-title="velcovsky" data-path-to-root="./" data-include-products="false" class="u-body u-clearfix u-xl-mode" data-lang="cs">
+        <header class="u-clearfix u-header u-header" id="header">
+            <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
+                    <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+                        <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" tabindex="-1" aria-label="Open menu" aria-controls="c512"> <svg class="u-svg-link" viewBox="0 0 24 24">
+                                <use xlink:href="#menu-hamburger"></use>
+                            </svg> <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <rect y="1" width="16" height="2"></rect>
+                                    <rect y="7" width="16" height="2"></rect>
+                                    <rect y="13" width="16" height="2"></rect>
+                                </g>
+                            </svg> </a>
+                    </div>
+                    <div class="u-custom-menu u-nav-container">
+                        <ul class="u-nav u-unstyled u-nav-1" role="menubar">
+                            <li role="none" class="u-nav-item">
+                                <a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../index.html">Rozdělovník</a>
+                            </li>
+                            <li role="none" class="u-nav-item">
+                                <a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../sez/sez.html">SEZ -topič</a>
+                            </li>
+                            <li role="none" class="u-nav-item">
+                                <a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="web TK/uvod do TK I.htm">Technické kreslení</a>
+                            </li>
+                            <li role="none" class="u-nav-item">
+                                <a tabindex="-1" role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../konst/index.html">Autodesk</a>
+                            </li>
+                            <li role="none" class="u-nav-item">
+                                <a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-nav-link-2" href="../kriz/kriz.html">Křižovky</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="u-custom-menu u-nav-container-collapse" id="c512" role="region" aria-label="Menu panel">
+                        <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                            <div class="u-inner-container-layout u-sidenav-overflow">
+                                <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
+                                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2" role="menubar">
+                                    <li role="none" class="u-nav-item">
+                                        <a role="menuitem" class="u-button-style u-nav-link" href="../index.html">Rozdělovník</a>
+                                    </li>
+                                    <li role="none" class="u-nav-item">
+                                        <a role="menuitem" class="u-button-style u-nav-link" href="../sez/sez.html">SEZ -topič</a>
+                                    </li>
+                                    <li role="none" class="u-nav-item">
+                                        <a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="web TK/uvod do TK I.htm">Technické kreslení</a>
+                                    </li>
+                                    <li role="none" class="u-nav-item">
+                                        <a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="../konst/index.html">Autodesk</a>
+                                    </li>
+                                    <li role="none" class="u-nav-item">
+                                        <a role="menuitem" class="u-button-style u-nav-link" href="../kriz/kriz.html">Křižovky</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="u-clearfix u-container-align-center u-image u-section-1" data-image-width="2000" data-image-height="800" id="block-1">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-expanded-width u-list u-list-1">
+                    <div class="u-repeater u-repeater-1">
+                        <div class="u-border-2 u-border-white u-container-align-center-lg u-container-align-center-md u-container-align-center-sm u-container-align-center-xl u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-1">
+                            <div class="bg-white u-container-layout u-container-layout-1 u-similar-container u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                                <h5 class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-palette-2-light-2 u-text-1"> <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="ilogic.html" title="Inventor a Ilogic" ">Inventor</a> </h5>
+                            </div>
+                        </div>
+                        <div class="u-border-2 u-border-white u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-2">
+                            <div class="bg-white u-container-layout u-container-layout-2 u-similar-container u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                                <h5 class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-palette-2-light-2 u-text-2"> <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="vba.html" title="Autocad a VBA">Autocad</a> </h5>
+                            </div>
+                        </div>
+                        <div class="u-border-2 u-border-white u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-3">
+                            <div class="bg-white u-container-layout u-container-layout-3 u-similar-container u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                                <h5 class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-palette-2-light-2 u-text-3"> <a href="programs.html" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" title="Programy">Různé&nbsp;</a> </h5>
+                            </div>
+                        </div>
+                        <div class="u-border-2 u-border-white u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-4">
+                            <div class="bg-white u-container-layout u-container-layout-4 u-similar-container u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                                <h5 class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-palette-2-light-2 u-text-4"> <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-4" href="web TK/uvod do TK I.htm" title="Technické kreslení">Technické kreslení</a> </h5>
+                            </div>
+                        </div>
+                        <div class="u-border-2 u-border-white u-container-style u-list-item u-radius u-repeater-item u-shape-round u-list-item-5">
+                            <div class="bg-white u-container-layout u-container-layout-5 u-similar-container u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl">
+                                <h5 class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-palette-2-light-2 u-text-5"> <a href="../Contact.html" data-page-id="1325026248" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-5" title="Contact">Kontakt</a> </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main id="main">
+            <div class="container">
+                <div class="row section topspace">
+                    Python je moderní programovací jazyk. Je univerzální – pohání weby i
+                    rakety. Dobře se čte a dá se velice rychle naučit. [python.cz]
+</div>
+                <div class="row section topspace">Níže mužete najít základní sekvence
+                    programu:<br>
+                </div>
+                <div class="row section topspace">&nbsp; # zobraz<br>
+                    <pre><span style="color: #808080; "></span># zobraz
+x = &apos;10&apos;
 print (x)<span style="color: #800000; "></span></pre>
-          # zadani cisel&nbsp; <br>
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+                    # zadani cisel&nbsp; <br>
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)</span> # zadani cisel
           <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)<br></span></pre>
-          # porovnani<span style="color: #800000; "> </span>
-          <pre><span style="color: #800000; "># porovnani
+                    # porovnani<span style="color: #800000; "> </span>
+                    <pre><span style="color: #800000; "># porovnani
 print (1&lt;2)
 print (1&gt;2)
 print (1==1)
-print ('hello'!='Hello')</span><span style="color: #800000; "><br></span></pre>
-          # podminka
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># podminka
-x = input ('vloz cislo: ')
+print (&apos;hello&apos;!=&apos;Hello&apos;)</span><span style="color: #800000; "><br></span></pre>
+                    # podminka
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># podminka
+x = input (&apos;vloz cislo: &apos;)
 if int(x)&lt;5:
-    print('malo')
+    print(&apos;malo&apos;)
 elif int(x)==5:
-    print('akorat')
+    print(&apos;akorat&apos;)
 else:
-    print('moc')
+    print(&apos;moc&apos;)
 
 
 # and / or
@@ -95,98 +165,100 @@ x=1
 y=2
 print(x==y and x+y==3)
 print(x==y or x+y==3)</span><span style="color: #800000; "><br></span></pre>
-          # and / or
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># and / or
+                    # and / or
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># and / or
 x=1
 y=2
 print(x==y and x+y==3)
 print(x==y or x+y==3)</span><span style="color: #800000; ">)<br></span></pre>
-          # zadani cisel&nbsp; # zadani cisel
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># cyklus s poctem opakovani:
+                    # zadani cisel&nbsp; # zadani cisel
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># cyklus s poctem opakovani:
 for x in range(0, 11, 2):
     print (x)</span><span style="color: #800000; "><br></span></pre>
-          # cyklus s poctem opakovani:
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+                    # cyklus s poctem opakovani:
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)</span> # zadani cisel
           <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)<br></span></pre>
-          # opakokavani dokud
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># opakokavani dokud
+                    # opakokavani dokud
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># opakokavani dokud
 loop  = True
 while loop == True:
-    cislo  = input ('vloz cislo- stop pro konec-: ' )
-    if cislo == 'stop':
+    cislo  = input (&apos;vloz cislo- stop pro konec-: &apos; )
+    if cislo == &apos;stop&apos;:
         loop = False
         #break</span><span style="color: #800000; "><br></span></pre>
-          # zadani cisel&nbsp; # zadani cisel
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam
-seznam = ['nula', 'jedna', 2, 'tri']
+                    # zadani cisel&nbsp; # zadani cisel
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam
+seznam = [&apos;nula&apos;, &apos;jedna&apos;, 2, &apos;tri&apos;]
 print(seznam)
-seznam.append('ctyri')
-seznam[2]= 'dva'
+seznam.append(&apos;ctyri&apos;)
+seznam[2]= &apos;dva&apos;
 print(seznam)
 print(seznam[0])</span><span style="color: #800000; "><br></span></pre>
-          # seznam
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+                    # seznam
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)</span> # zadani cisel
           <span style="color: #808080; "></span><span style="color: #800000; "># zadani cisel
-x = input ('zadej cele cislo1:' )
-y = input ('zadej cele cislo2:' )
+x = input (&apos;zadej cele cislo1:&apos; )
+y = input (&apos;zadej cele cislo2:&apos; )
 SUM  = int(x)+ int(y)
 print (SUM)<br></span></pre>
-          # Tuple
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Tuple
+                    # Tuple
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Tuple
 position  = (2, 3)
 color = (255, 255, 255)
 print(type(position))
 print(type(color))</span><span style="color: #800000; "><br></span></pre>
-          # seznam cteni polozek
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam cteni polozek
-seznam = ['nula', 'jedna', 2, 'tri']
+                    # seznam cteni polozek
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#seznam cteni polozek
+seznam = [&apos;nula&apos;, &apos;jedna&apos;, 2, &apos;tri&apos;]
 for polozka in seznam:
-    if polozka == 'jedna':
-        print('OK')
+    if polozka == &apos;jedna&apos;:
+        print(&apos;OK&apos;)
     else:
-        print('spatne')
+        print(&apos;spatne&apos;)
 print (len(seznam))
 for x in range(len(seznam)):
-    if seznam[x] == 'jedna':
-        print('OK')
+    if seznam[x] == &apos;jedna&apos;:
+        print(&apos;OK&apos;)
     else:
-        print('spatne')</span><span style="color: #800000; "><br><br></span>animals = ['cat', 'dog', 'rabbit', 'horse']
-test=input('zadej: ')
-# get the index of 'dog'-zadej dog
+        print(&apos;spatne&apos;)</span><span style="color: #800000; "><br><br></span>animals = [&apos;cat&apos;, &apos;dog&apos;, &apos;rabbit&apos;, &apos;horse&apos;]
+test=input(&apos;zadej: &apos;)
+# get the index of &apos;dog&apos;-zadej dog
 index = animals.index(test)
 print(index)</pre>
-          # import and cteni&nbsp; csv
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "><span
+                    # import and cteni&nbsp; csv
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "><span
+
 style="color: #800000; "><span style="color: #800000; "># zobrazi zadany radek</span></span>
 import csv
-file = open('C:\py3eg\source.csv', 'r')</span><span style="color: #800000; ">
-test=input('zadej cislo radku: ')
+file = open(&apos;C:\py3eg\source.csv&apos;, &apos;r&apos;)</span><span style="color: #800000; ">
+test=input(&apos;zadej cislo radku: &apos;)
 lines = file.readlines()
 print (lines[int(test)-1]) 
-file.close()</span><span style="color: #800000; "><br><br></span><span style="color: #800000; "><span
+file.close()</span><span style="color: #800000; "><br><br></span><span style="color: #800000; "><span
+
 style="color: #800000; "><span style="color: #800000; ">#</span></span>najde radek dle textu ve specifikovanem sloupci<br><br>import csv
-with open('C:\py3eg\source.csv', 'r') as scoreFile:
+with open(&apos;C:\py3eg\source.csv&apos;, &apos;r&apos;) as scoreFile:
     scoreFileReader=csv.reader(scoreFile)
-    gender = input('napis barvu')
+    gender = input(&apos;napis barvu&apos;)
     for row in scoreFileReader:
         if row[0]==gender:
             print(row)<br><br>#dle ral najde hodnotz RGB
 import csv
-with open('C:\py3eg\source.csv', 'r') as scoreFile:
+with open(&apos;C:\py3eg\source.csv&apos;, &apos;r&apos;) as scoreFile:
     scoreFileReader=csv.reader(scoreFile)
-    barva = input('napis barvu: ')
+    barva = input(&apos;napis barvu: &apos;)
     for row in scoreFileReader:
         if row[0]== barva:
             line=row
@@ -196,10 +268,10 @@ with open('C:\py3eg\source.csv', 'r') as scoreFile:
             G=line[4]
             B=line[5]
             print(RAL)
-            print( R ,', ' , G ,', ',  B )<br><br></span></pre>
-          # Editace textu /-&nbsp;&nbsp; Toto jE TEST
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Editace textu /-   Toto jE TEST
-text = input ('napis text: ')
+            print( R ,&apos;, &apos; , G ,&apos;, &apos;,  B )<br><br></span></pre>
+                    # Editace textu /-&nbsp;&nbsp; Toto jE TEST
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Editace textu /-   Toto jE TEST
+text = input (&apos;napis text: &apos;)
 print(text)
 #odstraneni mezer na zacatku a na konci
 print(text.strip())
@@ -211,23 +283,23 @@ print(text.lower())
 print(text.upper())
 #rozdeleni
 textedit=text.strip()
-print(textedit.split(' '))
+print(textedit.split(&apos; &apos;))
 
 #https://www.tutorialspoint.com/python/python_strings.htm</span><span style="color: #800000; "></span></pre>
-          # #slice operatory
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#slice operatory
-seznam = ['nula', 'jedna', 2, 'tri']
-text = 'Toto jE TEST'
+                    # #slice operatory
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#slice operatory
+seznam = [&apos;nula&apos;, &apos;jedna&apos;, 2, &apos;tri&apos;]
+text = &apos;Toto jE TEST&apos;
 print(text[0:5])
 print(text[5:7])
 print(text[::2])
 print(seznam[::2])
 
 #pridani na zacatek
-seznam[0:0] = 'M'
+seznam[0:0] = &apos;M&apos;
 print(seznam)</span><span style="color: #800000; "><br></span></pre>
-          # volani podprogramu
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#volani podprogramu
+                    # volani podprogramu
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#volani podprogramu
 #podprogramy
 def secist(x):
     return x+1
@@ -236,21 +308,21 @@ def odecist(x, y):
 def zobraz(string):
     print(string)
 def neco():
-    print('neco')
+    print(&apos;neco&apos;)
 #vyvolani
 print(secist(2))
 print(odecist(2, 5))
-zobraz('test')
+zobraz(&apos;test&apos;)
 neco()</span><span style="color: #800000; "><br></span></pre>
-          # #otevreni externiho souboru
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#otevreni externiho souboru
-file = open('text test.txt' , 'r')
+                    # #otevreni externiho souboru
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#otevreni externiho souboru
+file = open(&apos;text test.txt&apos; , &apos;r&apos;)
 f=file.readlines()
 newList = []
 newList2 = []
 #odstraneni konce
 for line in f:
-    if line[-1]=='\n':
+    if line[-1]==&apos;\n&apos;:
         newList.append(line[:-1])
     else:
         newList.append(line)        
@@ -259,42 +331,42 @@ print(newList)
 for line in f:
     newList2.append(line.strip())
 print(newList2)</span><span style="color: #800000; "><br></span></pre>
-          # zapis do externiho souboru
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#zapis do externiho souboru
-file = open('text test.txt' , 'w')
-file.write('Toto')
-file.write('\n')
-file.write('je\n')
-file.write('test')
+                    # zapis do externiho souboru
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#zapis do externiho souboru
+file = open(&apos;text test.txt&apos; , &apos;w&apos;)
+file.write(&apos;Toto&apos;)
+file.write(&apos;\n&apos;)
+file.write(&apos;je\n&apos;)
+file.write(&apos;test&apos;)
 file.close()</span><span style="color: #800000; "><br></span></pre>
-          # najdi spocitej vyskyt
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#najdi spocitej vyskyt
-text = 'toto je test'
-print(text.find('t'))
-print(text.count('t'))
-print(text.find('z'))
-text = input('zadej text: ')
-if text.count('_')&gt;0:
-    print('spatne')
+                    # najdi spocitej vyskyt
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#najdi spocitej vyskyt
+text = &apos;toto je test&apos;
+print(text.find(&apos;t&apos;))
+print(text.count(&apos;t&apos;))
+print(text.find(&apos;z&apos;))
+text = input(&apos;zadej text: &apos;)
+if text.count(&apos;_&apos;)&gt;0:
+    print(&apos;spatne&apos;)
 else:
-    print('ok')</span><span style="color: #800000; "><br></span></pre>
-          # import knihoven
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#import knihoven
+    print(&apos;ok&apos;)</span><span style="color: #800000; "><br></span></pre>
+                    # import knihoven
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#import knihoven
 import math
 import myModule
 print(math.pi)
 print(math.radians(60))
 print(myModule.funkce1(5))</span><span style="color: #800000; "><br></span></pre>
-          # testovani moznosti
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#testovani moznosti
-text = input('zadej cislo: ')
+                    # testovani moznosti
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#testovani moznosti
+text = input(&apos;zadej cislo: &apos;)
 try:
     cislo= int(text)
     print(text)
 except:
-    print('hondota neni cislo')</span><span style="color: #800000; "><br></span></pre>
-          # globalni a lokalni promenne
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#globalni a lokalni promenne
+    print(&apos;hondota neni cislo&apos;)</span><span style="color: #800000; "><br></span></pre>
+                    # globalni a lokalni promenne
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#globalni a lokalni promenne
 var = 1
 loop = True
 
@@ -309,9 +381,9 @@ print(var)
 Funkce1()
 Funkce2()
 print(var)</span><span style="color: #800000; "><br></span></pre>
-          # objekty a tridy
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
-x = 'text'
+                    # objekty a tridy
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = &apos;text&apos;
 y = 23
 z = True
 
@@ -319,20 +391,20 @@ print (type(x))
 print (type(y))
 print (type(z))
 
-print(x.count('t'))</span><span style="color: #800000; "><br><br></span></pre>
-          <span></span> #Parametry funkce volitelne
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Parametry funkce volitelne
+print(x.count(&apos;t&apos;))</span><span style="color: #800000; "><br><br></span></pre>
+                    <span></span> #Parametry funkce volitelne
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#Parametry funkce volitelne
 
 def func(slovo, x=1, y=0):
     return slovo*(x+y)
 
-call= func("test")
+call= func(&quot;test&quot;)
 print(call)
 
-call1=func("test ",1, 5)
+call1=func(&quot;test &quot;,1, 5)
 print(call1)</span><span style="color: #800000; "></span></pre>
-          # Staic and class metod
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># Staic and class metod
+                    # Staic and class metod
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># Staic and class metod
 
 class person(object):
     population = 50
@@ -349,15 +421,15 @@ class person(object):
         return age &gt;= 18
     
     def display(self):
-        print(self.name, 'is', self.age, 'years old')
+        print(self.name, &apos;is&apos;, self.age, &apos;years old&apos;)
 
-newPerson = person('pavel', 18)
+newPerson = person(&apos;pavel&apos;, 18)
 
 print(person.getPopulation())
 print(person.isAdult(5))
 print(person.isAdult(21))</span></pre>
-          # map function
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># map function
+                    # map function
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># map function
 
 li=[1,2,3,4,5,6,7,8,9,10]
 
@@ -371,8 +443,8 @@ print(novyList)
  
  #with map
 print(list(map(func, li)))</span></pre>
-          #&nbsp; filtr
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># filtr
+                    #&nbsp; filtr
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># filtr
 
 def add7(x):
     return x+7
@@ -389,8 +461,8 @@ c= list(map(add7, filter(isOdd, a)))
 print (a)
 print (b)
 print (c)</span></pre>
-          # funkce&nbsp; lambda <br>
-          <pre><span style="color: #808080; "></span><span style="color: #800000; "># lambda tutorial
+                    # funkce&nbsp; lambda <br>
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; "># lambda tutorial
 #Kklasicky
 from tkinter import Y
 
@@ -418,20 +490,20 @@ print(func3(2))
 a=[1,2,3,4,5,6,7,8,9,10]
 newList =list(map(lambda x:x+5, a))
 print (newList)</span></pre>
-          #colections counter<br>
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#colections
+                    #colections counter<br>
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#colections
     #counter
 import collections
 from collections import Counter
 
 
-c = Counter ('test')
+c = Counter (&apos;test&apos;)
 print(c)
 
-c = Counter (['a', 'a', 'b', 'c', 'c', 'c'])
+c = Counter ([&apos;a&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;c&apos;, &apos;c&apos;])
 print(c)
 
-e = Counter ({'a': 1, 'b':2})
+e = Counter ({&apos;a&apos;: 1, &apos;b&apos;:2})
 print(c)
 
 print(c.most_common(1))
@@ -441,21 +513,21 @@ print (d)
 print(list(d.elements()))
 
 ca = Counter(a=4, b=2, c=0, d=-2)
-da=['a', 'b', 'b', 'c']
+da=[&apos;a&apos;, &apos;b&apos;, &apos;b&apos;, &apos;c&apos;]
 ca.subtract(da)
 print(ca)
 ca.clear()
 print(ca)
 
 cb = Counter(a=4, b=2, c=0, d=-2)
-db=Counter(['a', 'b', 'b', 'c'])
+db=Counter([&apos;a&apos;, &apos;b&apos;, &apos;b&apos;, &apos;c&apos;])
 print(cb+db)
 print(cb-db)
 print(cb&amp;db)
 print(cb|db)</span></pre>
-          # objekty a tridy
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
-x = 'text'
+                    # objekty a tridy
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = &apos;text&apos;
 y = 23
 z = True
 
@@ -463,10 +535,10 @@ print (type(x))
 print (type(y))
 print (type(z))
 
-print(x.count('t'))</span></pre>
-          # objekty a tridy
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
-x = 'text'
+print(x.count(&apos;t&apos;))</span></pre>
+                    # objekty a tridy
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = &apos;text&apos;
 y = 23
 z = True
 
@@ -474,10 +546,10 @@ print (type(x))
 print (type(y))
 print (type(z))
 
-print(x.count('t'))</span></pre>
-          # objekty a tridy
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
-x = 'text'
+print(x.count(&apos;t&apos;))</span></pre>
+                    # objekty a tridy
+                    <pre><span style="color: #808080; "></span><span style="color: #800000; ">#objekty a tridy
+x = &apos;text&apos;
 y = 23
 z = True
 
@@ -485,88 +557,22 @@ print (type(x))
 print (type(y))
 print (type(z))
 
-print(x.count('t'))</span></pre>
-          # PYQT5<br>
-          <pre><span style="color: #808080; "></span><span style="color: #800000; ">pyuic5 –x "filename".ui –o "filename".py</span></pre>
-          <br>
-          <span></span>
-          <h2 class="section-title"><span>náhledy</span></h2>
-          <div class="thumbnails recentworks row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="ilogic.html" title="ilogic"> <span class="img" style="height: 241px;">
-                  <img src="assets/images/ilogic.png" alt="" style="height: 241px;">
-                  <span class="cover"><span class="more">See details →</span></span>&nbsp;</span><span
-                  class="title">Inventor - ilogic</span> </a><span class="details"></span>
+print(x.count(&apos;t&apos;))</span></pre>
+                    <br>
+                    <span></span>
+                    <div class="thumbnails recentworks row"></div>
+                </div>
+                <div class="container">
+                    <div class="row section clients topspace">
+</div>
+                    <!-- /section -->
+                </div>
+                <!-- /container -->
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="vba.html"> <span class="img" style="height: 241px;"> <img
-                    src="assets/images/VBA.png" alt="VBA" title="VBA"> <span class="cover"><span
-                      class="more">See details →</span></span> </span>AUTOCAD -
-                VBA </a><span class="details"></span> </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"> <a class="thumbnail"
-                href="web%20TK/uvod%20do%20TK%20I.htm"> <span class="img" style="height: 241px;">
-                  <img src="assets/images/TK.png" alt=""> <span class="cover"><span
-                      class="more">See details →</span></span>&nbsp;</span><span
-                  class="title">TECHNICKÉ KRESLEN<span style="color: #666666;">í</span></span></a><a
-                href="http://www.gettemplate.com/downloads/initio.zip%20" class="btn btn-primary btn-lg"><span
-                  style="font-family: &quot;Open sans&quot;,Helvetica,Arial,sans-serif;"></span></a></div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row section clients topspace">
-            <h2 class="section-title"><span>Odkazy</span></h2>
-            <div class="col-lg-12">
-              <p> <a href="https://www.autodesk.cz/">Autodesk</a><span style="color: #666666;">&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span> <a href="https://www.inventor3dblog.cz/">inventor3dblog&nbsp;</a>&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://www.cadforum.cz/cz/">cadforum</a>&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="https://forums.autodesk.com/">autodesk.forum
-                  (EN)</a></p>
-            </div>
-          </div>
-          <!-- /section --> </div>
-        <!-- /container --> </div>
-    </main>
-    <footer id="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 widget">
-            <h3 class="widget-title">Contact</h3>
-            <div class="widget-body"><br>
-              <p> <a href="mailto:lazy.designer@seznam.cz"><span style="color: white;">lazy.designer@seznam.cz</span></a></p>
-            </div>
-          </div>
-          <div class="col-md-3 widget">
-            <div class="widget-body">
-              <p class="follow-me-icons"> &nbsp; </p>
-            </div>
-          </div>
-          <div class="col-md-3 widget"><br>
-          </div>
-        </div>
-        <!-- /row of widgets --> </div>
-    </footer>
-    <footer id="underfooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p><br>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p class="text-right"> Copyright © 2014<br>
-                Design: <a href="http://www.gettemplate.com" rel="designer">Initio
-                  by GetTemplate</a> </p>
-            </div>
-          </div>
-        </div>
-        <!-- /row of widgets --> </div>
-    </footer>
-    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/template.js"></script>
-  </body>
+        </main>
+        <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="assets/js/template.js"></script>
+    </body>
 </html>
