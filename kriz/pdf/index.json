@@ -2,5 +2,9 @@
   {
     "name": "test.pdf",
     "url": "pdf/test.pdf"
+  },
+  {
+    "name": "vtipy1.pdf",
+    "url": "pdf/vtipy1.pdf"
   }
 ]
