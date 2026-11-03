@@ -36,31 +36,44 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
   .cell .clue-part .clue-in-cell { font-size: clamp(5px, 1.05vw, 9px); }
 }
 
-/* Plovoucí aktuální nápověda: zůstává dostupná při posouvání mřížky na mobilu. */
+/* Plovoucí aktuální nápověda: fixed vůči obrazovce, nikoli vůči toku stránky.
+   Díky tomu zůstává viditelná i při psaní, změně zoomu a posouvání mřížky. */
 #current-clue {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 100;
+  position: fixed;
+  top: max(8px, env(safe-area-inset-top, 0px));
+  left: max(10px, env(safe-area-inset-left, 0px));
+  right: max(10px, env(safe-area-inset-right, 0px));
+  z-index: 2147483000;
   display: flex;
   align-items: center;
+  width: auto;
+  max-height: min(30vh, 190px);
   min-height: 48px;
-  padding: 12px 16px;
-  margin: 10px 0 14px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 11px 15px;
+  margin: 0;
   background: #eaf5ff;
-  border: 1px solid #b8d9f3;
+  border: 1px solid #8fc5ed;
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(20, 55, 85, .16);
+  box-shadow: 0 4px 18px rgba(20, 55, 85, .24);
   line-height: 1.4;
   overflow-wrap: anywhere;
+  pointer-events: auto;
 }
+/* Po otevření křížovky necháme pod panelem prostor, aby nepřekrýval její nadpis. */
+#solver { scroll-margin-top: 100px; }
 @media (max-width: 600px) {
   #current-clue {
-    top: env(safe-area-inset-top, 0px);
-    min-height: 54px;
-    padding: 11px 13px;
-    margin: 6px 0 12px;
+    top: max(6px, env(safe-area-inset-top, 0px));
+    left: max(6px, env(safe-area-inset-left, 0px));
+    right: max(6px, env(safe-area-inset-right, 0px));
+    max-height: min(32vh, 180px);
+    min-height: 52px;
+    padding: 10px 12px;
     font-size: .95rem;
   }
+  #solver { scroll-margin-top: 125px; }
 }
 </style>
 </head>
@@ -78,5 +91,5 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 <div id="current-clue" class="notice current-clue" aria-live="polite">Vyberte políčko s nápovědou.</div><div class="solver-layout"><div><div id="crossword" aria-label="Mřížka křížovky"></div><h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div><div class="toolbar"><button id="check-btn" class="btn btn-primary">✓ Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Nápověda – písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><p id="status-message" class="notice" role="status"></p></div><aside class="card" id="all-clues"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
 </section>
 </main><footer><div class="container">Křížovky online · Chvilka pro sebe, trénink pro mozek.</div></footer>
-<script src="js/crossword.js?v=20261103-ch-sticky-clue"></script>
+<script src="js/crossword.js?v=20261103-ch-fixed-clue"></script>
 </body></html>
