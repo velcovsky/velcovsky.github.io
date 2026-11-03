@@ -39,6 +39,7 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 /* Plovoucí aktuální nápověda: fixed vůči obrazovce, nikoli vůči toku stránky.
    Díky tomu zůstává viditelná i při psaní, změně zoomu a posouvání mřížky. */
 #current-clue {
+  display: none;
   position: fixed;
   top: max(8px, env(safe-area-inset-top, 0px));
   left: max(10px, env(safe-area-inset-left, 0px));
@@ -61,6 +62,7 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
   overflow-wrap: anywhere;
   pointer-events: auto;
 }
+#current-clue.is-visible { display: flex; }
 /* Po otevření křížovky necháme pod panelem prostor, aby nepřekrýval její nadpis. */
 #solver { scroll-margin-top: 100px; }
 @media (max-width: 600px) {
@@ -88,8 +90,8 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 </section>
 <section id="solver" class="section solver hidden">
 <div class="topbar"><div><button id="back-btn" class="btn">← Výběr křížovky</button><h1 id="puzzle-title">Křížovka</h1><p id="puzzle-description" class="muted"></p></div><div id="progress-label" class="notice">0 % vyplněno</div></div>
-<div id="current-clue" class="notice current-clue" aria-live="polite">Vyberte políčko s nápovědou.</div><div class="solver-layout"><div><div id="crossword" aria-label="Mřížka křížovky"></div><h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div><div class="toolbar"><button id="check-btn" class="btn btn-primary">✓ Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Nápověda – písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><p id="status-message" class="notice" role="status"></p></div><aside class="card" id="all-clues"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
+<div class="solver-layout"><div><div id="crossword" aria-label="Mřížka křížovky"></div><h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div><div class="toolbar"><button id="check-btn" class="btn btn-primary">✓ Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Nápověda – písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><p id="status-message" class="notice" role="status"></p></div><aside class="card" id="all-clues"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
 </section>
-</main><footer><div class="container">Křížovky online · Chvilka pro sebe, trénink pro mozek.</div></footer>
+</main><div id="current-clue" class="notice current-clue" aria-live="polite">Vyberte políčko s nápovědou.</div><footer><div class="container">Křížovky online · Chvilka pro sebe, trénink pro mozek.</div></footer>
 <script src="js/crossword.js?v=20261103-ch-fixed-clue"></script>
 </body></html>
