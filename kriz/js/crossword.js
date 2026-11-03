@@ -2,7 +2,7 @@
   'use strict';
   const OWNER = 'velcovsky', REPO = 'velcovsky.github.io', FOLDER = 'kriz/krizovky';
   const $ = s => document.querySelector(s);
-  const state = { files: [], puzzle: null, slug: '', values: {}, selected: null, direction: 'R', clues: [], checks: {} };
+  const state = { files: [], puzzle: null, slug: '', values: {}, selected: null, direction: 'R', clues: [], checks: {}, chTimer: null };
   const norm = s => (s || '').normalize('NFC').toLocaleUpperCase('cs-CZ');
   const key = (r, c) => `${r}-${c}`;
   const isLetter = c => c && c.t === 'L';
@@ -126,7 +126,7 @@
         el.classList.add('letter-cell');
         const input = document.createElement('input');
         input.type = 'text'; input.inputMode = 'text'; input.autocapitalize = 'characters'; input.autocomplete = 'off'; input.spellcheck = false;
-        input.enterKeyHint = 'next'; input.maxLength = p.ch_single === false ? 2 : 1;
+        input.enterKeyHint = 'next'; input.maxLength = 2; // Umožní zadat CH jako jedno české písmeno do jediného políčka.
         input.setAttribute('aria-label', `Řádek ${r + 1}, sloupec ${c + 1}`); input.setAttribute('autocorrect', 'off');
         input.value = state.values[key(r, c)] || ''; input.dataset.r = r; input.dataset.c = c;
         // Důležité: při kliknutí do již vybraného políčka se mřížka znovu nevykresluje.
@@ -141,12 +141,34 @@
           }
         });
         input.addEventListener('input', () => {
-          let v = norm(input.value).replace(/[^A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]/g, '');
-          if (p.ch_single !== false) v = [...v].slice(-1).join('');
+          const v = norm(input.value).replace(/[^A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]/g, '').slice(0, 2);
           input.value = v;
-          if (v) state.values[key(r, c)] = v; else delete state.values[key(r, c)];
-          delete state.checks[key(r, c)]; persist(); highlights(); progress();
+          if (state.chTimer) { clearTimeout(state.chTimer); state.chTimer = null; }
+          // Samostatné C krátce podržíme: uživatel může dopsat H a vytvořit CH v jednom políčku.
+          if (v === 'C') {
+            state.chTimer = setTimeout(() => {
+              state.chTimer = null; commitValue(r, c, 'C'); moveNext(r, c, 1);
+            }, 650);
+            return;
+          }
+          if (v === 'CH' || (p.ch_single === false && v.length === 2)) {
+            commitValue(r, c, v); moveNext(r, c, 1); return;
+          }
+          if (v.length > 1) {
+            // Dvě rychle zadaná běžná písmena patří do dvou po sobě jdoucích políček.
+            commitValue(r, c, v[0]);
+            const nextCell = nextLetterCell(r, c, 1);
+            if (nextCell) { commitValue(nextCell[0], nextCell[1], v[1]); focusCell(...nextCell); moveNext(...nextCell, 1); }
+            else moveNext(r, c, 1);
+            return;
+          }
+          commitValue(r, c, v);
           if (v) moveNext(r, c, 1);
+        });
+        input.addEventListener('blur', () => {
+          // Pokud uživatel po samotném C klepne jinam, ulož C do původního políčka,
+          // ale nepřesměrovávej mu nově vybraný kurzor.
+          if (state.chTimer) { clearTimeout(state.chTimer); state.chTimer = null; commitValue(r, c, 'C'); }
         });
         input.addEventListener('keydown', e => handleKey(e, r, c));
         el.append(input);
@@ -155,11 +177,27 @@
     }));
     highlights();
   }
+  function commitValue(r, c, value) {
+    if (value) state.values[key(r, c)] = value; else delete state.values[key(r, c)];
+    const input = document.querySelector(`input[data-r="${r}"][data-c="${c}"]`);
+    if (input && input.value !== value) input.value = value;
+    delete state.checks[key(r, c)]; persist(); highlights(); progress();
+  }
+  function nextLetterCell(r, c, step) {
+    let rr = r, cc = c;
+    for (let i = 0; i < state.puzzle.rows * state.puzzle.cols; i++) {
+      if (state.direction === 'R') cc += step; else rr += step;
+      if (rr < 0 || cc < 0 || rr >= state.puzzle.rows || cc >= state.puzzle.cols) return null;
+      if (isLetter(state.puzzle.cells[rr][cc])) return [rr, cc];
+    }
+    return null;
+  }
   function selectCell(r, c) { state.selected = [r, c]; highlights(); renderClues(); }
   function handleKey(e, r, c) {
     const m = { ArrowRight: [0, 1], ArrowLeft: [0, -1], ArrowDown: [1, 0], ArrowUp: [-1, 0] };
     if (m[e.key]) { e.preventDefault(); focusNext(r, c, ...m[e.key]); }
     else if (e.key === 'Backspace' && !e.target.value) moveNext(r, c, -1);
+    else if (e.key === 'Escape' && state.chTimer) { clearTimeout(state.chTimer); state.chTimer = null; }
   }
   function focusCell(r, c) { document.querySelector(`input[data-r="${r}"][data-c="${c}"]`)?.focus({ preventScroll: true }); }
   function moveNext(r, c, step) {
