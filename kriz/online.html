@@ -36,21 +36,17 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
   .cell .clue-part .clue-in-cell { font-size: clamp(5px, 1.05vw, 9px); }
 }
 
-/* Plovoucí aktuální nápověda: fixed vůči obrazovce, nikoli vůči toku stránky.
-   Díky tomu zůstává viditelná i při psaní, změně zoomu a posouvání mřížky. */
+/* Plovoucí nápověda je umístěna v souřadnicích dokumentu.
+   Na Androidu tak není závislá na chování position:fixed při pinch-zoomu. */
 #current-clue {
   display: none;
-  position: fixed;
-  top: calc(var(--visual-viewport-top, 0px) + max(8px, env(safe-area-inset-top, 0px)));
-  left: max(10px, env(safe-area-inset-left, 0px));
-  right: max(10px, env(safe-area-inset-right, 0px));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
   z-index: 2147483000;
-  transform: translateZ(0);
-  will-change: top;
-  display: flex;
-  align-items: center;
-  width: auto;
-  max-height: min(30vh, 190px);
+  width: min(760px, calc(100vw - 20px));
+  max-height: 180px;
   min-height: 48px;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -65,19 +61,14 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
   pointer-events: auto;
 }
 #current-clue.is-visible { display: flex; }
-/* Po otevření křížovky necháme pod panelem prostor, aby nepřekrýval její nadpis. */
-#solver { scroll-margin-top: 100px; }
 @media (max-width: 600px) {
   #current-clue {
-    top: calc(var(--visual-viewport-top, 0px) + max(6px, env(safe-area-inset-top, 0px)));
-    left: max(6px, env(safe-area-inset-left, 0px));
-    right: max(6px, env(safe-area-inset-right, 0px));
-    max-height: min(28dvh, 180px);
+    width: auto;
+    max-height: 28vh;
     min-height: 52px;
     padding: 10px 12px;
     font-size: .95rem;
   }
-  #solver { scroll-margin-top: 125px; }
 }
 </style>
 </head>

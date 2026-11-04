@@ -3,11 +3,29 @@
   const OWNER = 'velcovsky', REPO = 'velcovsky.github.io', FOLDER = 'kriz/krizovky';
   const $ = s => document.querySelector(s);
   const state = { files: [], puzzle: null, slug: '', values: {}, selected: null, direction: 'R', clues: [], checks: {}, chTimer: null };
-  // Android Chrome při otevření klávesnice mění Visual Viewport a může posunout
-  // fixed prvky mimo viditelnou část obrazovky. Přepočítáváme jejich horní hranu.
+  // Mobilní Chrome při pinch-zoomu a otevření klávesnice mění Visual Viewport.
+  // Panel proto nepoužívá position:fixed: jeho absolutní pozici průběžně
+  // přepočítáváme na souřadnice dokumentu podle pageTop/pageLeft viditelného okna.
+  // Tím zůstane na horním okraji skutečně viditelné plochy i při scrollu a zoomu.
+  let viewportSyncQueued = false;
   function syncVisualViewport() {
-    const vv = window.visualViewport;
-    document.documentElement.style.setProperty('--visual-viewport-top', `${vv ? vv.offsetTop : 0}px`);
+    if (viewportSyncQueued) return;
+    viewportSyncQueued = true;
+    requestAnimationFrame(() => {
+      viewportSyncQueued = false;
+      const panel = $('#current-clue');
+      if (!panel || !panel.classList.contains('is-visible')) return;
+      const vv = window.visualViewport;
+      const pageTop = vv ? vv.pageTop : window.scrollY;
+      const pageLeft = vv ? vv.pageLeft : window.scrollX;
+      const visibleWidth = vv ? vv.width : document.documentElement.clientWidth;
+      const visibleHeight = vv ? vv.height : window.innerHeight;
+      const margin = visibleWidth <= 600 ? 6 : 10;
+      panel.style.top = `${Math.max(0, pageTop + margin)}px`;
+      panel.style.left = `${Math.max(0, pageLeft + margin)}px`;
+      panel.style.width = `${Math.max(120, visibleWidth - margin * 2)}px`;
+      panel.style.maxHeight = `${Math.max(52, Math.min(190, visibleHeight * (visibleWidth <= 600 ? .28 : .30)))}px`;
+    });
   }
   syncVisualViewport();
   if (window.visualViewport) {
@@ -15,6 +33,7 @@
     window.visualViewport.addEventListener('scroll', syncVisualViewport, { passive: true });
   }
   window.addEventListener('scroll', syncVisualViewport, { passive: true });
+  window.addEventListener('resize', syncVisualViewport, { passive: true });
   const norm = s => (s || '').normalize('NFC').toLocaleUpperCase('cs-CZ');
   const key = (r, c) => `${r}-${c}`;
   const isLetter = c => c && c.t === 'L';
@@ -92,7 +111,7 @@
       const p = await raw.json(); validatePuzzle(p);
       state.puzzle = p; state.slug = filename; state.values = {}; state.checks = {}; state.selected = null; state.direction = 'R'; state.clues = allClues(p);
       try { state.values = JSON.parse(localStorage.getItem(`kriz-${filename}`) || '{}'); } catch {}
-      $('#catalog').classList.add('hidden'); $('#solver').classList.remove('hidden'); $('#current-clue').classList.add('is-visible');
+      $('#catalog').classList.add('hidden'); $('#solver').classList.remove('hidden'); $('#current-clue').classList.add('is-visible'); syncVisualViewport();
       $('#puzzle-title').textContent = filename.replace(/\.json$/i, '').replace(/[-_]/g, ' ');
       $('#puzzle-description').textContent = `Mřížka ${p.rows} × ${p.cols}`;
       renderBoard(); renderClues(); progress(); status('Křížovka načtena.');
@@ -242,7 +261,7 @@
     const host = $('#clues-list'); host.replaceChildren();
     const current = state.selected ? clueAt(...state.selected, state.direction) : null;
     const currentBar = $('#current-clue');
-    if (currentBar) currentBar.textContent = current ? `${current.d === 'D' ? '↓ Svisle' : '→ Vodorovně'}: ${current.text} (${current.cells.length} písmen)` : 'Kliknutím vyberte nápovědu v mřížce nebo v seznamu níže.';
+    if (currentBar) { currentBar.textContent = current ? `${current.d === 'D' ? '↓ Svisle' : '→ Vodorovně'}: ${current.text} (${current.cells.length} písmen)` : 'Kliknutím vyberte nápovědu v mřížce nebo v seznamu níže.'; syncVisualViewport(); }
     document.querySelectorAll('.clue-tab').forEach(b => b.classList.toggle('active', b.dataset.direction === state.direction));
     state.clues.filter(c => c.d === state.direction).forEach((clue, i) => {
       const b = document.createElement('button'); b.className = 'clue-item';
