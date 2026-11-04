@@ -114,11 +114,43 @@
       $('#catalog').classList.add('hidden'); $('#solver').classList.remove('hidden'); $('#current-clue').classList.add('is-visible'); syncVisualViewport();
       $('#puzzle-title').textContent = filename.replace(/\.json$/i, '').replace(/[-_]/g, ' ');
       $('#puzzle-description').textContent = `Mřížka ${p.rows} × ${p.cols}`;
-      renderBoard(); renderClues(); progress(); status('Křížovka načtena.');
+      renderBoard(); renderClues(); progress(); renderUnusualWords(p); status('Křížovka načtena.');
       history.replaceState(null, '', `${location.pathname}?puzzle=${encodeURIComponent(filename)}`);
       $('#solver').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (e) { alert(`Křížovku nelze načíst: ${e.message}`); }
   }
+  function renderUnusualWords(p) {
+    const host = $('#unusual-words');
+    if (!host) return;
+    host.replaceChildren();
+    const raw = p && p.wtext;
+    let words = [];
+    if (Array.isArray(raw)) {
+      words = raw.map(item => {
+        if (typeof item === 'string' || typeof item === 'number') return String(item).trim();
+        if (item && typeof item === 'object') return String(item.word ?? item.text ?? item.w ?? item.name ?? '').trim();
+        return '';
+      }).filter(Boolean);
+    } else if (typeof raw === 'string' || typeof raw === 'number') {
+      words = String(raw).split(/[\r\n;]+/).map(x => x.trim()).filter(Boolean);
+    } else if (raw && typeof raw === 'object') {
+      words = Object.entries(raw).map(([key, value]) => {
+        if (typeof value === 'string' || typeof value === 'number') return String(value).trim() || key;
+        if (value && typeof value === 'object') return String(value.word ?? value.text ?? value.w ?? key).trim();
+        return key;
+      }).filter(Boolean);
+    }
+    if (!words.length) { host.classList.add('hidden'); return; }
+    const heading = document.createElement('strong');
+    heading.textContent = 'Neobvyklá slova';
+    const list = document.createElement('div'); list.className = 'word-list';
+    words.forEach(word => {
+      const item = document.createElement('span'); item.className = 'word-item';
+      item.textContent = word; list.append(item);
+    });
+    host.append(heading, list); host.classList.remove('hidden');
+  }
+
   function validatePuzzle(p) {
     if (!p || !Number.isInteger(p.rows) || !Number.isInteger(p.cols) || !Array.isArray(p.cells) || p.cells.length !== p.rows || p.cells.some(row => !Array.isArray(row) || row.length !== p.cols))
       throw new Error('Neplatný formát JSON: rows, cols a cells musí tvořit správnou mřížku.');
