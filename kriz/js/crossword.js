@@ -3,6 +3,18 @@
   const OWNER = 'velcovsky', REPO = 'velcovsky.github.io', FOLDER = 'kriz/krizovky';
   const $ = s => document.querySelector(s);
   const state = { files: [], puzzle: null, slug: '', values: {}, selected: null, direction: 'R', clues: [], checks: {}, chTimer: null };
+  // Android Chrome při otevření klávesnice mění Visual Viewport a může posunout
+  // fixed prvky mimo viditelnou část obrazovky. Přepočítáváme jejich horní hranu.
+  function syncVisualViewport() {
+    const vv = window.visualViewport;
+    document.documentElement.style.setProperty('--visual-viewport-top', `${vv ? vv.offsetTop : 0}px`);
+  }
+  syncVisualViewport();
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncVisualViewport, { passive: true });
+    window.visualViewport.addEventListener('scroll', syncVisualViewport, { passive: true });
+  }
+  window.addEventListener('scroll', syncVisualViewport, { passive: true });
   const norm = s => (s || '').normalize('NFC').toLocaleUpperCase('cs-CZ');
   const key = (r, c) => `${r}-${c}`;
   const isLetter = c => c && c.t === 'L';

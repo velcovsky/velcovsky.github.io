@@ -41,10 +41,12 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 #current-clue {
   display: none;
   position: fixed;
-  top: max(8px, env(safe-area-inset-top, 0px));
+  top: calc(var(--visual-viewport-top, 0px) + max(8px, env(safe-area-inset-top, 0px)));
   left: max(10px, env(safe-area-inset-left, 0px));
   right: max(10px, env(safe-area-inset-right, 0px));
   z-index: 2147483000;
+  transform: translateZ(0);
+  will-change: top;
   display: flex;
   align-items: center;
   width: auto;
@@ -67,10 +69,10 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 #solver { scroll-margin-top: 100px; }
 @media (max-width: 600px) {
   #current-clue {
-    top: max(6px, env(safe-area-inset-top, 0px));
+    top: calc(var(--visual-viewport-top, 0px) + max(6px, env(safe-area-inset-top, 0px)));
     left: max(6px, env(safe-area-inset-left, 0px));
     right: max(6px, env(safe-area-inset-right, 0px));
-    max-height: min(32vh, 180px);
+    max-height: min(28dvh, 180px);
     min-height: 52px;
     padding: 10px 12px;
     font-size: .95rem;
