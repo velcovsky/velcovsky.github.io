@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zahrajte si klasické sudoku online. Vyberte si ze čtyř obtížností.">
+  <title>Online sudoku</title>
+  <link rel="stylesheet" href="../nicepage.css" media="screen">
+  <link rel="stylesheet" href="sudoku.css" media="screen">
+  <script src="../jquery.js" defer></script>
+  <script src="../nicepage.js" defer></script>
+</head>
+<body data-path-to-root="../" class="u-body u-clearfix u-xl-mode" data-lang="cs">
+  <header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Hlavní navigace"><div class="u-custom-menu u-nav-container"><ul class="u-nav u-unstyled u-nav-1" role="menubar"><li class="u-nav-item"><a class="u-nav-link" href="../">Rozdělovník</a></li><li class="u-nav-item"><a class="u-nav-link" href="../sez/sez.html">SEZ -topič</a></li><li class="u-nav-item"><a class="u-nav-link" href="konst/web TK/uvod do TK I.htm">Technické kreslení</a></li><li class="u-nav-item"><a class="u-nav-link" href="konst/index.html">Autodesk</a></li><li class="u-nav-item"><a class="u-nav-link" href="kriz.html">Křížovky</a></li></ul></div></nav></div></header>
+  <section class="u-clearfix u-container-align-center u-image u-section-1" data-image-width="1024" data-image-height="572" id="block-7"><div class="u-clearfix u-sheet u-sheet-1"><div class="u-expanded-width u-list u-list-1"><div class="u-repeater u-repeater-1"><div class="u-border-2 u-border-white u-container-style u-grey-10 u-list-item u-radius u-repeater-item u-shape-round u-list-item-1"><div class="u-container-layout u-similar-container u-valign-middle u-container-layout-1"><h5 class="u-align-center u-text u-text-default u-text-1"><a class="u-btn u-button-link u-button-style u-none u-text-palette-1-base" href="online.html">Křížovky-online</a></h5></div></div><div class="u-border-2 u-border-white u-container-style u-grey-10 u-list-item u-radius u-repeater-item u-shape-round u-list-item-2"><div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2"><h5 class="u-align-center u-text u-text-default u-text-2"><a class="u-btn u-button-link u-button-style u-none u-text-palette-1-base" href="kriz_tisk.html">Křížovky k vytisknutí</a></h5></div></div><div class="u-border-2 u-border-white u-container-style u-grey-10 u-list-item u-radius u-repeater-item u-shape-round u-list-item-3"><div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3"><h5 class="u-align-center u-text u-text-default u-text-3"><a class="u-btn u-button-link u-button-style u-none u-text-palette-1-base" href="../Contact.html">Kontakt</a></h5></div></div></div></div></div></section>
+  <header class="topbar">
+    <a class="brand" href="kriz.html">Luštění online</a>
+    <a class="back-link" href="kriz.html">← Zpět na křížovky</a>
+  </header>
+  <main class="game-wrap">
+    <section class="intro">
+      <p class="eyebrow">Čas na logiku</p>
+      <h1>Online sudoku</h1>
+      <p>Klasické sudoku 9 × 9. Doplňte čísla tak, aby se žádné neopakovalo v řádku, sloupci ani čtverci 3 × 3.</p>
+    </section>
+    <section class="game-card" aria-label="Hra sudoku">
+      <div class="game-toolbar">
+        <label for="difficulty">Obtížnost</label>
+        <select id="difficulty">
+          <option value="very-easy">Velmi lehké</option>
+          <option value="easy">Lehké</option>
+          <option value="medium">Střední</option>
+          <option value="hard">Těžké</option>
+        </select>
+        <div class="timer" aria-live="off"><span>ČAS</span><strong id="timer">00:00</strong></div>
+      </div>
+      <div class="game-layout">
+        <div id="board" class="board" role="grid" aria-label="Hrací deska sudoku"></div>
+        <aside class="side-panel">
+          <p id="status" class="status" aria-live="polite">Vyberte prázdné políčko a doplňte číslo.</p>
+          <div id="number-pad" class="number-pad" aria-label="Výběr čísla"></div>
+          <div class="actions">
+            <button id="erase" class="button secondary" type="button">Smazat číslo</button>
+            <button id="hint" class="button secondary" type="button">Nápověda</button>
+            <button id="check" class="button secondary" type="button">Zkontrolovat</button>
+            <button id="new-game" class="button primary" type="button">Nová hra</button>
+          </div>
+          <p class="help">Tip: čísla můžete zadávat také klávesami 1–9. Mazání: Backspace nebo Delete.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script>
+  (() => {
+    const levels = { 'very-easy': { label: 'Velmi lehké', clues: 45 }, easy: { label: 'Lehké', clues: 38 }, medium: { label: 'Střední', clues: 33 }, hard: { label: 'Těžké', clues: 29 } };
+    const boardEl = document.getElementById('board');
+    const padEl = document.getElementById('number-pad');
+    const statusEl = document.getElementById('status');
+    const timerEl = document.getElementById('timer');
+    const difficultyEl = document.getElementById('difficulty');
+    let puzzle = [], solution = [], fixed = [], selected = -1, seconds = 0, timerId;
+    const shuffle = a => { for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+    function candidates(grid, r, c) {
+      const used = new Set();
+      for(let i=0;i<9;i++){ used.add(grid[r][i]); used.add(grid[i][c]); }
+      const br=Math.floor(r/3)*3, bc=Math.floor(c/3)*3;
+      for(let y=br;y<br+3;y++) for(let x=bc;x<bc+3;x++) used.add(grid[y][x]);
+      return shuffle([1,2,3,4,5,6,7,8,9].filter(n=>!used.has(n)));
+    }
+    function fill(grid) {
+      let best=null, options=null;
+      for(let r=0;r<9;r++) for(let c=0;c<9;c++) if(!grid[r][c]) { const opts=candidates(grid,r,c); if(!options||opts.length<options.length){best=[r,c];options=opts;} if(opts.length===0)return false; }
+      if(!best)return true;
+      const [r,c]=best;
+      for(const n of options){grid[r][c]=n;if(fill(grid))return true;grid[r][c]=0;}
+      return false;
+    }
+    function countSolutions(grid, limit=2) {
+      let best=null, options=null;
+      for(let r=0;r<9;r++) for(let c=0;c<9;c++) if(!grid[r][c]) { const opts=candidates(grid,r,c); if(!options||opts.length<options.length){best=[r,c];options=opts;} if(opts.length===0)return 0; }
+      if(!best)return 1;
+      let count=0; const [r,c]=best;
+      for(const n of options){grid[r][c]=n;count+=countSolutions(grid,limit-count);grid[r][c]=0;if(count>=limit)return count;}
+      return count;
+    }
+    function makePuzzle() {
+      const grid=Array.from({length:9},()=>Array(9).fill(0)); fill(grid); solution=grid.map(row=>row.slice());
+      puzzle=grid.map(row=>row.slice());
+      const target=levels[difficultyEl.value].clues;
+      for(const idx of shuffle(Array.from({length:81},(_,i)=>i))) {
+        const r=Math.floor(idx/9), c=idx%9, value=puzzle[r][c]; puzzle[r][c]=0;
+        if(countSolutions(puzzle.map(row=>row.slice()))!==1) puzzle[r][c]=value;
+        if(puzzle.flat().filter(Boolean).length<=target) break;
+      }
+      fixed=puzzle.flat().map(Boolean); selected=-1; seconds=0; timerEl.textContent='00:00'; clearInterval(timerId); timerId=setInterval(tick,1000);
+      statusEl.textContent='Vyberte prázdné políčko a doplňte číslo.'; render();
+    }
+    function tick(){seconds++;timerEl.textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+    function render(){
+      boardEl.innerHTML='';
+      for(let i=0;i<81;i++){
+        const r=Math.floor(i/9),c=i%9,cell=document.createElement('button'); cell.type='button'; cell.className='cell'; cell.setAttribute('role','gridcell');
+        if(c===2||c===5)cell.classList.add('box-right'); if(r===2||r===5)cell.classList.add('box-bottom');
+        if(fixed[i])cell.classList.add('given'); if(i===selected)cell.classList.add('selected');
+        if(selected>=0){const sr=Math.floor(selected/9),sc=selected%9;if(r===sr||c===sc||(Math.floor(r/3)===Math.floor(sr/3)&&Math.floor(c/3)===Math.floor(sc/3)))cell.classList.add('related');if(puzzle[r][c]&&puzzle[r][c]===puzzle[sr][sc])cell.classList.add('same');}
+        cell.textContent=puzzle[r][c]||'';cell.setAttribute('aria-label',`Řádek ${r+1}, sloupec ${c+1}${puzzle[r][c]?`, číslo ${puzzle[r][c]}`:', prázdné'}`);cell.addEventListener('click',()=>{selected=i;render();});boardEl.appendChild(cell);
+      }
+    }
+    function enter(n){if(selected<0||fixed[selected])return;const r=Math.floor(selected/9),c=selected%9;puzzle[r][c]=n;render();if(isComplete())finish();}
+    function isComplete(){return puzzle.every((row,r)=>row.every((v,c)=>v===solution[r][c]));}
+    function finish(){clearInterval(timerId);statusEl.textContent='Výborně! Sudoku jste úspěšně vyřešili.';}
+    for(let n=1;n<=9;n++){const b=document.createElement('button');b.type='button';b.className='pad-key';b.textContent=n;b.setAttribute('aria-label',`Vložit ${n}`);b.addEventListener('click',()=>enter(n));padEl.appendChild(b);}
+    document.getElementById('erase').addEventListener('click',()=>enter(0));
+    document.getElementById('hint').addEventListener('click',()=>{if(selected<0||fixed[selected]){statusEl.textContent='Nejprve vyberte prázdné políčko.';return;}enter(solution[Math.floor(selected/9)][selected%9]);statusEl.textContent='Doplnil jsem správné číslo.';});
+    document.getElementById('check').addEventListener('click',()=>{let wrong=0,empty=0;puzzle.forEach((row,r)=>row.forEach((v,c)=>{if(!v)empty++;else if(v!==solution[r][c])wrong++;}));statusEl.textContent=wrong?`Některá čísla nesouhlasí. Chybných políček: ${wrong}.`:empty?`Zatím správně. Zbývá doplnit ${empty} políček.`:'Všechna čísla jsou správně!';if(!wrong&&!empty)finish();});
+    document.getElementById('new-game').addEventListener('click',makePuzzle); difficultyEl.addEventListener('change',makePuzzle);
+    document.addEventListener('keydown',e=>{if(/^[1-9]$/.test(e.key))enter(Number(e.key));else if(e.key==='Backspace'||e.key==='Delete')enter(0);else if(e.key.startsWith('Arrow')&&selected>=0){e.preventDefault();let next=selected;if(e.key==='ArrowLeft')next=Math.max(0,selected-1);if(e.key==='ArrowRight')next=Math.min(80,selected+1);if(e.key==='ArrowUp')next=Math.max(0,selected-9);if(e.key==='ArrowDown')next=Math.min(80,selected+9);selected=next;render();}});
+    makePuzzle();
+  })();
+  </script>
+  <section class="u-backlink u-clearfix u-grey-80"></section>
+</body>
+</html>
