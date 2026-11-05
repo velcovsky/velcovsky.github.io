@@ -197,3 +197,8 @@
     margin-left: initial;
   }
 }
+/* Zaoblení šedých odkazových karet v horním panelu */
+.u-section-1 .u-list-item {
+  --radius: 24px;
+  overflow: hidden;
+}
