@@ -73,11 +73,10 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 </style>
 
 <style>
-/* Seznam neobvyklých slov z pole wtext v JSON křížovky. */
-.unusual-words{margin:.75rem 0;padding:.75rem 1rem;border:1px solid #c9dff2;border-radius:10px;background:#f4f9ff;color:#183b58;line-height:1.5;overflow-wrap:anywhere}
-.unusual-words strong{display:block;margin-bottom:.25rem;color:#164b78}
-.unusual-words .word-list{display:flex;flex-wrap:wrap;gap:.35rem .5rem}
-.unusual-words .word-item{display:inline-block;padding:.12rem .5rem;border-radius:6px;background:#e2effb;font-weight:600}
+/* Celý obsah wtext z buněk křížovky. */
+.unusual-words{margin:.75rem 0;padding:.75rem 1rem;border:1px solid #c9dff2;border-radius:10px;background:#f4f9ff;color:#183b58;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}
+.unusual-words strong{display:block;margin-bottom:.35rem;color:#164b78}
+.unusual-words .word-list{white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:480px){.unusual-words{font-size:.92rem;padding:.65rem .75rem}}
 </style>
 </head>
@@ -95,5 +94,5 @@ a{color:var(--blue)}button,select,input{font:inherit}.hero{width:100vw;max-width
 <div class="solver-layout"><div><div id="crossword" aria-label="Mřížka křížovky"></div><h3>Tajenka</h3><div id="secret-answer" class="secret" aria-live="polite"></div><div class="toolbar"><button id="check-btn" class="btn btn-primary">✓ Zkontrolovat písmena</button><button id="reveal-btn" class="btn">Nápověda – písmeno</button><button id="clear-btn" class="btn">Vymazat vyplnění</button></div><div id="unusual-words" class="unusual-words hidden" aria-label="Neobvyklá slova"></div><p id="status-message" class="notice" role="status"></p></div><aside class="card" id="all-clues"><h2>Nápovědy</h2><div class="clue-tabs"><button class="btn clue-tab active" data-direction="R">Vodorovně →</button><button class="btn clue-tab" data-direction="D">Svisle ↓</button></div><div id="clues-list"></div></aside></div>
 </section>
 </main><div id="current-clue" class="notice current-clue" aria-live="polite">Vyberte políčko s nápovědou.</div><footer><div class="container">Křížovky online · Chvilka pro sebe, trénink pro mozek.</div></footer>
-<script src="js/crossword.js?v=20261104-wtext"></script>
+<script src="js/crossword.js?v=20261103-ch-fixed-clue"></script>
 </body></html>

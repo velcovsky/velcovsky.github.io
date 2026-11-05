@@ -123,32 +123,38 @@
     const host = $('#unusual-words');
     if (!host) return;
     host.replaceChildren();
-    const raw = p && p.wtext;
-    let words = [];
-    if (Array.isArray(raw)) {
-      words = raw.map(item => {
-        if (typeof item === 'string' || typeof item === 'number') return String(item).trim();
-        if (item && typeof item === 'object') return String(item.word ?? item.text ?? item.w ?? item.name ?? '').trim();
-        return '';
-      }).filter(Boolean);
-    } else if (typeof raw === 'string' || typeof raw === 'number') {
-      words = String(raw).split(/[\r\n;]+/).map(x => x.trim()).filter(Boolean);
-    } else if (raw && typeof raw === 'object') {
-      words = Object.entries(raw).map(([key, value]) => {
-        if (typeof value === 'string' || typeof value === 'number') return String(value).trim() || key;
-        if (value && typeof value === 'object') return String(value.word ?? value.text ?? value.w ?? key).trim();
-        return key;
-      }).filter(Boolean);
+
+    // wtext je vlastností buňky, nikoli kořenového objektu křížovky.
+    // Zachováme celý původní řetězec včetně čárek, mezer a zalomení.
+    const values = [];
+    if (p && Array.isArray(p.cells)) {
+      p.cells.forEach(row => {
+        if (!Array.isArray(row)) return;
+        row.forEach(cell => {
+          if (cell && typeof cell.wtext === 'string' && cell.wtext.trim() !== '') {
+            values.push(cell.wtext);
+          }
+        });
+      });
     }
-    if (!words.length) { host.classList.add('hidden'); return; }
+
+    if (!values.length) {
+      host.classList.add('hidden');
+      return;
+    }
+
     const heading = document.createElement('strong');
     heading.textContent = 'Neobvyklá slova';
-    const list = document.createElement('div'); list.className = 'word-list';
-    words.forEach(word => {
-      const item = document.createElement('span'); item.className = 'word-item';
-      item.textContent = word; list.append(item);
+    const list = document.createElement('div');
+    list.className = 'word-list';
+    values.forEach(value => {
+      const item = document.createElement('div');
+      item.className = 'word-item';
+      item.textContent = value;
+      list.append(item);
     });
-    host.append(heading, list); host.classList.remove('hidden');
+    host.append(heading, list);
+    host.classList.remove('hidden');
   }
 
   function validatePuzzle(p) {
