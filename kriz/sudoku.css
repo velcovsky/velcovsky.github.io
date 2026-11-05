@@ -2,7 +2,7 @@
 
 /* Původní záhlaví a obrazová navigace webu */
 .u-header { background: #fff; }
-.u-section-1 { background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; background-image: url("../images/sudoku_online_2.png"); }
+.u-section-1 { background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; background-image: url("../images/sudoku_online_2.jpg"); }
 .u-section-1 .u-sheet-1 { min-height: 500px; }
 .u-section-1 .u-list-1 { margin-top: 395px; margin-bottom: 24px; box-shadow: 5px 5px 20px rgba(0,0,0,.35); }
 .u-section-1 .u-repeater-1 { display:grid; gap:20px; grid-template-columns:repeat(3,minmax(0,1fr)); }
