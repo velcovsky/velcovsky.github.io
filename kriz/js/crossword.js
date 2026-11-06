@@ -111,7 +111,12 @@
       const p = await raw.json(); validatePuzzle(p);
       state.puzzle = p; state.slug = filename; state.values = {}; state.checks = {}; state.selected = null; state.direction = 'R'; state.clues = allClues(p);
       try { state.values = JSON.parse(localStorage.getItem(`kriz-${filename}`) || '{}'); } catch {}
-      $('#catalog').classList.add('hidden'); $('#solver').classList.remove('hidden'); $('#current-clue').classList.add('is-visible'); syncVisualViewport();
+      const catalog = $('#catalog'), solver = $('#solver'), cluePanel = $('#current-clue');
+      if (!catalog || !solver) throw new Error('V HTML chybí kontejner #catalog nebo #solver.');
+      catalog.classList.add('hidden');
+      solver.classList.remove('hidden');
+      if (cluePanel) cluePanel.classList.add('is-visible');
+      syncVisualViewport();
       $('#puzzle-title').textContent = filename.replace(/\.json$/i, '').replace(/[-_]/g, ' ');
       $('#puzzle-description').textContent = `Mřížka ${p.rows} × ${p.cols}`;
       renderBoard(); renderClues(); progress(); renderUnusualWords(p); status('Křížovka načtena.');
@@ -344,7 +349,12 @@
 
   $('#load-puzzle').addEventListener('click', openSelected);
   $('#puzzle-select').addEventListener('dblclick', openSelected);
-  $('#back-btn').addEventListener('click', () => { $('#solver').classList.add('hidden'); $('#catalog').classList.remove('hidden'); $('#current-clue').classList.remove('is-visible'); history.replaceState(null, '', location.pathname); });
+  $('#back-btn')?.addEventListener('click', () => {
+    $('#solver')?.classList.add('hidden');
+    $('#catalog')?.classList.remove('hidden');
+    $('#current-clue')?.classList.remove('is-visible');
+    history.replaceState(null, '', location.pathname);
+  });
   $('#check-btn').addEventListener('click', checkAll);
   $('#reveal-btn').addEventListener('click', reveal);
   $('#clear-btn').addEventListener('click', () => {
