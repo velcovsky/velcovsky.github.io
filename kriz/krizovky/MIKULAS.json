@@ -76,7 +76,7 @@
     "clue2": "",
     "arrow2": "D",
     "tj": 0,
-    "wtext": "",
+    "wtext": "TARIF, UA",
     "wh": 1,
     "ww": 1,
     "anchor": null,
@@ -620,7 +620,7 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "OČEKÁVÁNÍ, ŽE SE STANE URČITÁ DOBRÁ VĚC",
+    "clue": "ANĎA",
     "arrow": "D",
     "two": false,
     "clue2": "",
@@ -636,7 +636,7 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "JAKMILE",
+    "clue": "HLÁŠKA V MARIÁŠ",
     "arrow": "D",
     "two": false,
     "clue2": "",
@@ -750,10 +750,10 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "GENETICKÁ INFORMACE",
+    "clue": "PREZENT expr.",
     "arrow": "R",
     "two": true,
-    "clue2": "PRÉMIE",
+    "clue2": "VĚTROVKA",
     "arrow2": "D",
     "tj": 0,
     "wtext": "",
@@ -781,7 +781,7 @@
    },
    {
     "t": "L",
-    "ch": "N",
+    "ch": "A",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -797,7 +797,7 @@
    },
    {
     "t": "L",
-    "ch": "A",
+    "ch": "R",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -928,10 +928,10 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "SPOJKA",
+    "clue": "ZÁPOR",
     "arrow": "R",
     "two": true,
-    "clue2": "ZDALI",
+    "clue2": "UMÉLÝ JAZYK",
     "arrow2": "D",
     "tj": 0,
     "wtext": "",
@@ -943,7 +943,7 @@
    },
    {
     "t": "L",
-    "ch": "A",
+    "ch": "N",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -959,7 +959,7 @@
    },
    {
     "t": "L",
-    "ch": "Ž",
+    "ch": "E",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1026,7 +1026,7 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "TURDUS",
+    "clue": "KNĚZ",
     "arrow": "R",
     "two": true,
     "clue2": "VĚTNÁ SPOJKA",
@@ -1073,7 +1073,7 @@
    },
    {
     "t": "L",
-    "ch": "O",
+    "ch": "U",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1089,7 +1089,7 @@
    },
    {
     "t": "L",
-    "ch": "Z",
+    "ch": "I",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1207,7 +1207,7 @@
     "clue": "TAJENKA 3",
     "arrow": "R",
     "two": true,
-    "clue2": "MPZ ČESKÉ REPUBLIKY",
+    "clue2": "HEMICKÁ ZNAČKA VÁPNÍKU",
     "arrow2": "D",
     "tj": 0,
     "wtext": "",
@@ -1382,10 +1382,10 @@
    {
     "t": "C",
     "ch": "Q",
-    "clue": "TAJENKA 2",
+    "clue": "NASPOD",
     "arrow": "R",
     "two": true,
-    "clue2": "",
+    "clue2": "TAJENKA 2",
     "arrow2": "D",
     "tj": 0,
     "wtext": "",
@@ -1397,7 +1397,7 @@
    },
    {
     "t": "L",
-    "ch": "U",
+    "ch": "D",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1413,7 +1413,7 @@
    },
    {
     "t": "L",
-    "ch": "A",
+    "ch": "O",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1429,7 +1429,7 @@
    },
    {
     "t": "L",
-    "ch": "J",
+    "ch": "L",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1512,7 +1512,7 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "OPĚT",
+    "clue": "NAS AUTOBAZAR",
     "arrow": "R",
     "two": false,
     "clue2": "",
@@ -1527,7 +1527,7 @@
    },
    {
     "t": "L",
-    "ch": "Z",
+    "ch": "A",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1559,7 +1559,7 @@
    },
    {
     "t": "L",
-    "ch": "S",
+    "ch": "A",
     "clue": "",
     "arrow": "R",
     "two": false,
@@ -1576,7 +1576,7 @@
    {
     "t": "C",
     "ch": "",
-    "clue": "NAZEV NOSOVKY",
+    "clue": "INICIÁLY CHEMIKA NOBELA",
     "arrow": "R",
     "two": false,
     "clue2": "",
@@ -1591,7 +1591,7 @@
    },
    {
     "t": "L",
-    "ch": "E",
+    "ch": "A",
     "clue": "",
     "arrow": "R",
     "two": false,
